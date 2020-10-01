@@ -5,9 +5,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.projeto_padrao.models.Android;
 import com.projeto_padrao.observers.GpsObserver;
+
+import static com.projeto_padrao.statics.ConstantesGlobais.NOME_APP;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -16,8 +19,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Android android =new Android(this);
-        Log.d("teste de conexao",String.valueOf(android.getConected()));
+        Toast.makeText(this,NOME_APP,Toast.LENGTH_LONG).show();
 
     }
 
