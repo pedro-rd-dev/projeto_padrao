@@ -7,6 +7,7 @@ import android.net.NetworkInfo;
 public class Android {
     private boolean conected;
     private Context context;
+    private String meuAtributoComMaisDeUmaPalavra;
 
     public Android(Context context) {
         this.context = context;
