@@ -5,6 +5,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
+import com.projeto_padrao.RegisterActivity;
+
 public class Usuario {
     private String username;
     private String password;
@@ -43,14 +45,20 @@ public class Usuario {
 
         Android android = new Android(context);
         if (android.getConected(context)){
+
             this.logado = true;
             Log.d("credenciais", " \nLogin: " + this.username+"\nSenha: " + this.password);
             Toast.makeText(context,"Usuario está logado",Toast.LENGTH_LONG).show();
+
         }else {
+
             this.logado = false;
             Log.d("credenciais", " \nLogin: " + this.username+"\nSenha: " + this.password);
             Toast.makeText(context,"Usuario não está logado",Toast.LENGTH_LONG).show();
         }
 
+    }
+
+    public void registrar(Context context) {
     }
 }
