@@ -18,7 +18,7 @@
 
 
         <EditText
-            android:id="@+id/register_editText_usuario2"
+            android:id="@+id/register_editText_usuario"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
@@ -81,7 +81,7 @@
             app:layout_constraintTop_toBottomOf="@+id/view" />
 
         <EditText
-            android:id="@+id/register_editText_usuario"
+            android:id="@+id/register_editText_email"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
@@ -100,7 +100,7 @@
             android:padding="16dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/register_editText_usuario2" />
+            app:layout_constraintTop_toBottomOf="@+id/register_editText_usuario" />
 
         <EditText
             android:id="@+id/register_editText_senha"
@@ -122,7 +122,7 @@
             android:password="true"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/register_editText_usuario" />
+            app:layout_constraintTop_toBottomOf="@+id/register_editText_email" />
 
         <Button
             android:id="@+id/register_button_login"

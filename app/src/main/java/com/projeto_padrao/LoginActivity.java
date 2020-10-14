@@ -3,12 +3,14 @@ package com.projeto_padrao;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.projeto_padrao.models.Android;
 import com.projeto_padrao.models.Aplicacao;
@@ -28,7 +30,6 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.login);
 
         //this.getLifecycle().addObserver(new ActivityObserver());
-        
         identificandoComponentes();
         inicializandoComponentes();
 
@@ -52,8 +53,12 @@ public class LoginActivity extends AppCompatActivity {
                 String usuario = login_editText_usuario.getText().toString();
                 String senha = login_editText_senha.getText().toString();
 
+                Log.d("autenticação","  \nUSUARIO: "+ usuario + "\nSENHA:"+ senha);
+
                 Usuario usuarioLogado = new Usuario(usuario,senha);
                 usuarioLogado.logar(LoginActivity.this);
+
+
             }
         });
 
