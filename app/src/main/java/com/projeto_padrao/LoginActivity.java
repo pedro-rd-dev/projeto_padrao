@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import com.projeto_padrao.models.Android;
 import com.projeto_padrao.models.Aplicacao;
+import com.projeto_padrao.models.Gato;
 import com.projeto_padrao.models.Usuario;
 import com.projeto_padrao.observers.ActivityObserver;
 
@@ -28,6 +29,9 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login);
+
+
+        Gato gato = new Gato("rogerio",true,20);
 
         //this.getLifecycle().addObserver(new ActivityObserver());
         identificandoComponentes();
