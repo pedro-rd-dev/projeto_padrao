@@ -11,7 +11,14 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme"
+        android:name="com.orm.SugarApp">
+
+        <meta-data android:name="DATABASE" android:value="projeto_padrao_database.db" />
+        <meta-data android:name="VERSION" android:value="2" />
+        <meta-data android:name="QUERY_LOG" android:value="true" />
+        <meta-data android:name="DOMAIN_PACKAGE_NAME" android:value="com.projato_padrao.models" />
+
         <activity android:name=".RegisterActivity"></activity>
         <activity android:name=".LoginActivity">
             <intent-filter>
@@ -21,13 +28,6 @@
             </intent-filter>
         </activity>
 
-        <receiver
-            android:name="com.company.product.network.ConnectionChangeReceiver"
-            android:label="NetworkConnection">
-            <intent-filter>
-                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
-            </intent-filter>
-        </receiver>
     </application>
 
 </manifest>
