@@ -8,6 +8,10 @@ public class Gato {
     private Boolean miando;
     private int idade;
 
+    public Gato(){
+
+    }
+
     public Gato(String nome,Boolean miando,int dataNascimento) {
         this.dataNascimento = dataNascimento;
         this.nome = nome;

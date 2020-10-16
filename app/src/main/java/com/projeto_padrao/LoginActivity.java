@@ -30,9 +30,6 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login);
 
-
-        Gato gato = new Gato("rogerio",true,20);
-
         //this.getLifecycle().addObserver(new ActivityObserver());
         identificandoComponentes();
         inicializandoComponentes();
@@ -57,10 +54,10 @@ public class LoginActivity extends AppCompatActivity {
                 String usuario = login_editText_usuario.getText().toString();
                 String senha = login_editText_senha.getText().toString();
 
-                Log.d("autenticação","  \nUSUARIO: "+ usuario + "\nSENHA:"+ senha);
-
                 Usuario usuarioLogado = new Usuario(usuario,senha);
                 usuarioLogado.logar(LoginActivity.this);
+
+                Log.d("autenticação","  \nUSUARIO: "+ usuario + "\nSENHA:"+ senha);
 
 
             }
