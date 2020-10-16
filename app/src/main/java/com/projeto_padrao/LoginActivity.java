@@ -3,27 +3,24 @@ package com.projeto_padrao;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.projeto_padrao.models.Android;
-import com.projeto_padrao.models.Aplicacao;
-import com.projeto_padrao.models.Gato;
 import com.projeto_padrao.models.Usuario;
-import com.projeto_padrao.observers.ActivityObserver;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class LoginActivity extends AppCompatActivity {
 
     //DECLARANDO OBJETOS
-    EditText login_editText_usuario,login_editText_senha;
-    Button login_button_usuario;
-    TextView login_text_registrar;
+    private EditText login_editText_usuario,login_editText_senha;
+    private Button login_button_usuario;
+    private TextView login_text_registrar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

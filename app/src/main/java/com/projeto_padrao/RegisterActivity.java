@@ -14,9 +14,9 @@ import com.projeto_padrao.models.Usuario;
 
 public class RegisterActivity extends AppCompatActivity {
 
-    EditText register_editText_usuario,register_editText_senha;
-    Button register_button_usuario;
-    TextView register_text_registrar;
+    private EditText register_editText_usuario,register_editText_senha;
+    private Button register_button_usuario;
+    private TextView register_text_registrar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
