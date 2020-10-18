@@ -9,7 +9,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.projeto_padrao.models.Aplicacao;
 import com.projeto_padrao.models.Usuario;
 
 import static com.projeto_padrao.statics.ConstantesGlobais.SENHAS_DISTINTAS;
@@ -33,7 +32,7 @@ public class RegisterActivity extends AppCompatActivity {
     private void identificandoComponentes() {
 
         //-------------------IDENTIFICANDO OS COMPONENTES EM "login.xml"----------//
-        register_editText_usuario = (EditText) findViewById(R.id.register_editText_usuario);
+        this.register_editText_usuario = (EditText) findViewById(R.id.register_editText_usuario);
         register_editText_email = (EditText) findViewById(R.id.register_editText_email);
 
         register_editText_senha = (EditText) findViewById(R.id.register_editText_senha);
@@ -61,11 +60,7 @@ public class RegisterActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 if(verfificaSenhas()){
-                    String email = register_editText_email.getText().toString();
-                    String senha = register_editText_senha.getText().toString();
-                    String nome = register_editText_usuario.getText().toString();
-
-                    Usuario usuario = new Usuario(email,senha,nome);
+                    Usuario usuario = criarObjetoUsuarioPelosCampos();
                     usuario.registrar(RegisterActivity.this);
                 }
 
@@ -81,6 +76,14 @@ public class RegisterActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+    }
+
+    private Usuario criarObjetoUsuarioPelosCampos() {
+        String email = register_editText_email.getText().toString();
+        String senha = register_editText_senha.getText().toString();
+        String nome = register_editText_usuario.getText().toString();
+        Usuario usuario = new Usuario(email,senha,nome);
+        return usuario;
     }
 
     public void mostrarAvisoEmail(String aviso){
