@@ -2,23 +2,16 @@ package com.projeto_padrao.models;
 
 import android.content.Context;
 import android.util.Log;
-import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.core.content.ContextCompat;
 
-import com.google.gson.Gson;
 import com.orm.SugarRecord;
-import com.projeto_padrao.LoginActivity;
-import com.projeto_padrao.R;
-import com.projeto_padrao.RegisterActivity;
+import com.orm.dsl.Ignore;
+import com.projeto_padrao.activities.AplicacaoActivity;
+import com.projeto_padrao.activities.LoginActivity;
 import com.projeto_padrao.models.resposta.UsuarioErro;
 import com.projeto_padrao.retrofit.RetrofitConfig;
-
-import org.json.JSONObject;
 
 import java.util.List;
 import java.util.Objects;
@@ -31,26 +24,43 @@ public class Usuario extends SugarRecord {
     private String nome;
     private String email;
     private String password;
-    private boolean logado;
-
-
+    private transient boolean logado;
+    @Ignore
+    private transient Context context;
+    private String key;
 
     //É OBRIGATÓRIO A CRIAÇÃO DE UM CONSTRUTOR VAZIO
-
-
     public Usuario() {
     }
 
-    public Usuario(String email, String senha) {
+    public Usuario(String email, String senha, Context context) {
         this.email = email;
         this.password = senha;
+        this.context = context;
+
     }
 
-    public Usuario(String email, String senha,String nome) {
+    public Usuario(String email, String senha,String nome,Context context) {
         this.email = email;
         this.password = senha;
         this.nome = nome;
+        this.context = context;
+    }
 
+    public Context getContext() {
+        return context;
+    }
+
+    public void setContext(Context context) {
+        this.context = context;
+    }
+
+    public String getKey() {
+        return key;
+    }
+
+    public void setKey(String key) {
+        this.key = key;
     }
 
     public String getNome() {
@@ -89,7 +99,31 @@ public class Usuario extends SugarRecord {
         this.logado = logado;
     }
 
-    public void logar(Context context) {
+    public void logar(){
+        Call<Usuario> call = new RetrofitConfig().setUserService().logar(this);
+        call.enqueue(new Callback<Usuario>() {
+
+            @Override
+            public void onResponse(@NonNull Call<Usuario> call, @NonNull Response<Usuario> response) {
+                if (response.isSuccessful()) {
+                    if (response.body() != null) {
+                        salvarUsuarioBanco(response.body());
+                    }
+                    irParaAplicacaonActivity();
+                } else {
+                    lancarErroDeUsuario(response);
+                }
+            }
+
+            @Override
+            public void onFailure(@NonNull Call<Usuario> call, @NonNull Throwable t) {
+                Log.e("retrofit", "Erro ao enviar o usuario:" + t.getMessage());
+            }
+        });
+
+    }
+
+    public void logarNoBanco(Context context) {
 
         Android android = new Android(context);
         if (android.getConected(context)) {
@@ -109,7 +143,7 @@ public class Usuario extends SugarRecord {
 
     }
 
-    public void registrar(Context context) {
+    public void registrar() {
 
         Call<Usuario> call = new RetrofitConfig().setUserService().registrar(this);
 
@@ -118,16 +152,11 @@ public class Usuario extends SugarRecord {
             @Override
             public void onResponse(@NonNull Call<Usuario> call, @NonNull Response<Usuario> response) {
                 if (response.isSuccessful()) {
-                    salvarUsuarioBanco();
-                    Aplicacao aplicacao = new Aplicacao(context,LoginActivity.class);
-                    aplicacao.trocarDeActivity();
-
-                } else {
-                    try {
-                        new UsuarioErro(response, context);
-                    } catch (Exception e) {
-                        Log.d("retrofit", "erro no catch: " + Objects.requireNonNull(e.getMessage()));
+                    if (response.body() != null) {
+                        irParaLoginActivity();
                     }
+                } else {
+                    lancarErroDeUsuario(response);
                 }
             }
 
@@ -137,10 +166,28 @@ public class Usuario extends SugarRecord {
             }
         });
 
-
     }
 
-    private void salvarUsuarioBanco() {
+    private void salvarUsuarioBanco(Usuario usuario) {
+        this.setKey(usuario.getKey());
         this.save();
     }
+
+    private void irParaLoginActivity() {
+        Aplicacao aplicacao = new Aplicacao(this.context,LoginActivity.class);
+        aplicacao.trocarDeActivity();
+    }
+    private void irParaAplicacaonActivity() {
+        Aplicacao aplicacao = new Aplicacao(this.context, AplicacaoActivity.class);
+        aplicacao.trocarDeActivity();
+    }
+
+    private void lancarErroDeUsuario(Response<Usuario> response) {
+        try {
+            new UsuarioErro(response, this.context);
+        } catch (Exception e) {
+            Log.d("retrofit", "erro no catch: " + Objects.requireNonNull(e.getMessage()));
+        }
+    }
+
 }

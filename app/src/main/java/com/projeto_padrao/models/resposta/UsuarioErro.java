@@ -1,10 +1,9 @@
 package com.projeto_padrao.models.resposta;
 
 import android.content.Context;
-import android.widget.Toast;
 
 import com.google.gson.Gson;
-import com.projeto_padrao.RegisterActivity;
+import com.projeto_padrao.activities.RegisterActivity;
 import com.projeto_padrao.models.Usuario;
 
 import org.json.JSONException;
@@ -25,22 +24,6 @@ public class UsuarioErro {
         this.response = response;
         this.context = context;
         mostrarErro();
-    }
-
-    public List<String> getEmail() {
-        return email;
-    }
-
-    public void setEmail(List<String> email) {
-        this.email = email;
-    }
-
-    public List<String> getPassword() {
-        return password;
-    }
-
-    public void setPassword(List<String> password) {
-        this.password = password;
     }
 
     public void mostrarErro(){
@@ -64,5 +47,21 @@ public class UsuarioErro {
             e.printStackTrace();
         }
 
+    }
+
+    public List<String> getEmail() {
+        return email;
+    }
+
+    public void setEmail(List<String> email) {
+        this.email = email;
+    }
+
+    public List<String> getPassword() {
+        return password;
+    }
+
+    public void setPassword(List<String> password) {
+        this.password = password;
     }
 }

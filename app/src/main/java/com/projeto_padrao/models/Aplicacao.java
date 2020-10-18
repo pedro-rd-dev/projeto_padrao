@@ -3,10 +3,6 @@ package com.projeto_padrao.models;
 import android.content.Context;
 import android.content.Intent;
 
-import androidx.core.view.KeyEventDispatcher;
-
-import com.projeto_padrao.LoginActivity;
-
 
 public class Aplicacao {
 

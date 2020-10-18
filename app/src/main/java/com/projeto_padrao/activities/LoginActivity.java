@@ -1,6 +1,5 @@
-package com.projeto_padrao;
+package com.projeto_padrao.activities;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -11,18 +10,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.google.gson.Gson;
+import com.projeto_padrao.R;
 import com.projeto_padrao.models.Usuario;
-import com.projeto_padrao.models.resposta.UsuarioErro;
-import com.projeto_padrao.retrofit.RetrofitConfig;
-
-import org.json.JSONObject;
-
-import java.util.Objects;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -64,8 +53,8 @@ public class LoginActivity extends AppCompatActivity {
                 String email = login_editText_email.getText().toString();
                 String senha = login_editText_senha.getText().toString();
 
-                Usuario usuarioLogado = new Usuario(email,senha);
-                usuarioLogado.logar(LoginActivity.this);
+                Usuario usuarioLogado = new Usuario(email,senha,LoginActivity.this);
+                usuarioLogado.logar();
 
                 Log.d("autenticação","  \nUSUARIO: "+ email + "\nSENHA:"+ senha);
 

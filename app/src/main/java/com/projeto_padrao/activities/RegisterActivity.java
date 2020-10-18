@@ -1,4 +1,4 @@
-package com.projeto_padrao;
+package com.projeto_padrao.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.projeto_padrao.R;
 import com.projeto_padrao.models.Usuario;
 
 import static com.projeto_padrao.statics.ConstantesGlobais.SENHAS_DISTINTAS;
@@ -61,7 +62,7 @@ public class RegisterActivity extends AppCompatActivity {
 
                 if(verfificaSenhas()){
                     Usuario usuario = criarObjetoUsuarioPelosCampos();
-                    usuario.registrar(RegisterActivity.this);
+                    usuario.registrar();
                 }
 
             }
@@ -82,7 +83,7 @@ public class RegisterActivity extends AppCompatActivity {
         String email = register_editText_email.getText().toString();
         String senha = register_editText_senha.getText().toString();
         String nome = register_editText_usuario.getText().toString();
-        Usuario usuario = new Usuario(email,senha,nome);
+        Usuario usuario = new Usuario(email,senha,nome,RegisterActivity.this);
         return usuario;
     }
 
