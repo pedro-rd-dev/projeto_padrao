@@ -17,6 +17,40 @@
         android:layout_height="match_parent">
 
 
+        <TextView
+            android:id="@+id/register_textView_aviso_senha_repetida"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginLeft="32dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="32dp"
+            android:layout_marginRight="32dp"
+            android:gravity="center"
+            android:text="Aviso Senha Repetida"
+            android:textColor="@color/danger"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/register_editText_senha_repita" />
+
+        <TextView
+            android:id="@+id/register_textView_aviso_senha"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginLeft="32dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="32dp"
+            android:layout_marginRight="32dp"
+            android:gravity="center"
+            android:text="Aviso Senha"
+            android:textColor="@color/danger"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/register_editText_senha" />
+
         <EditText
             android:id="@+id/register_editText_usuario"
             android:layout_width="0dp"
@@ -40,7 +74,7 @@
             app:layout_constraintTop_toBottomOf="@+id/view4" />
 
         <EditText
-            android:id="@+id/register_editText_senha2"
+            android:id="@+id/register_editText_senha_repita"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
@@ -58,8 +92,9 @@
             android:padding="16dp"
             android:password="true"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/register_editText_senha" />
+            app:layout_constraintTop_toBottomOf="@+id/register_textView_aviso_senha" />
 
         <View
             android:id="@+id/view"
@@ -89,6 +124,7 @@
             android:layout_marginTop="8dp"
             android:layout_marginEnd="32dp"
             android:layout_marginRight="32dp"
+            android:autoText="true"
             android:background="@drawable/round_border"
             android:drawableStart="@drawable/ic_baseline_email_24"
             android:drawableLeft="@drawable/ic_baseline_email_24"
@@ -96,11 +132,13 @@
             android:ems="10"
             android:gravity="start|center_horizontal"
             android:hint="E-mail"
-            android:inputType="textPersonName"
+            android:inputType="textWebEmailAddress"
             android:padding="16dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/register_editText_usuario" />
+            app:layout_constraintTop_toBottomOf="@+id/register_editText_usuario"
+
+            />
 
         <EditText
             android:id="@+id/register_editText_senha"
@@ -121,8 +159,9 @@
             android:padding="16dp"
             android:password="true"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/register_editText_email" />
+            app:layout_constraintTop_toBottomOf="@+id/register_textView_aviso_email" />
 
         <Button
             android:id="@+id/register_button_login"
@@ -130,15 +169,16 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
             android:layout_marginLeft="32dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="32dp"
             android:layout_marginEnd="32dp"
             android:layout_marginRight="32dp"
             android:background="@drawable/round_border_button"
             android:text="REGISTRAR"
             android:textColor="@android:color/white"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/register_editText_senha2" />
+            app:layout_constraintTop_toBottomOf="@+id/register_textView_aviso_senha_repetida" />
 
         <TextView
             android:id="@+id/register_text_logar"
@@ -185,6 +225,22 @@
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/view"
             app:layout_constraintTop_toTopOf="@+id/view" />
+
+        <TextView
+            android:id="@+id/register_textView_aviso_email"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginLeft="32dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="32dp"
+            android:layout_marginRight="32dp"
+            android:gravity="center"
+            android:text="Aviso Email"
+            android:textColor="@color/danger"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/register_editText_email" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

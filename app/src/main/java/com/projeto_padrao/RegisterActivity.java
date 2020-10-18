@@ -12,11 +12,13 @@ import android.widget.TextView;
 import com.projeto_padrao.models.Aplicacao;
 import com.projeto_padrao.models.Usuario;
 
+import static com.projeto_padrao.statics.ConstantesGlobais.SENHAS_DISTINTAS;
+
 public class RegisterActivity extends AppCompatActivity {
 
-    private EditText register_editText_usuario,register_editText_senha;
+    private EditText register_editText_usuario,register_editText_senha,register_editText_email,register_editText_senha_repita;
     private Button register_button_usuario;
-    private TextView register_text_registrar;
+    private TextView register_text_registrar,register_textView_aviso_email,register_textView_aviso_senha,register_textView_aviso_senha_repetida;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,13 +29,27 @@ public class RegisterActivity extends AppCompatActivity {
         inicializandoComponentes();
 
     }
+
     private void identificandoComponentes() {
 
         //-------------------IDENTIFICANDO OS COMPONENTES EM "login.xml"----------//
         register_editText_usuario = (EditText) findViewById(R.id.register_editText_usuario);
+        register_editText_email = (EditText) findViewById(R.id.register_editText_email);
+
         register_editText_senha = (EditText) findViewById(R.id.register_editText_senha);
+        register_editText_senha_repita = (EditText) findViewById(R.id.register_editText_senha_repita);
+
         register_button_usuario = (Button) findViewById(R.id.register_button_login);
         register_text_registrar = (TextView) findViewById(R.id.register_text_logar);
+
+        register_textView_aviso_email = (TextView) findViewById(R.id.register_textView_aviso_email);
+        register_textView_aviso_senha = (TextView) findViewById(R.id.register_textView_aviso_senha);
+        register_textView_aviso_senha_repetida = (TextView) findViewById(R.id.register_textView_aviso_senha_repetida);
+
+        register_textView_aviso_email.setVisibility(View.GONE);
+        register_textView_aviso_senha.setVisibility(View.GONE);
+        register_textView_aviso_senha_repetida.setVisibility(View.GONE);
+
         //----------------------------------------------------------------------------------//
     }
 
@@ -43,11 +59,16 @@ public class RegisterActivity extends AppCompatActivity {
         register_button_usuario.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String usuario = register_editText_usuario.getText().toString();
-                String senha = register_editText_senha.getText().toString();
 
-                Usuario usuarioLogado = new Usuario(usuario,senha);
-                usuarioLogado.registrar(RegisterActivity.this);
+                if(verfificaSenhas()){
+                    String email = register_editText_email.getText().toString();
+                    String senha = register_editText_senha.getText().toString();
+                    String nome = register_editText_usuario.getText().toString();
+
+                    Usuario usuario = new Usuario(email,senha,nome);
+                    usuario.registrar(RegisterActivity.this);
+                }
+
             }
         });
 
@@ -60,5 +81,29 @@ public class RegisterActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+    }
+
+    public void mostrarAvisoEmail(String aviso){
+        this.register_textView_aviso_email.setVisibility(View.VISIBLE);
+        this.register_textView_aviso_email.setText(aviso);
+    }
+
+    public void mostrarAvisoSenha(String aviso){
+        this.register_textView_aviso_senha.setVisibility(View.VISIBLE);
+        this.register_textView_aviso_senha.setText(aviso);
+    }
+
+    public boolean verfificaSenhas(){
+        String senha = this.register_editText_senha.getText().toString();
+        String senha_repetida = this.register_editText_senha_repita.getText().toString();
+
+        if(!senha.equals(senha_repetida)){
+            this.register_textView_aviso_senha_repetida.setVisibility(View.VISIBLE);
+            this.register_textView_aviso_senha_repetida.setText(SENHAS_DISTINTAS);
+            return false;
+        }
+        this.register_textView_aviso_senha_repetida.setVisibility(View.GONE);
+        return true;
+
     }
 }
