@@ -27,6 +27,7 @@ public class RegisterActivity extends AppCompatActivity {
         inicializandoComponentes();
 
     }
+
     private void identificandoComponentes() {
 
         //-------------------IDENTIFICANDO OS COMPONENTES EM "login.xml"----------//

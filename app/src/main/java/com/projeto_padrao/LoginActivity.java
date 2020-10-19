@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.projeto_padrao.models.Android;
 import com.projeto_padrao.models.Usuario;
 
 import java.util.ArrayList;
@@ -54,9 +55,7 @@ public class LoginActivity extends AppCompatActivity {
                 Usuario usuarioLogado = new Usuario(usuario,senha);
                 usuarioLogado.logar(LoginActivity.this);
 
-                Log.d("autenticação","  \nUSUARIO: "+ usuario + "\nSENHA:"+ senha);
-
-
+                //Log.d("autenticação","  \nUSUARIO: "+ usuario + "\nSENHA:"+ senha);
             }
         });
 
