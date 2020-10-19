@@ -2,16 +2,46 @@ package com.projeto_padrao.models;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.CpuUsageInfo;
 
-import androidx.core.view.KeyEventDispatcher;
+import com.projeto_padrao.activities.AppActivity;
 
 
 public class Aplicacao {
 
-    public void trocarDeActivity(Context activityAtual, Class<?> activityDestino){
+    private Context context;
+    private Class<?> activityDestino;
 
-        Intent intent = new Intent(activityAtual, activityDestino);
-        activityAtual.startActivity(intent);
+    public Aplicacao(Context context, Class<?> activityDestino) {
+        this.context = context;
+        this.activityDestino = activityDestino;
     }
+
+    public Aplicacao(Context context) {
+        this.context = context;
+    }
+
+    public Context getContext() {
+        return context;
+    }
+
+    public void setContext(Context context) {
+        this.context = context;
+    }
+
+    public Class<?> getActivityDestino() {
+        return activityDestino;
+    }
+
+    public void setActivityDestino(Class<?> activityDestino) {
+        this.activityDestino = activityDestino;
+    }
+
+    public void trocarDeActivity(){
+
+        Intent intent = new Intent(this.context, this.activityDestino);
+        this.context.startActivity(intent);
+    }
+
 
 }
