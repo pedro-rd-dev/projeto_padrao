@@ -6,9 +6,11 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
+import com.google.gson.annotations.SerializedName;
 import com.orm.SugarRecord;
 import com.orm.dsl.Ignore;
-import com.projeto_padrao.activities.AplicacaoActivity;
+import com.orm.dsl.Unique;
+import com.projeto_padrao.activities.AppActivity;
 import com.projeto_padrao.activities.LoginActivity;
 import com.projeto_padrao.models.resposta.UsuarioErro;
 import com.projeto_padrao.retrofit.RetrofitConfig;
@@ -21,10 +23,11 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class Usuario extends SugarRecord {
+
     private String nome;
     private String email;
     private String password;
-    private transient boolean logado;
+    private boolean logado;
     @Ignore
     private transient Context context;
     private String key;
@@ -46,6 +49,7 @@ public class Usuario extends SugarRecord {
         this.nome = nome;
         this.context = context;
     }
+
 
     public Context getContext() {
         return context;
@@ -154,6 +158,8 @@ public class Usuario extends SugarRecord {
                 if (response.isSuccessful()) {
                     if (response.body() != null) {
                         irParaLoginActivity();
+                        Usuario usuario = response.body();
+                        usuario.save();
                     }
                 } else {
                     lancarErroDeUsuario(response);
@@ -169,6 +175,7 @@ public class Usuario extends SugarRecord {
     }
 
     private void salvarUsuarioBanco(Usuario usuario) {
+        this.setLogado(true);
         this.setKey(usuario.getKey());
         this.save();
     }
@@ -178,7 +185,7 @@ public class Usuario extends SugarRecord {
         aplicacao.trocarDeActivity();
     }
     private void irParaAplicacaonActivity() {
-        Aplicacao aplicacao = new Aplicacao(this.context, AplicacaoActivity.class);
+        Aplicacao aplicacao = new Aplicacao(this.context, AppActivity.class);
         aplicacao.trocarDeActivity();
     }
 
@@ -188,6 +195,16 @@ public class Usuario extends SugarRecord {
         } catch (Exception e) {
             Log.d("retrofit", "erro no catch: " + Objects.requireNonNull(e.getMessage()));
         }
+    }
+
+    public static Usuario verificaUsuarioLogado(){
+        List<Usuario> usuarios = Usuario.listAll(Usuario.class);
+        for (Usuario usuario : usuarios){
+            if (usuario.getLogado()){
+                return usuario;
+            }
+        }
+        return null;
     }
 
 }

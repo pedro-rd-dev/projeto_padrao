@@ -28,7 +28,8 @@
             android:name="DOMAIN_PACKAGE_NAME"
             android:value="com.projeto_padrao.models" />
 
-        <activity android:name=".activities.AplicacaoActivity" />
+        <activity android:name=".activities.AppActivity"
+            android:theme="@style/TemaApp"/>
         <activity android:name=".activities.RegisterActivity" />
         <activity android:name=".activities.LoginActivity">
             <intent-filter>

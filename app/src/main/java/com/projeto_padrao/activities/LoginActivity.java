@@ -11,7 +11,10 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.projeto_padrao.R;
+import com.projeto_padrao.models.Aplicacao;
 import com.projeto_padrao.models.Usuario;
+
+import java.util.List;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -26,9 +29,15 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.login);
 
         //this.getLifecycle().addObserver(new ActivityObserver());
-        identificandoComponentes();
-        inicializandoComponentes();
 
+
+        if(Usuario.verificaUsuarioLogado()!=null){
+            Aplicacao aplicacao = new Aplicacao(LoginActivity.this, AppActivity.class);
+            aplicacao.trocarDeActivity();
+        }else {
+            identificandoComponentes();
+            inicializandoComponentes();
+        }
     }
 
     private void identificandoComponentes() {

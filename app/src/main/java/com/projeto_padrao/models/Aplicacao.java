@@ -2,6 +2,9 @@ package com.projeto_padrao.models;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.CpuUsageInfo;
+
+import com.projeto_padrao.activities.AppActivity;
 
 
 public class Aplicacao {
@@ -12,6 +15,10 @@ public class Aplicacao {
     public Aplicacao(Context context, Class<?> activityDestino) {
         this.context = context;
         this.activityDestino = activityDestino;
+    }
+
+    public Aplicacao(Context context) {
+        this.context = context;
     }
 
     public Context getContext() {
@@ -35,5 +42,6 @@ public class Aplicacao {
         Intent intent = new Intent(this.context, this.activityDestino);
         this.context.startActivity(intent);
     }
+
 
 }
