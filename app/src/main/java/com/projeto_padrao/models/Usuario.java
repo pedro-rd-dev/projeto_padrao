@@ -111,11 +111,36 @@ public class Usuario extends SugarRecord {
             public void onResponse(@NonNull Call<Usuario> call, @NonNull Response<Usuario> response) {
                 if (response.isSuccessful()) {
                     if (response.body() != null) {
+                        Usuario usuario = new Usuario();
+                        usuario.setKey(response.body().getKey());
+                        requisitarObjetoUsuario(usuario);
+                    }
+                } else {
+                    lancarErroDeUsuario(response);
+                }
+            }
+
+            @Override
+            public void onFailure(@NonNull Call<Usuario> call, @NonNull Throwable t) {
+                Log.e("retrofit", "Erro ao enviar o usuario:" + t.getMessage());
+            }
+        });
+
+    }
+
+    private void requisitarObjetoUsuario(Usuario usuario) {
+        Call<Usuario> call = new RetrofitConfig().setUserService().verificarUsuarioLogado("Token " +usuario.getKey());
+        call.enqueue(new Callback<Usuario>() {
+
+            @Override
+            public void onResponse(@NonNull Call<Usuario> call, @NonNull Response<Usuario> response) {
+                if (response.isSuccessful()) {
+                    if (response.body() != null) {
                         salvarUsuarioBanco(response.body());
                     }
                     irParaAplicacaonActivity();
                 } else {
-                    lancarErroDeUsuario(response);
+                    //lancarErroDeUsuario(response);
                 }
             }
 
@@ -158,8 +183,6 @@ public class Usuario extends SugarRecord {
                 if (response.isSuccessful()) {
                     if (response.body() != null) {
                         irParaLoginActivity();
-                        Usuario usuario = response.body();
-                        usuario.save();
                     }
                 } else {
                     lancarErroDeUsuario(response);
@@ -184,6 +207,7 @@ public class Usuario extends SugarRecord {
         Aplicacao aplicacao = new Aplicacao(this.context,LoginActivity.class);
         aplicacao.trocarDeActivity();
     }
+
     private void irParaAplicacaonActivity() {
         Aplicacao aplicacao = new Aplicacao(this.context, AppActivity.class);
         aplicacao.trocarDeActivity();
@@ -205,6 +229,19 @@ public class Usuario extends SugarRecord {
             }
         }
         return null;
+    }
+
+
+    public void atualizarUsuarioBanco(){
+        Usuario usuario = Usuario.findById(Usuario.class,this.getId());
+        if(this.getKey()!=null && !this.getKey().isEmpty()){
+            usuario.setKey(this.getKey());
+        }
+        if(this.getEmail()!=null && !this.getEmail().isEmpty()){
+            usuario.setEmail(this.getEmail());
+        }
+
+        usuario.save();
     }
 
 }

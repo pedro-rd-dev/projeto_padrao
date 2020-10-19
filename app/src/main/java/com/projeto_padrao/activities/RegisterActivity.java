@@ -46,11 +46,15 @@ public class RegisterActivity extends AppCompatActivity {
         register_textView_aviso_senha = (TextView) findViewById(R.id.register_textView_aviso_senha);
         register_textView_aviso_senha_repetida = (TextView) findViewById(R.id.register_textView_aviso_senha_repetida);
 
+        esconderAvisos();
+
+        //----------------------------------------------------------------------------------//
+    }
+
+    private void esconderAvisos() {
         register_textView_aviso_email.setVisibility(View.GONE);
         register_textView_aviso_senha.setVisibility(View.GONE);
         register_textView_aviso_senha_repetida.setVisibility(View.GONE);
-
-        //----------------------------------------------------------------------------------//
     }
 
     private void inicializandoComponentes() {
@@ -60,7 +64,10 @@ public class RegisterActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+                esconderAvisos();
+
                 if(verfificaSenhas()){
+
                     Usuario usuario = criarObjetoUsuarioPelosCampos();
                     usuario.registrar();
                 }
