@@ -31,6 +31,7 @@ public class Usuario extends SugarRecord {
     @Ignore
     private transient Context context;
     private String key;
+    private Long pk;
 
     //É OBRIGATÓRIO A CRIAÇÃO DE UM CONSTRUTOR VAZIO
     public Usuario() {
@@ -48,6 +49,15 @@ public class Usuario extends SugarRecord {
         this.password = senha;
         this.nome = nome;
         this.context = context;
+    }
+
+
+    public Long getPk() {
+        return pk;
+    }
+
+    public void setPk(Long pk) {
+        this.pk = pk;
     }
 
     public void salvaUsuarioNoBanco(){
@@ -146,7 +156,7 @@ public class Usuario extends SugarRecord {
                         requisitarObjetoUsuario(usuario);
                     }
                 } else {
-                    lancarErroDeUsuario(response);
+                    //lancarErroDeUsuario(response);
                 }
             }
 
@@ -166,9 +176,13 @@ public class Usuario extends SugarRecord {
             public void onResponse(@NonNull Call<Usuario> call, @NonNull Response<Usuario> response) {
                 if (response.isSuccessful()) {
                     if (response.body() != null) {
-                        salvarUsuarioBanco(response.body());
+                        Usuario usurioRecebido = response.body();
+                        usurioRecebido.setKey(usuario.getKey());
+                        usurioRecebido.setLogado(true);
+                        usurioRecebido.setId(usurioRecebido.getPk());
+                        usurioRecebido.save();
+                        irParaAppnActivity();
                     }
-                    irParaAplicacaonActivity();
                 } else {
                     //lancarErroDeUsuario(response);
                 }
@@ -227,18 +241,12 @@ public class Usuario extends SugarRecord {
 
     }
 
-    private void salvarUsuarioBanco(Usuario usuario) {
-        this.setLogado(true);
-        this.setKey(usuario.getKey());
-        this.save();
-    }
-
     private void irParaLoginActivity() {
         Aplicacao aplicacao = new Aplicacao(this.context,LoginActivity.class);
         aplicacao.trocarDeActivity();
     }
 
-    private void irParaAplicacaonActivity() {
+    private void irParaAppnActivity() {
         Aplicacao aplicacao = new Aplicacao(this.context, AppActivity.class);
         aplicacao.trocarDeActivity();
     }
