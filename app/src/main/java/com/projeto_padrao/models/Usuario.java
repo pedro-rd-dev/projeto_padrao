@@ -50,6 +50,36 @@ public class Usuario extends SugarRecord {
         this.context = context;
     }
 
+    public void salvaUsuarioNoBanco(){
+        this.save();
+    }
+
+    public List<Usuario> listarUsuariosDoBanco(){
+        List<Usuario> usuarios = Usuario.listAll(Usuario.class);
+
+        return usuarios;
+
+    }
+
+    public Usuario buscarUsuarioPeloId(){
+
+        Usuario usuario = Usuario.findById(Usuario.class, this.getId());
+
+        return usuario;
+
+    }
+
+    public void editarUsuarioBanco(){
+        Usuario usuario = this.buscarUsuarioPeloId();
+        //INSERIR OS SETS DESEJADOS
+        usuario.save();
+    }
+
+    public void redefinirSenhaUsuarioBanco(){
+        Usuario usuario = this.buscarUsuarioPeloId();
+        usuario.setPassword("NovaSenha1123");
+        usuario.save();
+    }
 
     public Context getContext() {
         return context;
