@@ -1,7 +1,9 @@
 package com.projeto_padrao.activities;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -12,9 +14,19 @@ import android.widget.TextView;
 
 import com.projeto_padrao.R;
 import com.projeto_padrao.models.Aplicacao;
+import com.projeto_padrao.models.Evento;
 import com.projeto_padrao.models.Usuario;
+import com.projeto_padrao.retrofit.RetrofitConfig;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class LoginActivity extends AppCompatActivity {
 
