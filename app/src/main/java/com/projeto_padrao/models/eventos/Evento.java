@@ -1,4 +1,4 @@
-package com.projeto_padrao.models;
+package com.projeto_padrao.models.eventos;
 
 import android.annotation.SuppressLint;
 import android.util.Log;
@@ -6,6 +6,7 @@ import android.util.Log;
 import androidx.annotation.NonNull;
 
 import com.orm.SugarRecord;
+import com.projeto_padrao.models.Usuario;
 import com.projeto_padrao.retrofit.RetrofitConfig;
 
 import java.io.IOException;
@@ -87,7 +88,7 @@ public class Evento extends SugarRecord {
     }
 
     public void enviarEvento(Usuario usuario){
-        Call<Evento> call = new RetrofitConfig().setEventoService().salvarEvento(this,"Token " +usuario.getKey());
+        Call<Evento> call = new RetrofitConfig().setEventoService().salvarEvento(this,usuario.getKey());
         call.enqueue(new Callback<Evento>() {
 
             @Override

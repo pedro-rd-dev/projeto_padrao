@@ -104,7 +104,7 @@ public class Usuario extends SugarRecord {
     }
 
     public void setKey(String key) {
-        this.key = key;
+        this.key = "Token " + key;
     }
 
     public String getNome() {

@@ -34,17 +34,17 @@ public class RegisterActivity extends AppCompatActivity {
 
         //-------------------IDENTIFICANDO OS COMPONENTES EM "login.xml"----------//
         this.register_editText_usuario = (EditText) findViewById(R.id.register_editText_usuario);
-        register_editText_email = (EditText) findViewById(R.id.register_editText_email);
+        this.register_editText_email = (EditText) findViewById(R.id.register_editText_email);
 
-        register_editText_senha = (EditText) findViewById(R.id.register_editText_senha);
-        register_editText_senha_repita = (EditText) findViewById(R.id.register_editText_senha_repita);
+        this.register_editText_senha = (EditText) findViewById(R.id.register_editText_senha);
+        this.register_editText_senha_repita = (EditText) findViewById(R.id.register_editText_senha_repita);
 
-        register_button_usuario = (Button) findViewById(R.id.register_button_login);
-        register_text_registrar = (TextView) findViewById(R.id.register_text_logar);
+        this.register_button_usuario = (Button) findViewById(R.id.register_button_login);
+        this.register_text_registrar = (TextView) findViewById(R.id.register_text_logar);
 
-        register_textView_aviso_email = (TextView) findViewById(R.id.register_textView_aviso_email);
-        register_textView_aviso_senha = (TextView) findViewById(R.id.register_textView_aviso_senha);
-        register_textView_aviso_senha_repetida = (TextView) findViewById(R.id.register_textView_aviso_senha_repetida);
+        this.register_textView_aviso_email = (TextView) findViewById(R.id.register_textView_aviso_email);
+        this.register_textView_aviso_senha = (TextView) findViewById(R.id.register_textView_aviso_senha);
+        this.register_textView_aviso_senha_repetida = (TextView) findViewById(R.id.register_textView_aviso_senha_repetida);
 
         esconderAvisos();
 
