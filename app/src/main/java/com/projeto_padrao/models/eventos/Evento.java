@@ -1,13 +1,15 @@
 package com.projeto_padrao.models.eventos;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
 
 import com.orm.SugarRecord;
+import com.orm.dsl.Ignore;
 import com.projeto_padrao.models.Usuario;
-import com.projeto_padrao.retrofit.RetrofitConfig;
+import com.projeto_padrao.api.retrofit.RetrofitConfig;
 
 import java.io.IOException;
 import java.text.ParseException;
@@ -26,9 +28,20 @@ public class Evento extends SugarRecord {
     private String local;
     private double preco;
     private String nomeEvento;
+    @Ignore
+    private Context context;
+
 
     public Evento(){
 
+    }
+
+    public Context getContext() {
+        return context;
+    }
+
+    public void setContext(Context context) {
+        this.context = context;
     }
 
     public Date getData() {
@@ -88,7 +101,7 @@ public class Evento extends SugarRecord {
     }
 
     public void enviarEvento(Usuario usuario){
-        Call<Evento> call = new RetrofitConfig().setEventoService().salvarEvento(this,usuario.getKey());
+        Call<Evento> call = new RetrofitConfig(this.context).setEventoService().salvarEvento(this,usuario.getKey());
         call.enqueue(new Callback<Evento>() {
 
             @Override

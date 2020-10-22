@@ -6,14 +6,12 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
-import com.google.gson.annotations.SerializedName;
 import com.orm.SugarRecord;
 import com.orm.dsl.Ignore;
-import com.orm.dsl.Unique;
 import com.projeto_padrao.activities.AppActivity;
 import com.projeto_padrao.activities.LoginActivity;
 import com.projeto_padrao.models.resposta.UsuarioErro;
-import com.projeto_padrao.retrofit.RetrofitConfig;
+import com.projeto_padrao.api.retrofit.RetrofitConfig;
 
 import java.util.List;
 import java.util.Objects;
@@ -44,7 +42,7 @@ public class Usuario extends SugarRecord {
 
     }
 
-    public Usuario(String email, String senha,String nome,Context context) {
+    public Usuario(String email, String senha, String nome, Context context) {
         this.email = email;
         this.password = senha;
         this.nome = nome;
@@ -60,18 +58,18 @@ public class Usuario extends SugarRecord {
         this.pk = pk;
     }
 
-    public void salvaUsuarioNoBanco(){
+    public void salvaUsuarioNoBanco() {
         this.save();
     }
 
-    public List<Usuario> listarUsuariosDoBanco(){
+    public List<Usuario> listarUsuariosDoBanco() {
         List<Usuario> usuarios = Usuario.listAll(Usuario.class);
 
         return usuarios;
 
     }
 
-    public Usuario buscarUsuarioPeloId(){
+    public Usuario buscarUsuarioPeloId() {
 
         Usuario usuario = Usuario.findById(Usuario.class, this.getId());
 
@@ -79,13 +77,13 @@ public class Usuario extends SugarRecord {
 
     }
 
-    public void editarUsuarioBanco(){
+    public void editarUsuarioBanco() {
         Usuario usuario = this.buscarUsuarioPeloId();
         //INSERIR OS SETS DESEJADOS
         usuario.save();
     }
 
-    public void redefinirSenhaUsuarioBanco(){
+    public void redefinirSenhaUsuarioBanco() {
         Usuario usuario = this.buscarUsuarioPeloId();
         usuario.setPassword("NovaSenha1123");
         usuario.save();
@@ -143,33 +141,33 @@ public class Usuario extends SugarRecord {
         this.logado = logado;
     }
 
-    public void logar(){
-        Call<Usuario> call = new RetrofitConfig().setUserService().logar(this);
-        call.enqueue(new Callback<Usuario>() {
+    public void logar() {
+            Call<Usuario> call = new RetrofitConfig(this.context).setUserService().logar(this);
+            call.enqueue(new Callback<Usuario>() {
 
-            @Override
-            public void onResponse(@NonNull Call<Usuario> call, @NonNull Response<Usuario> response) {
-                if (response.isSuccessful()) {
-                    if (response.body() != null) {
-                        Usuario usuario = new Usuario();
-                        usuario.setKey(response.body().getKey());
-                        requisitarObjetoUsuario(usuario);
+                @Override
+                public void onResponse(@NonNull Call<Usuario> call, @NonNull Response<Usuario> response) {
+                    if (response.isSuccessful()) {
+                        if (response.body() != null) {
+                            Usuario usuario = new Usuario();
+                            usuario.setKey(response.body().getKey());
+                            requisitarObjetoUsuario(usuario);
+                        }
+                    } else {
+                        //lancarErroDeUsuario(response);
                     }
-                } else {
-                    //lancarErroDeUsuario(response);
                 }
-            }
 
-            @Override
-            public void onFailure(@NonNull Call<Usuario> call, @NonNull Throwable t) {
-                Log.e("retrofit", "Erro ao enviar o usuario:" + t.getMessage());
-            }
-        });
+                @Override
+                public void onFailure(@NonNull Call<Usuario> call, @NonNull Throwable t) {
+                    Log.e("retrofit", "Erro ao enviar o usuario:" + t.getMessage());
+                }
+            });
 
     }
 
     private void requisitarObjetoUsuario(Usuario usuario) {
-        Call<Usuario> call = new RetrofitConfig().setUserService().verificarUsuarioLogado(usuario.getKey());
+        Call<Usuario> call = new RetrofitConfig(this.context).setUserService().verificarUsuarioLogado(usuario.getKey());
         call.enqueue(new Callback<Usuario>() {
 
             @Override
@@ -198,27 +196,19 @@ public class Usuario extends SugarRecord {
 
     public void logarNoBanco(Context context) {
 
-        Android android = new Android(context);
-        if (android.getConected(context)) {
-            List<Usuario> usuarios = Usuario.find(Usuario.class, "email = ? and password = ?", this.email, this.password);
-            if (usuarios.size() > 0) {
-                this.logado = true;
-            } else {
-                this.logado = false;
-                Toast.makeText(context, "Usuario e senha incorretos", Toast.LENGTH_LONG).show();
-            }
-
+        List<Usuario> usuarios = Usuario.find(Usuario.class, "email = ? and password = ?", this.email, this.password);
+        if (usuarios.size() > 0) {
+            this.logado = true;
         } else {
             this.logado = false;
-            Log.d("credenciais", " \nLogin: " + this.email + "\nSenha: " + this.password);
-            Toast.makeText(context, "Usuario não está logado", Toast.LENGTH_LONG).show();
+            Toast.makeText(context, "Usuario e senha incorretos", Toast.LENGTH_LONG).show();
         }
 
     }
 
     public void registrar() {
 
-        Call<Usuario> call = new RetrofitConfig().setUserService().registrar(this);
+        Call<Usuario> call = new RetrofitConfig(this.context).setUserService().registrar(this);
 
         call.enqueue(new Callback<Usuario>() {
 
@@ -242,7 +232,7 @@ public class Usuario extends SugarRecord {
     }
 
     private void irParaLoginActivity() {
-        Aplicacao aplicacao = new Aplicacao(this.context,LoginActivity.class);
+        Aplicacao aplicacao = new Aplicacao(this.context, LoginActivity.class);
         aplicacao.trocarDeActivity();
     }
 
@@ -259,10 +249,10 @@ public class Usuario extends SugarRecord {
         }
     }
 
-    public static Usuario verificaUsuarioLogado(){
+    public static Usuario verificaUsuarioLogado() {
         List<Usuario> usuarios = Usuario.listAll(Usuario.class);
-        for (Usuario usuario : usuarios){
-            if (usuario.getLogado()){
+        for (Usuario usuario : usuarios) {
+            if (usuario.getLogado()) {
                 return usuario;
             }
         }
@@ -270,12 +260,12 @@ public class Usuario extends SugarRecord {
     }
 
 
-    public void atualizarUsuarioBanco(){
-        Usuario usuario = Usuario.findById(Usuario.class,this.getId());
-        if(this.getKey()!=null && !this.getKey().isEmpty()){
+    public void atualizarUsuarioBanco() {
+        Usuario usuario = Usuario.findById(Usuario.class, this.getId());
+        if (this.getKey() != null && !this.getKey().isEmpty()) {
             usuario.setKey(this.getKey());
         }
-        if(this.getEmail()!=null && !this.getEmail().isEmpty()){
+        if (this.getEmail() != null && !this.getEmail().isEmpty()) {
             usuario.setEmail(this.getEmail());
         }
 

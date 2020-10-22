@@ -1,6 +1,4 @@
-package com.projeto_padrao.retrofit;
-
-import android.media.session.MediaSession;
+package com.projeto_padrao.api.servicos;
 
 import com.projeto_padrao.models.Usuario;
 
