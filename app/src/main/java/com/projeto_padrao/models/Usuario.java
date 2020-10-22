@@ -109,15 +109,11 @@ public class Usuario extends SugarRecord {
     }
 
     public String getKey() {
-        if (key!=null){
-            key = key.replace("Token ","");
-        }
-        return key;
+        return this.key;
     }
 
     public void setKey(String key) {
-        this.key="";
-        this.key = "Token " + key;
+        this.key = key;
     }
 
     public String getNome() {
@@ -181,7 +177,7 @@ public class Usuario extends SugarRecord {
     }
 
     private void requisitarObjetoUsuario(Usuario usuario) {
-        Call<Usuario> call = new RetrofitConfig(this.context).setUserService().requisitarObjetoUsuario(usuario.getKey());
+        Call<Usuario> call = new RetrofitConfig(this.context).setUserService().requisitarObjetoUsuario("Token "+usuario.getKey());
         call.enqueue(new Callback<Usuario>() {
 
             @Override

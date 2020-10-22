@@ -10,6 +10,8 @@ import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
+import static com.projeto_padrao.statics.ConstantesGlobais.ENDERECO_API;
+
 public class RetrofitConfig {
 
     private Retrofit retrofit;
@@ -25,7 +27,7 @@ public class RetrofitConfig {
                     .build();
 
             this.retrofit = new Retrofit.Builder()
-                    .baseUrl("https://escolarap.herokuapp.com/")
+                    .baseUrl(ENDERECO_API)
                     .client(client)
                     .addConverterFactory(GsonConverterFactory.create())
                     .build();
