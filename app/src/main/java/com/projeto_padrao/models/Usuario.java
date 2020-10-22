@@ -169,7 +169,7 @@ public class Usuario extends SugarRecord {
     }
 
     private void requisitarObjetoUsuario(Usuario usuario) {
-        Call<Usuario> call = new RetrofitConfig().setUserService().verificarUsuarioLogado("Token " +usuario.getKey());
+        Call<Usuario> call = new RetrofitConfig().setUserService().verificarUsuarioLogado(usuario.getKey());
         call.enqueue(new Callback<Usuario>() {
 
             @Override
