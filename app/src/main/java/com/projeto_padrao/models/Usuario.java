@@ -22,7 +22,7 @@ import retrofit2.Response;
 
 public class Usuario extends SugarRecord {
 
-    private String nome;
+    private String first_name;
     private String email;
     private String password;
     private boolean logado;
@@ -42,13 +42,12 @@ public class Usuario extends SugarRecord {
 
     }
 
-    public Usuario(String email, String senha, String nome, Context context) {
+    public Usuario(String email, String senha, String first_name, Context context) {
         this.email = email;
         this.password = senha;
-        this.nome = nome;
+        this.first_name = first_name;
         this.context = context;
     }
-
 
     public Long getPk() {
         return pk;
@@ -89,6 +88,18 @@ public class Usuario extends SugarRecord {
         usuario.save();
     }
 
+    public void logarNoBanco(Context context) {
+
+        List<Usuario> usuarios = Usuario.find(Usuario.class, "email = ? and password = ?", this.email, this.password);
+        if (usuarios.size() > 0) {
+            this.logado = true;
+        } else {
+            this.logado = false;
+            Toast.makeText(context, "Usuario e senha incorretos", Toast.LENGTH_LONG).show();
+        }
+
+    }
+
     public Context getContext() {
         return context;
     }
@@ -98,19 +109,23 @@ public class Usuario extends SugarRecord {
     }
 
     public String getKey() {
+        if (key!=null){
+            key = key.replace("Token ","");
+        }
         return key;
     }
 
     public void setKey(String key) {
+        this.key="";
         this.key = "Token " + key;
     }
 
     public String getNome() {
-        return nome;
+        return first_name;
     }
 
     public void setNome(String nome) {
-        this.nome = nome;
+        this.first_name = nome;
     }
 
     public String getEmail() {
@@ -149,7 +164,7 @@ public class Usuario extends SugarRecord {
                 public void onResponse(@NonNull Call<Usuario> call, @NonNull Response<Usuario> response) {
                     if (response.isSuccessful()) {
                         if (response.body() != null) {
-                            Usuario usuario = new Usuario();
+                            Usuario usuario = response.body();
                             usuario.setKey(response.body().getKey());
                             requisitarObjetoUsuario(usuario);
                         }
@@ -163,26 +178,23 @@ public class Usuario extends SugarRecord {
                     Log.e("retrofit", "Erro ao enviar o usuario:" + t.getMessage());
                 }
             });
-
     }
 
     private void requisitarObjetoUsuario(Usuario usuario) {
-        Call<Usuario> call = new RetrofitConfig(this.context).setUserService().verificarUsuarioLogado(usuario.getKey());
+        Call<Usuario> call = new RetrofitConfig(this.context).setUserService().requisitarObjetoUsuario(usuario.getKey());
         call.enqueue(new Callback<Usuario>() {
 
             @Override
             public void onResponse(@NonNull Call<Usuario> call, @NonNull Response<Usuario> response) {
                 if (response.isSuccessful()) {
                     if (response.body() != null) {
-                        Usuario usurioRecebido = response.body();
-                        usurioRecebido.setKey(usuario.getKey());
-                        usurioRecebido.setLogado(true);
-                        usurioRecebido.setId(usurioRecebido.getPk());
-                        usurioRecebido.save();
+                        Usuario usuarioCompleto = response.body();
+                        usuarioCompleto.setLogado(true);
+                        usuarioCompleto.setKey(usuario.getKey());
+                        usuarioCompleto.setId(usuarioCompleto.getPk());
+                        usuarioCompleto.save();
                         irParaAppnActivity();
                     }
-                } else {
-                    //lancarErroDeUsuario(response);
                 }
             }
 
@@ -191,18 +203,6 @@ public class Usuario extends SugarRecord {
                 Log.e("retrofit", "Erro ao enviar o usuario:" + t.getMessage());
             }
         });
-
-    }
-
-    public void logarNoBanco(Context context) {
-
-        List<Usuario> usuarios = Usuario.find(Usuario.class, "email = ? and password = ?", this.email, this.password);
-        if (usuarios.size() > 0) {
-            this.logado = true;
-        } else {
-            this.logado = false;
-            Toast.makeText(context, "Usuario e senha incorretos", Toast.LENGTH_LONG).show();
-        }
 
     }
 
@@ -231,6 +231,7 @@ public class Usuario extends SugarRecord {
 
     }
 
+
     private void irParaLoginActivity() {
         Aplicacao aplicacao = new Aplicacao(this.context, LoginActivity.class);
         aplicacao.trocarDeActivity();
@@ -257,19 +258,6 @@ public class Usuario extends SugarRecord {
             }
         }
         return null;
-    }
-
-
-    public void atualizarUsuarioBanco() {
-        Usuario usuario = Usuario.findById(Usuario.class, this.getId());
-        if (this.getKey() != null && !this.getKey().isEmpty()) {
-            usuario.setKey(this.getKey());
-        }
-        if (this.getEmail() != null && !this.getEmail().isEmpty()) {
-            usuario.setEmail(this.getEmail());
-        }
-
-        usuario.save();
     }
 
 }
