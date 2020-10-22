@@ -2,9 +2,11 @@ package com.projeto_padrao.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ListView;
 
 import com.projeto_padrao.R;
 import com.projeto_padrao.models.Aplicacao;
@@ -13,6 +15,7 @@ import com.projeto_padrao.models.Usuario;
 public class AppActivity extends AppCompatActivity {
 
     private Usuario usuario;
+    private ListView listaDeGrupos;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,6 +23,9 @@ public class AppActivity extends AppCompatActivity {
         setContentView(R.layout.aplicacao);
 
         usuario = Usuario.verificaUsuarioLogado();
+
+
+
 
         identificandoComponentes();
         inicializandoComponentes();
@@ -31,6 +37,7 @@ public class AppActivity extends AppCompatActivity {
         return true;
     }
 
+    @SuppressLint("NonConstantResourceId")
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle item selection
