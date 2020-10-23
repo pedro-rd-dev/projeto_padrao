@@ -28,7 +28,7 @@
             android:layout_marginRight="32dp"
             android:gravity="center"
             android:text="Aviso Senha Repetida"
-            android:textColor="@color/danger"
+            android:textColor="@color/btDanger"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
@@ -45,7 +45,7 @@
             android:layout_marginRight="32dp"
             android:gravity="center"
             android:text="Aviso Senha"
-            android:textColor="@color/danger"
+            android:textColor="@color/btDanger"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
@@ -161,7 +161,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/register_textView_aviso_email" />
+            app:layout_constraintTop_toBottomOf="@+id/register_textView_aviso_email"
+            android:drawableLeft="@drawable/ic_baseline_https_24" />
 
         <Button
             android:id="@+id/register_button_login"
@@ -237,7 +238,7 @@
             android:layout_marginRight="32dp"
             android:gravity="center"
             android:text="Aviso Email"
-            android:textColor="@color/danger"
+            android:textColor="@color/btDanger"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/register_editText_email" />
