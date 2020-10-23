@@ -23,6 +23,7 @@ public class AppActivity extends AppCompatActivity {
         setContentView(R.layout.aplicacao);
 
         usuario = Usuario.verificaUsuarioLogado();
+        usuario.setContext(AppActivity.this);
 
 
 
@@ -46,6 +47,7 @@ public class AppActivity extends AppCompatActivity {
                 fazerLogoff();
                 return true;
             case R.id.menu_item_deletar_conta:
+                usuario.deletarUsuario();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);

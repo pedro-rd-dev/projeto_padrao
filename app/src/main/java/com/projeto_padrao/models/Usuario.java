@@ -228,6 +228,44 @@ public class Usuario extends SugarRecord {
     }
 
 
+    public void deletarUsuario() {
+        Call<Usuario> call = new RetrofitConfig(this.context).setUserService().deletarUsuario("Token "+this.getKey(),this.getId());
+        call.enqueue(new Callback<Usuario>() {
+
+            @Override
+            public void onResponse(@NonNull Call<Usuario> call, @NonNull Response<Usuario> response) {
+                if (response.isSuccessful()) {
+                    if (response.body() != null) {
+                        confirmarUsuarioDeletado();
+                        deletarUsuarioBanco();
+                        irParaLoginActivity();
+
+                    }
+                }else {
+                    confirmarUsuarioNaoDeletado();
+                }
+
+            }
+
+            @Override
+            public void onFailure(@NonNull Call<Usuario> call, @NonNull Throwable t) {
+                Log.e("retrofit", "Erro ao enviar o usuario:" + t.getMessage());
+
+            }
+        });
+
+    }
+
+    private void confirmarUsuarioNaoDeletado() {
+        Toast.makeText(this.context, "Erro ao deletar usuário", Toast.LENGTH_SHORT).show();
+
+    }
+
+    private void confirmarUsuarioDeletado() {
+        Toast.makeText(this.context, "Usuário Deletado", Toast.LENGTH_SHORT).show();
+    }
+
+
     private void irParaLoginActivity() {
         Aplicacao aplicacao = new Aplicacao(this.context, LoginActivity.class);
         aplicacao.trocarDeActivity();
@@ -250,10 +288,15 @@ public class Usuario extends SugarRecord {
         List<Usuario> usuarios = Usuario.listAll(Usuario.class);
         for (Usuario usuario : usuarios) {
             if (usuario.getLogado()) {
+
                 return usuario;
             }
         }
         return null;
+    }
+
+    public void deletarUsuarioBanco(){
+        this.delete();
     }
 
 }

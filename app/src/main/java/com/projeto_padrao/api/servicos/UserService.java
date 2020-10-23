@@ -4,9 +4,11 @@ import com.projeto_padrao.models.Usuario;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
+import retrofit2.http.DELETE;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.POST;
+import retrofit2.http.Path;
 
 public interface UserService {
 
@@ -19,4 +21,8 @@ public interface UserService {
 
     @GET("account/user/")
     Call<Usuario> requisitarObjetoUsuario(@Header("Authorization") String key);
+
+    @DELETE("usuarios/{id}")
+    Call<Usuario> deletarUsuario(@Header("Authorization") String key, @Path("id") Long id);
+
 }
