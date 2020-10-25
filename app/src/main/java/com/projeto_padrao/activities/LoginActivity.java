@@ -19,7 +19,7 @@ public class LoginActivity extends AppCompatActivity {
     //DECLARANDO OBJETOS
     private EditText login_editText_email,login_editText_senha;
     private Button login_button_usuario;
-    private TextView login_text_registrar;
+    private TextView login_text_registrar,login_textview_erro_email,login_textview_erro_senha;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,9 +45,8 @@ public class LoginActivity extends AppCompatActivity {
         login_editText_senha = (EditText) findViewById(R.id.login_editText_senha);
         login_button_usuario = (Button) findViewById(R.id.login_button_login);
         login_text_registrar = (TextView) findViewById(R.id.login_text_registrar);
-
-
-
+        login_textview_erro_email = (TextView) findViewById(R.id.login_textview_erro_email);
+        login_textview_erro_senha = (TextView) findViewById(R.id.login_textview_erro_senha);
 
     }
 
@@ -77,5 +76,15 @@ public class LoginActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+    }
+
+    public void mostrarAvisoEmail(String aviso){
+        this.login_textview_erro_email.setVisibility(View.VISIBLE);
+        this.login_textview_erro_email.setText(aviso);
+    }
+
+    public void mostrarAvisoSenha(String aviso){
+        this.login_textview_erro_senha.setVisibility(View.VISIBLE);
+        this.login_textview_erro_senha.setText(aviso);
     }
 }

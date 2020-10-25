@@ -3,6 +3,7 @@
 
 <androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_constraintBottom_toBottomOf="parent"
@@ -54,9 +55,10 @@
             android:padding="16dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/view4"
-            app:layout_constraintVertical_bias="0.23000002" />
+            app:layout_constraintVertical_bias="0.154" />
 
         <EditText
             android:id="@+id/login_editText_senha"
@@ -77,8 +79,10 @@
             android:padding="16dp"
             android:password="true"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/login_editText_email" />
+            app:layout_constraintTop_toBottomOf="@+id/login_textview_erro_email"
+            android:drawableLeft="@drawable/ic_baseline_https_24" />
 
         <Button
             android:id="@+id/login_button_login"
@@ -86,15 +90,16 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
             android:layout_marginLeft="32dp"
-            android:layout_marginTop="24dp"
+            android:layout_marginTop="32dp"
             android:layout_marginEnd="32dp"
             android:layout_marginRight="32dp"
             android:background="@drawable/round_border_button"
             android:text="Login"
             android:textColor="@android:color/white"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/login_editText_senha" />
+            app:layout_constraintTop_toBottomOf="@+id/login_textview_erro_senha" />
 
         <TextView
             android:id="@+id/login_text_registrar"
@@ -141,6 +146,38 @@
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/view"
             app:layout_constraintTop_toTopOf="@+id/view" />
+
+        <TextView
+            android:id="@+id/login_textview_erro_email"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginLeft="32dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="32dp"
+            android:layout_marginRight="32dp"
+            android:gravity="center"
+            android:text="TextView"
+            android:textColor="@color/btDanger"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/login_editText_email" />
+
+        <TextView
+            android:id="@+id/login_textview_erro_senha"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginLeft="32dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="32dp"
+            android:layout_marginRight="32dp"
+            android:gravity="center"
+            android:text="TextView"
+            android:textColor="@color/btDanger"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/login_editText_senha" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

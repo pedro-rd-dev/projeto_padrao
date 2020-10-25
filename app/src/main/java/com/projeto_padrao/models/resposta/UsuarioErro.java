@@ -3,6 +3,7 @@ package com.projeto_padrao.models.resposta;
 import android.content.Context;
 
 import com.google.gson.Gson;
+import com.projeto_padrao.activities.LoginActivity;
 import com.projeto_padrao.activities.RegisterActivity;
 import com.projeto_padrao.models.Usuario;
 
@@ -23,10 +24,9 @@ public class UsuarioErro {
     public UsuarioErro(Response<Usuario> response, Context context) {
         this.response = response;
         this.context = context;
-        mostrarErro();
     }
 
-    public void mostrarErro(){
+    public void mostrarErroRegistro(){
         try {
             JSONObject jsonObject = new JSONObject(this.response.errorBody().string());
             String jsonString = jsonObject.toString();
@@ -39,6 +39,29 @@ public class UsuarioErro {
             }
             for (String erro : usuarioErro.getPassword()){
                 ((RegisterActivity)context).mostrarAvisoSenha(erro);
+            }
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    public void mostrarErroLogin(){
+        try {
+            JSONObject jsonObject = new JSONObject(this.response.errorBody().string());
+            String jsonString = jsonObject.toString();
+            Gson gson = new Gson();
+            UsuarioErro usuarioErro = gson.fromJson(jsonString, UsuarioErro.class);
+
+            for (String erro : usuarioErro.getEmail()){
+                ((LoginActivity)context).mostrarAvisoEmail(erro);
+
+            }
+            for (String erro : usuarioErro.getPassword()){
+                ((LoginActivity)context).mostrarAvisoSenha(erro);
             }
 
         } catch (JSONException e) {

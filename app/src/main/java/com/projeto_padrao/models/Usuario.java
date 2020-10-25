@@ -159,7 +159,7 @@ public class Usuario extends SugarRecord {
                             requisitarObjetoUsuario(usuario);
                         }
                     } else {
-                        //lancarErroDeUsuario(response);
+                        lancarErroDeLogin(response);
                     }
                 }
 
@@ -211,7 +211,7 @@ public class Usuario extends SugarRecord {
                         irParaLoginActivity();
                     }
                 } else {
-                    lancarErroDeUsuario(response);
+                    lancarErroDeRegistro(response);
                 }
             }
 
@@ -272,9 +272,17 @@ public class Usuario extends SugarRecord {
         aplicacao.trocarDeActivity();
     }
 
-    private void lancarErroDeUsuario(Response<Usuario> response) {
+    private void lancarErroDeRegistro(Response<Usuario> response) {
         try {
-            new UsuarioErro(response, this.context);
+            new UsuarioErro(response, this.context).mostrarErroRegistro();
+        } catch (Exception e) {
+            Log.d("retrofit", "erro no catch: " + Objects.requireNonNull(e.getMessage()));
+        }
+    }
+
+    private void lancarErroDeLogin(Response<Usuario> response) {
+        try {
+            new UsuarioErro(response, this.context).mostrarErroLogin();
         } catch (Exception e) {
             Log.d("retrofit", "erro no catch: " + Objects.requireNonNull(e.getMessage()));
         }
