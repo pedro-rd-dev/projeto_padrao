@@ -2,6 +2,8 @@ package com.projeto_padrao.api.servicos;
 
 import com.projeto_padrao.models.Usuario;
 
+import java.util.List;
+
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.DELETE;
@@ -19,10 +21,16 @@ public interface UserService {
     @POST("account/login/")
     Call<Usuario> logar(@Body Usuario usuario);
 
-    @GET("usuario/")
-    Call<Usuario> requisitarObjetoUsuario(@Header("Authorization") String key);
+    @GET("usuarios/")
+    Call<List<Usuario>> requisitarObjetoUsuario(@Header("Authorization") String key);
 
     @DELETE("usuarios/{id}")
     Call<Usuario> deletarUsuario(@Header("Authorization") String key, @Path("id") Long id);
+
+    @GET("usuarios/")
+    Call<List<Usuario>> listarUsuarios(@Header("Authorization") String key);
+
+    @GET("lista-usuarios/")
+    Call<List<Usuario>> listarUsuariosAdmin(@Header("Authorization") String key);
 
 }

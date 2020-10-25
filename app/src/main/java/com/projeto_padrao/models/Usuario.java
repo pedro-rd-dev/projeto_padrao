@@ -2,6 +2,7 @@ package com.projeto_padrao.models;
 
 import android.content.Context;
 import android.util.Log;
+import android.widget.ListView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -9,9 +10,13 @@ import androidx.annotation.NonNull;
 import com.orm.SugarRecord;
 import com.orm.dsl.Ignore;
 import com.projeto_padrao.activities.AppActivity;
+import com.projeto_padrao.activities.ListarUsuariosActivity;
 import com.projeto_padrao.activities.LoginActivity;
+import com.projeto_padrao.adapters.UsuariosAdapter;
 import com.projeto_padrao.models.resposta.UsuarioErro;
 import com.projeto_padrao.api.retrofit.RetrofitConfig;
+
+import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 import java.util.Objects;
@@ -42,6 +47,8 @@ public class Usuario extends SugarRecord {
         this.first_name = first_name;
         this.context = context;
     }
+
+
 
     public Long getPk() {
         return pk;
@@ -170,15 +177,39 @@ public class Usuario extends SugarRecord {
             });
     }
 
-    private void requisitarObjetoUsuario(Usuario usuario) {
-        Call<Usuario> call = new RetrofitConfig(this.context).setUserService().requisitarObjetoUsuario("Token "+usuario.getKey());
-        call.enqueue(new Callback<Usuario>() {
+    public static void listarUsuariosRemoto(Usuario usuario, ListView usuarios_lista_listview) {
+        Call<List<Usuario>> call = new RetrofitConfig(usuario.getContext()).setUserService().listarUsuariosAdmin("Token "+usuario.getKey());
+        call.enqueue(new Callback<List<Usuario>>() {
+            @Override
+            public void onResponse(@NotNull Call<List<Usuario>> call, @NotNull Response<List<Usuario>> response) {
+                if(response.isSuccessful()){
+                    List<Usuario> usuarios = response.body();
+                    Log.d("listarUsuarios","listar");
+
+                    UsuariosAdapter adaptador = new UsuariosAdapter(usuario.getContext(), usuarios);
+                    usuarios_lista_listview.setAdapter(adaptador);
+                }
+            }
 
             @Override
-            public void onResponse(@NonNull Call<Usuario> call, @NonNull Response<Usuario> response) {
+            public void onFailure(@NotNull Call<List<Usuario>> call, Throwable t) {
+                Log.d("listarUsuarios","listar");
+
+            }
+        });
+
+    }
+
+    private void requisitarObjetoUsuario(Usuario usuario) {
+        Call<List<Usuario>> call = new RetrofitConfig(this.context).setUserService().requisitarObjetoUsuario("Token "+usuario.getKey());
+        call.enqueue(new Callback<List<Usuario>>() {
+
+            @Override
+            public void onResponse( Call<List<Usuario>> call, Response<List<Usuario>> response) {
                 if (response.isSuccessful()) {
                     if (response.body() != null) {
-                        Usuario usuarioCompleto = response.body();
+                        List<Usuario> usuarios = response.body();
+                        Usuario usuarioCompleto = usuarios.get(0);
                         usuarioCompleto.setLogado(true);
                         usuarioCompleto.setKey(usuario.getKey());
                         usuarioCompleto.setId(usuarioCompleto.getPk());
@@ -189,8 +220,9 @@ public class Usuario extends SugarRecord {
             }
 
             @Override
-            public void onFailure(@NonNull Call<Usuario> call, @NonNull Throwable t) {
+            public void onFailure(Call<List<Usuario>> call, Throwable t) {
                 Log.e("retrofit", "Erro ao enviar o usuario:" + t.getMessage());
+
             }
         });
 

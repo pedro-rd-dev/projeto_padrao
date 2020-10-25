@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.CpuUsageInfo;
 
 import com.projeto_padrao.activities.AppActivity;
+import com.projeto_padrao.activities.ListarUsuariosActivity;
 
 
 public class Aplicacao {
@@ -19,6 +20,11 @@ public class Aplicacao {
 
     public Aplicacao(Context context) {
         this.context = context;
+    }
+
+    public static void irParaListarUsuariosActivity(AppActivity appActivity) {
+        Intent intent = new Intent(appActivity, ListarUsuariosActivity.class);
+        appActivity.startActivity(intent);
     }
 
     public Context getContext() {

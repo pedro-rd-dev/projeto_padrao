@@ -46,6 +46,9 @@ public class AppActivity extends AppCompatActivity {
             case R.id.menu_item_deletar_conta:
                 usuario.deletarUsuario();
                 return true;
+            case R.id.menu_item_usuarios:
+                Aplicacao.irParaListarUsuariosActivity(AppActivity.this);
+                return true;
             default:
                 return super.onOptionsItemSelected(item);
         }

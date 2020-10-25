@@ -53,6 +53,7 @@
             android:hint="E-mail"
             android:inputType="textPersonName"
             android:padding="16dp"
+            android:text="pedroh.mix@gmail.com"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
@@ -71,6 +72,7 @@
             android:layout_marginRight="32dp"
             android:background="@drawable/round_border"
             android:drawableStart="@drawable/ic_baseline_https_24"
+            android:drawableLeft="@drawable/ic_baseline_https_24"
             android:drawablePadding="16dp"
             android:ems="10"
             android:gravity="start|center_horizontal"
@@ -78,11 +80,11 @@
             android:inputType="textPersonName"
             android:padding="16dp"
             android:password="true"
+            android:text="123456"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/login_textview_erro_email"
-            android:drawableLeft="@drawable/ic_baseline_https_24" />
+            app:layout_constraintTop_toBottomOf="@+id/login_textview_erro_email" />
 
         <Button
             android:id="@+id/login_button_login"

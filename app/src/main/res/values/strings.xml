@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">Projeto Padrão</string>
     <string name="verifica_internet">Verifique a internet</string>
+    <string name="logoff">Logoff</string>
+    <string name="deletar_conta">Deletar Conta</string>
+    <string name="usuarios">Usuarios</string>
 </resources>
