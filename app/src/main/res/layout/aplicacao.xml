@@ -62,7 +62,8 @@
         app:layout_constraintEnd_toEndOf="@+id/view2"
         app:layout_constraintStart_toStartOf="@+id/view2"
         app:layout_constraintTop_toBottomOf="@+id/textView"
-        app:srcCompat="@drawable/ic_baseline_group_24" />
+        app:srcCompat="@drawable/ic_baseline_group_24"
+        android:contentDescription="TODO" />
 
     <TextView
         android:id="@+id/textView"
