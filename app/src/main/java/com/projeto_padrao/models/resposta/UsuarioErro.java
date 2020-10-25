@@ -56,13 +56,18 @@ public class UsuarioErro {
             Gson gson = new Gson();
             UsuarioErro usuarioErro = gson.fromJson(jsonString, UsuarioErro.class);
 
-            for (String erro : usuarioErro.getEmail()){
-                ((LoginActivity)context).mostrarAvisoEmail(erro);
+            if(usuarioErro.getEmail() !=null){
+                for (String erro : usuarioErro.getEmail()){
+                    ((LoginActivity)context).mostrarAvisoEmail(erro);
 
+                }
             }
-            for (String erro : usuarioErro.getPassword()){
-                ((LoginActivity)context).mostrarAvisoSenha(erro);
+            if(usuarioErro.getPassword()!= null){
+                for (String erro : usuarioErro.getPassword()){
+                    ((LoginActivity)context).mostrarAvisoSenha(erro);
+                }
             }
+
 
         } catch (JSONException e) {
             e.printStackTrace();

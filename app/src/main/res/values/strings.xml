@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Projeto Padrão</string>
+    <string name="verifica_internet">Verifique a internet</string>
 </resources>

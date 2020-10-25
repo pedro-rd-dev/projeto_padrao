@@ -25,9 +25,6 @@ public class AppActivity extends AppCompatActivity {
         usuario = Usuario.verificaUsuarioLogado();
         usuario.setContext(AppActivity.this);
 
-
-
-
         identificandoComponentes();
         inicializandoComponentes();
     }
