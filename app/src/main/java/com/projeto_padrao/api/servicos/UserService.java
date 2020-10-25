@@ -18,10 +18,10 @@ public interface UserService {
 
     @POST("account/login/")
     Call<Usuario> logar(@Body Usuario usuario);
-/*
+
     @GET("usuario/")
     Call<Usuario> requisitarObjetoUsuario(@Header("Authorization") String key);
-*/
+
     @DELETE("usuarios/{id}")
     Call<Usuario> deletarUsuario(@Header("Authorization") String key, @Path("id") Long id);
 

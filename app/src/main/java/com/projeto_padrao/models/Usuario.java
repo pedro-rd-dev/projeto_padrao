@@ -35,12 +35,6 @@ public class Usuario extends SugarRecord {
     public Usuario() {
     }
 
-    public Usuario(String email, String senha, Context context) {
-        this.email = email;
-        this.password = senha;
-        this.context = context;
-
-    }
 
     public Usuario(String email, String senha, String first_name, Context context) {
         this.email = email;
@@ -212,6 +206,8 @@ public class Usuario extends SugarRecord {
             public void onResponse(@NonNull Call<Usuario> call, @NonNull Response<Usuario> response) {
                 if (response.isSuccessful()) {
                     if (response.body() != null) {
+                        Usuario usuario = response.body();
+                        usuario.save();
                         irParaLoginActivity();
                     }
                 } else {

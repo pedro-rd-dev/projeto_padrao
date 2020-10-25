@@ -60,7 +60,7 @@ public class LoginActivity extends AppCompatActivity {
                 String email = login_editText_email.getText().toString();
                 String senha = login_editText_senha.getText().toString();
 
-                Usuario usuarioLogado = new Usuario(email,senha,LoginActivity.this);
+                Usuario usuarioLogado = new Usuario(email,senha,null,LoginActivity.this);
                 usuarioLogado.logar();
 
                 Log.d("autenticação","  \nUSUARIO: "+ email + "\nSENHA:"+ senha);

@@ -18,7 +18,7 @@ public class NoConnectivityException extends IOException {
     public String getMessage() {
         ((Activity)context).runOnUiThread(new Runnable() {
             public void run() {
-                final Toast toast = Toast.makeText(context, "Verifique a internet", Toast.LENGTH_LONG);
+                final Toast toast = Toast.makeText(context, "Verifique a internet", Toast.LENGTH_SHORT);
                 toast.show();
             }
         });
