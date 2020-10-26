@@ -6,9 +6,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.projeto_padrao.R;
+import com.projeto_padrao.models.Aplicacao;
 import com.projeto_padrao.models.Usuario;
 
 import java.util.List;
@@ -44,6 +46,9 @@ public class UsuariosAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         final Usuario usuario = usuarios.get(position);
+        usuario.setContext(context);
+        Usuario usuarioLogado = Usuario.verificaUsuarioLogado();
+        usuario.setKey(usuarioLogado.getKey());
 
         final UsuariosAdapter.ListContent holder;
         View v = convertView;
@@ -53,7 +58,24 @@ public class UsuariosAdapter extends BaseAdapter {
             holder = new UsuariosAdapter.ListContent();
             holder.usuarios_lista_textview_email = (TextView) v.findViewById(R.id.usuarios_lista_textview_email);
             holder.usuarios_lista_textview_nome = (TextView) v.findViewById(R.id.usuarios_lista_textview_nome);
+            holder.usuarios_item_view = (View) v.findViewById(R.id.usuarios_item_view);
+            holder.usuarios_item_delete = (ImageView) v.findViewById(R.id.usuarios_item_delete);
 
+            holder.usuarios_item_delete.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    usuario.deletarUsuario();
+                }
+            });
+
+
+            holder.usuarios_item_view.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    Aplicacao.irParaUsuarioDetalheActivity(usuario.getContext(),usuario.getId());
+                }
+            });
 
 
             v.setTag(holder);
@@ -69,5 +91,7 @@ public class UsuariosAdapter extends BaseAdapter {
 
     public static class ListContent {
         TextView usuarios_lista_textview_email,usuarios_lista_textview_nome;
+        View usuarios_item_view;
+        ImageView usuarios_item_delete;
     }
 }

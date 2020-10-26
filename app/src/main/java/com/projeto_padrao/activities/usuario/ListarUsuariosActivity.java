@@ -1,8 +1,11 @@
-package com.projeto_padrao.activities;
+package com.projeto_padrao.activities.usuario;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.media.Image;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.ListView;
 
 import com.projeto_padrao.R;
@@ -28,19 +31,23 @@ public class ListarUsuariosActivity extends AppCompatActivity {
     private void idenfificandoComponentes() {
 
         usuarios_lista_listview = (ListView) findViewById(R.id.usuarios_lista_listview);
+
     }
 
-    private void inicializandoComponentes() {
+    public void inicializandoComponentes() {
+
 
         Usuario usuario = Usuario.verificaUsuarioLogado();
         usuario.setContext(ListarUsuariosActivity.this);
 
         Usuario.listarUsuariosRemoto(usuario,usuarios_lista_listview);
-/*
-        adaptador = new UsuariosAdapter(ListarUsuariosActivity.this, agendasRecebidas);
-        usuarios_lista_listview.setAdapter();
 
- */
+    }
+
+    @Override
+    protected void onResume(){
+        super.onResume();
+        inicializandoComponentes();
     }
 
 }

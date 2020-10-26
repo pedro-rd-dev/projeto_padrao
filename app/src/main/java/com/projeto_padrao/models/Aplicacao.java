@@ -2,10 +2,12 @@ package com.projeto_padrao.models;
 
 import android.content.Context;
 import android.content.Intent;
-import android.os.CpuUsageInfo;
+import android.os.Bundle;
 
 import com.projeto_padrao.activities.AppActivity;
-import com.projeto_padrao.activities.ListarUsuariosActivity;
+import com.projeto_padrao.activities.LoginActivity;
+import com.projeto_padrao.activities.usuario.ListarUsuariosActivity;
+import com.projeto_padrao.activities.usuario.UsuarioDetalheActivity;
 
 
 public class Aplicacao {
@@ -22,9 +24,20 @@ public class Aplicacao {
         this.context = context;
     }
 
-    public static void irParaListarUsuariosActivity(AppActivity appActivity) {
-        Intent intent = new Intent(appActivity, ListarUsuariosActivity.class);
-        appActivity.startActivity(intent);
+    public static void irParaListarUsuariosActivity(Context context) {
+        Intent intent = new Intent(context, ListarUsuariosActivity.class);
+        context.startActivity(intent);
+    }
+    public static void irParaListarLoginActivity(Context context) {
+        Intent intent = new Intent(context, LoginActivity.class);
+        context.startActivity(intent);
+    }
+    public static void irParaUsuarioDetalheActivity(Context context, Long id) {
+        Intent intent = new Intent(context, UsuarioDetalheActivity.class);
+        Bundle b = new Bundle();
+        b.putLong("id", id);
+        intent.putExtras(b);
+        context.startActivity(intent);
     }
 
     public Context getContext() {
