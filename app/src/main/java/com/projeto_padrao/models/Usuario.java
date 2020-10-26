@@ -271,6 +271,7 @@ public class Usuario extends SugarRecord {
                         if(Usuario.verificaUsuarioLogado()!=null){
                             ((ListarUsuariosActivity)context).inicializandoComponentes();
                         }else {
+                            deletarUsuarioBanco();
                             Aplicacao.irParaListarLoginActivity(context);
                         }
 
