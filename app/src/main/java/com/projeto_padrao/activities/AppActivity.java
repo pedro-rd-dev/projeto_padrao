@@ -59,8 +59,7 @@ public class AppActivity extends AppCompatActivity {
     private void fazerLogoff() {
         usuario.setLogado(false);
         usuario.save();
-        Aplicacao aplicacao = new Aplicacao(AppActivity.this,LoginActivity.class);
-        aplicacao.trocarDeActivity();
+        Aplicacao.irParaListarLoginActivity(AppActivity.this);
     }
 
     private void identificandoComponentes() {

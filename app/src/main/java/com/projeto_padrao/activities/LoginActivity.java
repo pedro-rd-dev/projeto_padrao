@@ -33,8 +33,7 @@ public class LoginActivity extends AppCompatActivity {
 
 
         if(Usuario.verificaUsuarioLogado()!=null){
-            Aplicacao aplicacao = new Aplicacao(LoginActivity.this, AppActivity.class);
-            aplicacao.trocarDeActivity();
+            Aplicacao.irParaListarAppActivity(LoginActivity.this);
         }else {
             identificandoComponentes();
             inicializandoComponentes();
