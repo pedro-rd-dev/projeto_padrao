@@ -22,7 +22,7 @@ public interface UserService {
     Call<Usuario> logar(@Body Usuario usuario);
 
     @GET("account/user/")
-    Call<List<Usuario>> requisitarObjetoUsuario(@Header("Authorization") String key);
+    Call<Usuario> requisitarObjetoUsuario(@Header("Authorization") String key);
 
     @GET("lista-usuarios/{id}/")
     Call<Usuario> usuarioPeloId(@Header("Authorization") String key, @Path("id") Long id);

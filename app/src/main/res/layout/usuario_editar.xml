@@ -17,40 +17,6 @@
         android:layout_height="match_parent">
 
 
-        <TextView
-            android:id="@+id/usuario_editar_textView_aviso_senha_repetida"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
-            android:layout_marginLeft="32dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="32dp"
-            android:layout_marginRight="32dp"
-            android:gravity="center"
-            android:text="Aviso Senha Repetida"
-            android:textColor="@color/btDanger"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/usuario_editar_editText_senha_repita" />
-
-        <TextView
-            android:id="@+id/usuario_editar_textView_aviso_senha"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
-            android:layout_marginLeft="32dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="32dp"
-            android:layout_marginRight="32dp"
-            android:gravity="center"
-            android:text="Aviso Senha"
-            android:textColor="@color/btDanger"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/usuario_editar_editText_senha" />
-
         <EditText
             android:id="@+id/usuario_editar_editText_usuario"
             android:layout_width="0dp"
@@ -72,30 +38,6 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/view4" />
-
-        <EditText
-            android:id="@+id/usuario_editar_editText_senha_repita"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
-            android:layout_marginLeft="32dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="32dp"
-            android:layout_marginRight="32dp"
-            android:background="@drawable/round_border"
-            android:drawableStart="@drawable/ic_baseline_https_24"
-            android:drawablePadding="16dp"
-            android:ems="10"
-            android:gravity="start|center_horizontal"
-            android:hint="Repita a Senha"
-            android:inputType="textPersonName"
-            android:padding="16dp"
-            android:password="true"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/usuario_editar_textView_aviso_senha"
-            android:drawableLeft="@drawable/ic_baseline_https_24" />
 
         <View
             android:id="@+id/view"
@@ -141,37 +83,13 @@
 
             />
 
-        <EditText
-            android:id="@+id/usuario_editar_editText_senha"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
-            android:layout_marginLeft="32dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="32dp"
-            android:layout_marginRight="32dp"
-            android:background="@drawable/round_border"
-            android:drawableStart="@drawable/ic_baseline_https_24"
-            android:drawablePadding="16dp"
-            android:ems="10"
-            android:gravity="start|center_horizontal"
-            android:hint="Senha"
-            android:inputType="textPersonName"
-            android:padding="16dp"
-            android:password="true"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/usuario_editar_textView_aviso_email"
-            android:drawableLeft="@drawable/ic_baseline_https_24" />
-
         <Button
             android:id="@+id/usuario_editar_button_atualizar"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
             android:layout_marginLeft="32dp"
-            android:layout_marginTop="32dp"
+            android:layout_marginTop="24dp"
             android:layout_marginEnd="32dp"
             android:layout_marginRight="32dp"
             android:background="@drawable/round_border_button"
@@ -180,7 +98,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/usuario_editar_textView_aviso_senha_repetida" />
+            app:layout_constraintTop_toBottomOf="@+id/usuario_editar_textView_aviso_email" />
 
         <ImageView
             android:id="@+id/imageView3"
@@ -250,30 +168,6 @@
             app:layout_constraintBottom_toBottomOf="@+id/usuario_editar_editText_email"
             app:layout_constraintEnd_toEndOf="@+id/usuario_editar_editText_email"
             app:layout_constraintTop_toTopOf="@+id/usuario_editar_editText_email" />
-
-        <ProgressBar
-            android:id="@+id/usuario_editar_progress_senha"
-            style="?android:attr/progressBarStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginRight="8dp"
-            android:layout_marginBottom="8dp"
-            app:layout_constraintBottom_toBottomOf="@+id/usuario_editar_editText_senha"
-            app:layout_constraintEnd_toEndOf="@+id/usuario_editar_editText_senha"
-            app:layout_constraintTop_toTopOf="@+id/usuario_editar_editText_senha" />
-
-        <ProgressBar
-            android:id="@+id/usuario_editar_progress_senha_rapita"
-            style="?android:attr/progressBarStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
-            android:layout_marginRight="8dp"
-            app:layout_constraintBottom_toBottomOf="@+id/usuario_editar_editText_senha_repita"
-            app:layout_constraintEnd_toEndOf="@+id/usuario_editar_editText_senha_repita"
-            app:layout_constraintTop_toTopOf="@+id/usuario_editar_editText_senha_repita" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

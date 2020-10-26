@@ -206,15 +206,14 @@ public class Usuario extends SugarRecord {
     }
 
     private void requisitarObjetoUsuario(Usuario usuario) {
-        Call<List<Usuario>> call = new RetrofitConfig(this.context).setUserService().requisitarObjetoUsuario("Token "+usuario.getKey());
-        call.enqueue(new Callback<List<Usuario>>() {
+        Call<Usuario> call = new RetrofitConfig(this.context).setUserService().requisitarObjetoUsuario("Token "+usuario.getKey());
+        call.enqueue(new Callback<Usuario>() {
 
             @Override
-            public void onResponse( Call<List<Usuario>> call, Response<List<Usuario>> response) {
+            public void onResponse( Call<Usuario> call, Response<Usuario> response) {
                 if (response.isSuccessful()) {
                     if (response.body() != null) {
-                        List<Usuario> usuarios = response.body();
-                        Usuario usuarioCompleto = usuarios.get(0);
+                        Usuario usuarioCompleto = response.body();
                         usuarioCompleto.setLogado(true);
                         usuarioCompleto.setKey(usuario.getKey());
                         usuarioCompleto.setId(usuarioCompleto.getPk());
@@ -225,7 +224,7 @@ public class Usuario extends SugarRecord {
             }
 
             @Override
-            public void onFailure(Call<List<Usuario>> call, Throwable t) {
+            public void onFailure(Call<Usuario> call, Throwable t) {
                 Log.e("retrofit", "Erro ao enviar o usuario:" + t.getMessage());
 
             }
