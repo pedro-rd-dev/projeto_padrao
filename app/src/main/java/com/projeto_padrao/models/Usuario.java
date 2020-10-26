@@ -252,11 +252,14 @@ public class Usuario extends SugarRecord {
                 } else {
                     lancarErroDeRegistro(response);
                 }
+                ((RegisterActivity)context).esconderProgressBar();
+
             }
 
             @Override
             public void onFailure(@NonNull Call<Usuario> call, @NonNull Throwable t) {
                 Log.e("retrofit", "Erro ao enviar o usuario:" + t.getMessage());
+                ((RegisterActivity)context).esconderProgressBar();
             }
         });
 

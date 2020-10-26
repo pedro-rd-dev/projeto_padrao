@@ -1,6 +1,7 @@
 package com.projeto_padrao.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -69,6 +70,7 @@ public class LoginActivity extends AppCompatActivity {
 
                 esconderComponentes();
                 mostrarProgressBar();
+                desabilitarBotao();
 
                 String email = login_editText_email.getText().toString();
                 String senha = login_editText_senha.getText().toString();
@@ -107,6 +109,8 @@ public class LoginActivity extends AppCompatActivity {
     public void esconderProgressBar(){
         login_progressBar_email.setVisibility(View.GONE);
         login_progressBar_password.setVisibility(View.GONE);
+
+        habilirarBotao();
     }
 
     public void mostrarAvisoEmail(String aviso){
@@ -121,6 +125,16 @@ public class LoginActivity extends AppCompatActivity {
     public void mostrarAvisoCredenciais(String aviso){
         this.login_textview_erro_credenciais.setVisibility(View.VISIBLE);
         this.login_textview_erro_credenciais.setText(aviso);
+    }
+
+    public void habilirarBotao(){
+        this.login_button_usuario.setBackground(ContextCompat.getDrawable(this, R.drawable.round_border_button));
+
+        this.login_button_usuario.setEnabled(true);
+    }
+    public void desabilitarBotao(){
+        this.login_button_usuario.setBackground(ContextCompat.getDrawable(this, R.drawable.round_button_blue_light));
+        this.login_button_usuario.setEnabled(false);
     }
 
 
