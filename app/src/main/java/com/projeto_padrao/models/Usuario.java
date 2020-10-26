@@ -9,6 +9,7 @@ import androidx.annotation.NonNull;
 
 import com.orm.SugarRecord;
 import com.orm.dsl.Ignore;
+import com.orm.dsl.NotNull;
 import com.projeto_padrao.activities.AppActivity;
 import com.projeto_padrao.activities.LoginActivity;
 import com.projeto_padrao.activities.RegisterActivity;
@@ -18,7 +19,6 @@ import com.projeto_padrao.adapters.UsuariosAdapter;
 import com.projeto_padrao.models.resposta.UsuarioErro;
 import com.projeto_padrao.api.retrofit.RetrofitConfig;
 
-import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 import java.util.Objects;
@@ -173,11 +173,14 @@ public class Usuario extends SugarRecord {
                     } else {
                         lancarErroDeLogin(response);
                     }
+                    ((LoginActivity)context).esconderProgressBar();
                 }
 
                 @Override
                 public void onFailure(@NonNull Call<Usuario> call, @NonNull Throwable t) {
                     Log.e("retrofit", "Erro ao enviar o usuario:" + t.getMessage());
+                    ((LoginActivity)context).esconderProgressBar();
+
                 }
             });
     }
@@ -186,7 +189,7 @@ public class Usuario extends SugarRecord {
         Call<List<Usuario>> call = new RetrofitConfig(usuario.getContext()).setUserService().listarUsuariosAdmin("Token "+usuario.getKey());
         call.enqueue(new Callback<List<Usuario>>() {
             @Override
-            public void onResponse(@NotNull Call<List<Usuario>> call, @NotNull Response<List<Usuario>> response) {
+            public void onResponse(Call<List<Usuario>> call, Response<List<Usuario>> response) {
                 if(response.isSuccessful()){
                     List<Usuario> usuarios = response.body();
                     Log.d("listarUsuarios","listar");
@@ -197,7 +200,7 @@ public class Usuario extends SugarRecord {
             }
 
             @Override
-            public void onFailure(@NotNull Call<List<Usuario>> call, Throwable t) {
+            public void onFailure(Call<List<Usuario>> call, Throwable t) {
                 Log.d("listarUsuarios","listar");
 
             }
@@ -303,6 +306,8 @@ public class Usuario extends SugarRecord {
                 }else {
                     confirmarUsuarioNaoEditado(context);
                 }
+
+
 
             }
 

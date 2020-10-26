@@ -23,7 +23,9 @@ public class AppActivity extends AppCompatActivity {
         setContentView(R.layout.aplicacao);
 
         usuario = Usuario.verificaUsuarioLogado();
-        usuario.setContext(AppActivity.this);
+        if (usuario != null) {
+            usuario.setContext(AppActivity.this);
+        }
 
         identificandoComponentes();
         inicializandoComponentes();

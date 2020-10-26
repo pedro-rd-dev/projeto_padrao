@@ -21,6 +21,7 @@ public class UsuarioErro {
     private List<String> password;
     private retrofit2.Response<Usuario> response;
     private Context context;
+    private List<String> non_field_errors;
 
     public UsuarioErro(Response<Usuario> response, Context context) {
         this.response = response;
@@ -91,6 +92,12 @@ public class UsuarioErro {
                     ((LoginActivity)context).mostrarAvisoSenha(erro);
                 }
             }
+            if(usuarioErro.getNon_field_errors()!= null){
+                for (String erro : usuarioErro.getNon_field_errors()){
+                    ((LoginActivity)context).mostrarAvisoCredenciais(erro);
+                }
+            }
+
 
 
         } catch (JSONException e) {
@@ -99,6 +106,30 @@ public class UsuarioErro {
             e.printStackTrace();
         }
 
+    }
+
+    public Response<Usuario> getResponse() {
+        return response;
+    }
+
+    public void setResponse(Response<Usuario> response) {
+        this.response = response;
+    }
+
+    public Context getContext() {
+        return context;
+    }
+
+    public void setContext(Context context) {
+        this.context = context;
+    }
+
+    public List<String> getNon_field_errors() {
+        return non_field_errors;
+    }
+
+    public void setNon_field_errors(List<String> non_field_errors) {
+        this.non_field_errors = non_field_errors;
     }
 
     public List<String> getEmail() {

@@ -6,6 +6,7 @@ import android.os.Bundle;
 
 import com.projeto_padrao.activities.AppActivity;
 import com.projeto_padrao.activities.LoginActivity;
+import com.projeto_padrao.activities.RegisterActivity;
 import com.projeto_padrao.activities.usuario.ListarUsuariosActivity;
 import com.projeto_padrao.activities.usuario.UsuarioDetalheActivity;
 
@@ -30,6 +31,10 @@ public class Aplicacao {
     }
     public static void irParaListarLoginActivity(Context context) {
         Intent intent = new Intent(context, LoginActivity.class);
+        context.startActivity(intent);
+    }
+    public static void irParaRegisterActivity(Context context) {
+        Intent intent = new Intent(context, RegisterActivity.class);
         context.startActivity(intent);
     }
     public static void irParaUsuarioDetalheActivity(Context context, Long id) {

@@ -17,7 +17,6 @@ import java.util.List;
 
 public class UsuariosAdapter extends BaseAdapter {
 
-
     Context context;
     List<Usuario> usuarios;
     private LayoutInflater mInflater;
@@ -48,7 +47,9 @@ public class UsuariosAdapter extends BaseAdapter {
         final Usuario usuario = usuarios.get(position);
         usuario.setContext(context);
         Usuario usuarioLogado = Usuario.verificaUsuarioLogado();
-        usuario.setKey(usuarioLogado.getKey());
+        if (usuarioLogado != null) {
+            usuario.setKey(usuarioLogado.getKey());
+        }
 
         final UsuariosAdapter.ListContent holder;
         View v = convertView;
