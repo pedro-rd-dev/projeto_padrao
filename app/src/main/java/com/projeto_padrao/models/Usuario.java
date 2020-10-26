@@ -221,7 +221,7 @@ public class Usuario extends SugarRecord {
                         usuarioCompleto.setKey(usuario.getKey());
                         usuarioCompleto.setId(usuarioCompleto.getPk());
                         usuarioCompleto.save();
-                        irParaAppnActivity();
+                        Aplicacao.irParaAppActivity(context);
                     }
                 }
             }
@@ -247,7 +247,7 @@ public class Usuario extends SugarRecord {
                     if (response.body() != null) {
                         Usuario usuario = response.body();
                         usuario.save();
-                        irParaLoginActivity();
+                        Aplicacao.irParaLoginActivity(context);
                     }
                 } else {
                     lancarErroDeRegistro(response);
@@ -341,15 +341,6 @@ public class Usuario extends SugarRecord {
     }
 
 
-    private void irParaLoginActivity() {
-        Aplicacao aplicacao = new Aplicacao(this.context, LoginActivity.class);
-        aplicacao.trocarDeActivity();
-    }
-
-    private void irParaAppnActivity() {
-        Aplicacao aplicacao = new Aplicacao(this.context, AppActivity.class);
-        aplicacao.trocarDeActivity();
-    }
 
     private void lancarErroDeRegistro(Response<Usuario> response) {
         try {

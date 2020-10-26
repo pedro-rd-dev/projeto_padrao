@@ -14,7 +14,12 @@ import com.projeto_padrao.activities.usuario.UsuarioDetalheActivity;
 public class Aplicacao {
 
     private Context context;
+    private Class<?> activityDestino;
 
+    public Aplicacao(Context context, Class<?> activityDestino) {
+        this.context = context;
+        this.activityDestino = activityDestino;
+    }
 
     public Aplicacao(Context context) {
         this.context = context;
@@ -28,11 +33,15 @@ public class Aplicacao {
         Intent intent = new Intent(context, LoginActivity.class);
         context.startActivity(intent);
     }
-    public static void irParaListarAppActivity(Context context) {
+    public static void irParaAppActivity(Context context) {
         Intent intent = new Intent(context, AppActivity.class);
         context.startActivity(intent);
     }
     public static void irParaRegisterActivity(Context context) {
+        Intent intent = new Intent(context, RegisterActivity.class);
+        context.startActivity(intent);
+    }
+    public static void irParaLoginActivity(Context context) {
         Intent intent = new Intent(context, RegisterActivity.class);
         context.startActivity(intent);
     }
@@ -44,12 +53,6 @@ public class Aplicacao {
         context.startActivity(intent);
     }
 
-    public Context getContext() {
-        return context;
-    }
 
-    public void setContext(Context context) {
-        this.context = context;
-    }
 
 }
