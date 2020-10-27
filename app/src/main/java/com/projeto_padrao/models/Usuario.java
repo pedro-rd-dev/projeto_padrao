@@ -185,7 +185,7 @@ public class Usuario extends SugarRecord {
     }
 
     public static void listarUsuariosRemoto(Usuario usuario, ListView usuarios_lista_listview) {
-        Call<List<Usuario>> call = new RetrofitConfig(usuario.getContext()).setUserService().listarUsuariosAdmin("Token "+usuario.getKey());
+        Call<List<Usuario>> call = new RetrofitConfig(usuario.getContext()).setUserService().listarUsuariosAdmin("Token "+ usuario.getKey());
         call.enqueue(new Callback<List<Usuario>>() {
             @Override
             public void onResponse(Call<List<Usuario>> call, Response<List<Usuario>> response) {
