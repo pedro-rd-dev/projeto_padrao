@@ -167,7 +167,6 @@ public class Usuario extends SugarRecord {
                     if (response.isSuccessful()) {
                         if (response.body() != null) {
                             Usuario usuario = response.body();
-                            usuario.setKey(response.body().getKey());
                             requisitarObjetoUsuario(usuario);
                         }
                     } else {

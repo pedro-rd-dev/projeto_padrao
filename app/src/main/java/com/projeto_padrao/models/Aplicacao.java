@@ -42,7 +42,7 @@ public class Aplicacao {
         context.startActivity(intent);
     }
     public static void irParaLoginActivity(Context context) {
-        Intent intent = new Intent(context, RegisterActivity.class);
+        Intent intent = new Intent(context, LoginActivity.class);
         context.startActivity(intent);
     }
     public static void irParaUsuarioDetalheActivity(Context context, Long id) {
