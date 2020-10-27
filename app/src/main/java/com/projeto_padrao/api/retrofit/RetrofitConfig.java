@@ -4,6 +4,7 @@ import android.content.Context;
 
 import com.projeto_padrao.api.servicos.EventoService;
 import com.projeto_padrao.api.servicos.UserService;
+import com.projeto_padrao.models.Tarefa;
 
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
@@ -37,6 +38,10 @@ public class RetrofitConfig {
 
     public UserService setUserService() {
         return this.retrofit.create(UserService.class);
+    }
+
+    public TarefaService setTarefaService() {
+        return this.retrofit.create(TarefaService.class);
     }
 
     public EventoService setEventoService() {
