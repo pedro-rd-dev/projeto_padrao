@@ -16,7 +16,7 @@
         app:layout_constraintHorizontal_bias="0.8"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.25" />
+        app:layout_constraintVertical_bias="0.07999998" />
 
     <View
         android:id="@+id/view2"
@@ -28,7 +28,7 @@
         app:layout_constraintHorizontal_bias="0.2"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.25" />
+        app:layout_constraintVertical_bias="0.07999998" />
 
     <View
         android:id="@+id/view3"
@@ -40,7 +40,7 @@
         app:layout_constraintHorizontal_bias="0.2"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/view2"
-        app:layout_constraintVertical_bias="0.25" />
+        app:layout_constraintVertical_bias="0.06999999" />
 
     <View
         android:id="@+id/view6"
@@ -52,7 +52,7 @@
         app:layout_constraintHorizontal_bias="0.8"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/view5"
-        app:layout_constraintVertical_bias="0.25" />
+        app:layout_constraintVertical_bias="0.060000002" />
 
     <ImageView
         android:id="@+id/imageView"
@@ -148,7 +148,7 @@
         android:id="@+id/aplicacao_view_tarefas"
         android:layout_width="125dp"
         android:layout_height="125dp"
-        android:layout_marginTop="52dp"
+        android:layout_marginTop="24dp"
         android:background="@drawable/round_card_blue"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.199"
@@ -161,6 +161,8 @@
         android:layout_height="wrap_content"
         android:text="TAREFAS"
         android:textColor="@android:color/white"
-        tools:layout_editor_absoluteX="91dp"
-        tools:layout_editor_absoluteY="589dp" />
+        app:layout_constraintBottom_toBottomOf="@+id/aplicacao_view_tarefas"
+        app:layout_constraintEnd_toEndOf="@+id/aplicacao_view_tarefas"
+        app:layout_constraintStart_toStartOf="@+id/aplicacao_view_tarefas"
+        app:layout_constraintTop_toTopOf="@+id/aplicacao_view_tarefas" />
 </androidx.constraintlayout.widget.ConstraintLayout>

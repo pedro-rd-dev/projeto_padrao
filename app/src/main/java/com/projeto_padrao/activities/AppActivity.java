@@ -6,6 +6,7 @@ import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ListView;
 
 import com.projeto_padrao.R;
@@ -16,6 +17,7 @@ public class AppActivity extends AppCompatActivity {
 
     private Usuario usuario;
     private ListView listaDeGrupos;
+    private View aplicacao_view_tarefas;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,10 +65,15 @@ public class AppActivity extends AppCompatActivity {
     }
 
     private void identificandoComponentes() {
-
+        aplicacao_view_tarefas = (View) findViewById(R.id.aplicacao_view_tarefas);
     }
     private void inicializandoComponentes() {
-
+        aplicacao_view_tarefas.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Aplicacao.irParaTarefaActivity(AppActivity.this);
+            }
+        });
     }
 
 }

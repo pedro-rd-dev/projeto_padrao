@@ -17,7 +17,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:targetApi="n">
-        <activity android:name=".activities.usuario.UsuarioDetalheActivity"></activity>
+        <activity android:name=".activities.TarefaActivity"></activity>
+        <activity android:name=".activities.usuario.UsuarioDetalheActivity" />
         <activity android:name=".activities.usuario.ListarUsuariosActivity" />
 
         <meta-data
