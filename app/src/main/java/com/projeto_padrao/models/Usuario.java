@@ -9,9 +9,8 @@ import androidx.annotation.NonNull;
 
 import com.orm.SugarRecord;
 import com.orm.dsl.Ignore;
-import com.projeto_padrao.activities.AppActivity;
-import com.projeto_padrao.activities.LoginActivity;
-import com.projeto_padrao.activities.RegisterActivity;
+import com.projeto_padrao.activities.autenticacao.LoginActivity;
+import com.projeto_padrao.activities.autenticacao.RegisterActivity;
 import com.projeto_padrao.activities.usuario.ListarUsuariosActivity;
 import com.projeto_padrao.activities.usuario.UsuarioDetalheActivity;
 import com.projeto_padrao.adapters.UsuariosAdapter;
@@ -165,6 +164,9 @@ public class Usuario extends SugarRecord {
                         usuarioCompleto.setId(usuarioCompleto.getPk());
                         usuarioCompleto.save();
                         Aplicacao.irParaAppActivity(context);
+
+                        ((LoginActivity)context).finish();
+
                     }
                 }
             }

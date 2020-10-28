@@ -1,4 +1,4 @@
-package com.projeto_padrao.activities;
+package com.projeto_padrao.activities.tarefa;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -7,8 +7,6 @@ import android.os.Bundle;
 import com.projeto_padrao.R;
 import com.projeto_padrao.models.Tarefa;
 import com.projeto_padrao.models.Usuario;
-
-import java.util.List;
 
 public class TarefaActivity extends AppCompatActivity {
 

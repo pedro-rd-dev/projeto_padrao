@@ -3,8 +3,8 @@ package com.projeto_padrao.models.resposta;
 import android.content.Context;
 
 import com.google.gson.Gson;
-import com.projeto_padrao.activities.LoginActivity;
-import com.projeto_padrao.activities.RegisterActivity;
+import com.projeto_padrao.activities.autenticacao.LoginActivity;
+import com.projeto_padrao.activities.autenticacao.RegisterActivity;
 import com.projeto_padrao.activities.usuario.UsuarioDetalheActivity;
 import com.projeto_padrao.models.Usuario;
 

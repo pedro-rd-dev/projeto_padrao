@@ -1,4 +1,4 @@
-package com.projeto_padrao.api.retrofit;
+package com.projeto_padrao.api.servicos;
 
 import com.projeto_padrao.models.Tarefa;
 

@@ -5,9 +5,9 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import com.projeto_padrao.activities.AppActivity;
-import com.projeto_padrao.activities.LoginActivity;
-import com.projeto_padrao.activities.RegisterActivity;
-import com.projeto_padrao.activities.TarefaActivity;
+import com.projeto_padrao.activities.autenticacao.LoginActivity;
+import com.projeto_padrao.activities.autenticacao.RegisterActivity;
+import com.projeto_padrao.activities.tarefa.TarefaActivity;
 import com.projeto_padrao.activities.usuario.ListarUsuariosActivity;
 import com.projeto_padrao.activities.usuario.UsuarioDetalheActivity;
 

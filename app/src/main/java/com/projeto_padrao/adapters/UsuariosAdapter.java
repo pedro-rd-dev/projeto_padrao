@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.projeto_padrao.R;
@@ -61,10 +62,15 @@ public class UsuariosAdapter extends BaseAdapter {
             holder.usuarios_lista_textview_nome = (TextView) v.findViewById(R.id.usuarios_lista_textview_nome);
             holder.usuarios_item_view = (View) v.findViewById(R.id.usuarios_item_view);
             holder.usuarios_item_delete = (ImageView) v.findViewById(R.id.usuarios_item_delete);
+            holder.usuarios_item_lista_progressBar = (ProgressBar) v.findViewById(R.id.usuarios_item_lista_progressBar);
+            holder.usuarios_item_lista_progressBar.setVisibility(View.GONE);
 
             holder.usuarios_item_delete.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    holder.usuarios_item_lista_progressBar.setVisibility(View.VISIBLE);
+                    holder.usuarios_item_delete.setVisibility(View.GONE);
+
                     usuario.deletarUsuario();
                 }
             });
@@ -94,5 +100,6 @@ public class UsuariosAdapter extends BaseAdapter {
         TextView usuarios_lista_textview_email,usuarios_lista_textview_nome;
         View usuarios_item_view;
         ImageView usuarios_item_delete;
+        ProgressBar usuarios_item_lista_progressBar;
     }
 }

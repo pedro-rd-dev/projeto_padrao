@@ -1,4 +1,4 @@
-package com.projeto_padrao.activities;
+package com.projeto_padrao.activities.autenticacao;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;

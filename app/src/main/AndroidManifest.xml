@@ -17,12 +17,6 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:targetApi="n">
-        <activity
-            android:name=".ui.login.StartActivity"
-            android:label="@string/title_activity_start"></activity>
-        <activity android:name=".activities.TarefaActivity" />
-        <activity android:name=".activities.usuario.UsuarioDetalheActivity" />
-        <activity android:name=".activities.usuario.ListarUsuariosActivity" />
 
         <meta-data
             android:name="DATABASE"
@@ -37,17 +31,22 @@
             android:name="DOMAIN_PACKAGE_NAME"
             android:value="com.projeto_padrao.models" />
 
-        <activity
-            android:name=".activities.AppActivity"
-            android:theme="@style/TemaApp" />
-        <activity android:name=".activities.RegisterActivity" />
-        <activity android:name=".activities.LoginActivity">
+        <activity android:name=".activities.StartActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".activities.AppActivity"
+            android:theme="@style/TemaApp" />
+        <activity android:name=".activities.tarefa.TarefaActivity" />
+        <activity android:name=".activities.usuario.UsuarioDetalheActivity" />
+        <activity android:name=".activities.usuario.ListarUsuariosActivity" />
+        <activity android:name=".activities.autenticacao.RegisterActivity" />
+        <activity android:name=".activities.autenticacao.LoginActivity"/>
     </application>
 
 </manifest>

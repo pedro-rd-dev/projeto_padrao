@@ -9,5 +9,11 @@
     <color name="btWarning">#f0ad4e</color>
     <color name="btDanger">#d9534f</color>
     <color name="white">#ffffff</color>
+    <color name="grey">#f5f6f6</color>
+    <color name="grey_black">#37474f</color>
+    <color name="roxo">#6a1b9a</color>
+
+
+
 
 </resources>

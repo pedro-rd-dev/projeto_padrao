@@ -3,8 +3,8 @@ package com.projeto_padrao.api.retrofit;
 import android.content.Context;
 
 import com.projeto_padrao.api.servicos.EventoService;
+import com.projeto_padrao.api.servicos.TarefaService;
 import com.projeto_padrao.api.servicos.UserService;
-import com.projeto_padrao.models.Tarefa;
 
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
