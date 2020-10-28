@@ -35,6 +35,7 @@ public class ActivityObserver implements LifecycleObserver {
     public void onStop() {
         Log.d("evento","ON_STOP");
     }
+
     @OnLifecycleEvent(Lifecycle.Event.ON_DESTROY)
     public void onDestroy() {
         Log.d("evento","ON_DESTROY");

@@ -3,7 +3,9 @@ package com.projeto_padrao.activities;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -12,6 +14,7 @@ import android.widget.ListView;
 import com.projeto_padrao.R;
 import com.projeto_padrao.models.Aplicacao;
 import com.projeto_padrao.models.Usuario;
+import com.projeto_padrao.observers.ActivityObserver;
 
 public class AppActivity extends AppCompatActivity {
 
@@ -76,4 +79,14 @@ public class AppActivity extends AppCompatActivity {
         });
     }
 
+
+    @Override
+    public void onBackPressed() {
+        Intent homeIntent = new Intent(Intent.ACTION_MAIN);
+        homeIntent.addCategory( Intent.CATEGORY_HOME );
+        homeIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(homeIntent);
+
+        super.onBackPressed();
+    }
 }

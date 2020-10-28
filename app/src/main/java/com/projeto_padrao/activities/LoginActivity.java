@@ -15,6 +15,7 @@ import android.widget.TextView;
 import com.projeto_padrao.R;
 import com.projeto_padrao.models.Aplicacao;
 import com.projeto_padrao.models.Usuario;
+import com.projeto_padrao.observers.ActivityObserver;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -29,8 +30,7 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login);
 
-        //this.getLifecycle().addObserver(new ActivityObserver());
-
+        this.getLifecycle().addObserver(new ActivityObserver());
 
         if(Usuario.verificaUsuarioLogado()!=null){
             Aplicacao.irParaAppActivity(LoginActivity.this);
@@ -135,6 +135,7 @@ public class LoginActivity extends AppCompatActivity {
         this.login_button_usuario.setBackground(ContextCompat.getDrawable(this, R.drawable.round_button_blue_light));
         this.login_button_usuario.setEnabled(false);
     }
+
 
 
 }
