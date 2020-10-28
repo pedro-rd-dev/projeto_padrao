@@ -20,7 +20,7 @@ public class AppActivity extends AppCompatActivity {
 
     private Usuario usuario;
     private ListView listaDeGrupos;
-    private View aplicacao_view_tarefas;
+    private View aplicacao_view_tarefas,aplicacao_view_usuarios;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,9 +53,6 @@ public class AppActivity extends AppCompatActivity {
             case R.id.menu_item_deletar_conta:
                 usuario.deletarUsuario();
                 return true;
-            case R.id.menu_item_usuarios:
-                Aplicacao.irParaListarUsuariosActivity(AppActivity.this);
-                return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
@@ -69,12 +66,20 @@ public class AppActivity extends AppCompatActivity {
 
     private void identificandoComponentes() {
         aplicacao_view_tarefas = (View) findViewById(R.id.aplicacao_view_tarefas);
+        aplicacao_view_usuarios = (View) findViewById(R.id.aplicacao_view_usuarios);
+
     }
     private void inicializandoComponentes() {
         aplicacao_view_tarefas.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Aplicacao.irParaTarefaActivity(AppActivity.this);
+            }
+        });
+        aplicacao_view_usuarios.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Aplicacao.irParaListarUsuariosActivity(AppActivity.this);
             }
         });
     }

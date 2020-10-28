@@ -13,8 +13,7 @@
         android:background="@drawable/round_button_card_green"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.8"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/view2"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.07999998" />
 
@@ -174,7 +173,7 @@
         app:srcCompat="@drawable/ic_baseline_add_task_24" />
 
     <View
-        android:id="@+id/view7"
+        android:id="@+id/aplicacao_view_usuarios"
         android:layout_width="125dp"
         android:layout_height="125dp"
         android:layout_marginTop="32dp"
@@ -190,17 +189,17 @@
         android:layout_marginTop="24dp"
         android:text="@string/usuarios"
         android:textColor="@color/white"
-        app:layout_constraintEnd_toEndOf="@+id/view7"
-        app:layout_constraintStart_toStartOf="@+id/view7"
-        app:layout_constraintTop_toTopOf="@+id/view7" />
+        app:layout_constraintEnd_toEndOf="@+id/aplicacao_view_usuarios"
+        app:layout_constraintStart_toStartOf="@+id/aplicacao_view_usuarios"
+        app:layout_constraintTop_toTopOf="@+id/aplicacao_view_usuarios" />
 
     <ImageView
         android:id="@+id/imageView4"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        app:layout_constraintBottom_toBottomOf="@+id/view7"
-        app:layout_constraintEnd_toEndOf="@+id/view7"
-        app:layout_constraintStart_toStartOf="@+id/view7"
+        app:layout_constraintBottom_toBottomOf="@+id/aplicacao_view_usuarios"
+        app:layout_constraintEnd_toEndOf="@+id/aplicacao_view_usuarios"
+        app:layout_constraintStart_toStartOf="@+id/aplicacao_view_usuarios"
         app:layout_constraintTop_toBottomOf="@+id/textView9"
         app:srcCompat="@drawable/ic_baseline_group_24" />
 </androidx.constraintlayout.widget.ConstraintLayout>

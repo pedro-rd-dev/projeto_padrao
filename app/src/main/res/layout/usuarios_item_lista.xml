@@ -10,13 +10,14 @@
         android:id="@+id/usuarios_item_view"
         android:layout_width="0dp"
         android:layout_height="60sp"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="2dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
         android:background="@drawable/round_item_list_white"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -24,69 +25,46 @@
         android:id="@+id/usuarios_lista_textview_email"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
         android:text="Email"
-        android:textColor="@android:color/black"
+        android:textColor="@android:color/tertiary_text_light"
         android:textSize="16sp"
-        app:layout_constraintStart_toEndOf="@+id/textView8"
+        app:layout_constraintStart_toStartOf="@+id/usuarios_item_view"
         app:layout_constraintTop_toBottomOf="@+id/usuarios_lista_textview_nome" />
 
     <TextView
         android:id="@+id/usuarios_lista_textview_nome"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
         android:layout_marginTop="8dp"
         android:text="Nome no banco"
         android:textColor="@android:color/black"
         android:textSize="16sp"
-        app:layout_constraintStart_toEndOf="@+id/textView2"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/usuarios_item_view"
         app:layout_constraintTop_toTopOf="@+id/usuarios_item_view" />
 
     <ImageView
         android:id="@+id/usuarios_item_delete"
         android:layout_width="35dp"
         android:layout_height="35dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
         app:layout_constraintBottom_toBottomOf="@+id/usuarios_item_view"
         app:layout_constraintEnd_toEndOf="@+id/usuarios_item_view"
         app:layout_constraintTop_toTopOf="@+id/usuarios_item_view"
         app:srcCompat="@drawable/ic_baseline_delete_24" />
-
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="8dp"
-        android:text="Nome: "
-        android:textColor="@android:color/black"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/usuarios_item_view"
-        app:layout_constraintTop_toTopOf="@+id/usuarios_item_view" />
-
-    <TextView
-        android:id="@+id/textView8"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:text="Email: "
-        android:textColor="@android:color/black"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/usuarios_lista_textview_nome"
-        app:layout_constraintStart_toStartOf="@+id/usuarios_item_view"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
     <ProgressBar
         android:id="@+id/usuarios_item_lista_progressBar"
         style="?android:attr/progressBarStyle"
         android:layout_width="40dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="14dp"
-        android:layout_marginRight="14dp"
+        android:layout_marginEnd="6dp"
+        android:layout_marginRight="6dp"
         app:layout_constraintBottom_toBottomOf="@+id/usuarios_item_view"
         app:layout_constraintEnd_toEndOf="@+id/usuarios_item_view"
         app:layout_constraintTop_toTopOf="@+id/usuarios_item_view" />
