@@ -4,6 +4,7 @@ import android.content.Context;
 import android.util.Log;
 
 import com.orm.SugarRecord;
+import com.projeto_padrao.adapters.TarefasAdapter;
 import com.projeto_padrao.adapters.UsuariosAdapter;
 import com.projeto_padrao.api.retrofit.RetrofitConfig;
 
@@ -33,6 +34,10 @@ public class Tarefa extends SugarRecord {
                 if(response.isSuccessful()){
                     List<Tarefa> tarefas = response.body();
                     Log.d("listarUsuarios","listar");
+
+                    TarefasAdapter adaptador = new TarefasAdapter(context, usuarios);
+                    usuarios_lista_listview.setAdapter(adaptador);
+
                 }
             }
 

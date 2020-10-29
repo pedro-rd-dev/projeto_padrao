@@ -17,6 +17,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:targetApi="n">
+        <activity android:name=".activities.tarefa.TarefaDetalheActivity"></activity>
 
         <meta-data
             android:name="DATABASE"
@@ -31,7 +32,8 @@
             android:name="DOMAIN_PACKAGE_NAME"
             android:value="com.projeto_padrao.models" />
 
-        <activity android:name=".activities.StartActivity"
+        <activity
+            android:name=".activities.StartActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -46,7 +48,7 @@
         <activity android:name=".activities.usuario.UsuarioDetalheActivity" />
         <activity android:name=".activities.usuario.ListarUsuariosActivity" />
         <activity android:name=".activities.autenticacao.RegisterActivity" />
-        <activity android:name=".activities.autenticacao.LoginActivity"/>
+        <activity android:name=".activities.autenticacao.LoginActivity" />
     </application>
 
 </manifest>

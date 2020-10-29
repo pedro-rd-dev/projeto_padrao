@@ -15,6 +15,7 @@ import com.projeto_padrao.models.Usuario;
 
 public class StartActivity extends AppCompatActivity {
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,5 +40,13 @@ public class StartActivity extends AppCompatActivity {
 
 
  */
+
     }
+
+    public static String mostrarNotificacao(String teste) {
+
+        teste = teste + "123456";
+        return teste;
+    }
+
 }

@@ -27,6 +27,8 @@ public class AppActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.aplicacao);
 
+
+
         usuario = Usuario.verificaUsuarioLogado();
         if (usuario != null) {
             usuario.setContext(AppActivity.this);
