@@ -35,9 +35,14 @@ public class Tarefa extends SugarRecord {
                     List<Tarefa> tarefas = response.body();
                     Log.d("listarUsuarios","listar");
 
+
+                    for(Tarefa tarefa : tarefas){
+                        tarefa.save();
+                    }
+/*
                     TarefasAdapter adaptador = new TarefasAdapter(context, usuarios);
                     usuarios_lista_listview.setAdapter(adaptador);
-
+*/
                 }
             }
 

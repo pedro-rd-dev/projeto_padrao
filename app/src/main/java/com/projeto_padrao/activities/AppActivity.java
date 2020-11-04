@@ -16,6 +16,9 @@ import com.projeto_padrao.models.Aplicacao;
 import com.projeto_padrao.models.Usuario;
 import com.projeto_padrao.observers.ActivityObserver;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class AppActivity extends AppCompatActivity {
 
     private Usuario usuario;

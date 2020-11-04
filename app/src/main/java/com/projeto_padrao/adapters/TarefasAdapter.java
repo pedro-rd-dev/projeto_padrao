@@ -15,6 +15,8 @@ import com.projeto_padrao.models.Aplicacao;
 import com.projeto_padrao.models.Tarefa;
 import com.projeto_padrao.models.Usuario;
 
+import org.w3c.dom.Text;
+
 import java.util.List;
 
 public class TarefasAdapter extends BaseAdapter {
@@ -22,6 +24,7 @@ public class TarefasAdapter extends BaseAdapter {
     Context context;
     List<Tarefa> tarefas;
     private LayoutInflater mInflater;
+    TextView tarefas_lista_textview_nome;
 
     public TarefasAdapter(Context context, List<Tarefa> usuarios) {
         this.tarefas = usuarios;
@@ -56,7 +59,8 @@ public class TarefasAdapter extends BaseAdapter {
             mInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             v = mInflater.inflate(R.layout.tarefa_item_lista, null);
             holder = new TarefasAdapter.ListContent();
-            holder.tarefas_lista_textview_nome = (TextView) v.findViewById(R.id.tarefas_lista_textview_nome);
+
+            tarefas_lista_textview_nome = (TextView) v.findViewById(R.id.tarefas_lista_textview_nome);
             holder.tarefas_item_view = (View) v.findViewById(R.id.tarefas_item_view);
             holder.tarefas_item_delete = (ImageView) v.findViewById(R.id.tarefas_item_delete);
             holder.tarefas_item_lista_progressBar = (ProgressBar) v.findViewById(R.id.tarefas_item_lista_progressBar);
