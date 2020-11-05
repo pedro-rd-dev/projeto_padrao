@@ -24,7 +24,6 @@ public class TarefasAdapter extends BaseAdapter {
     Context context;
     List<Tarefa> tarefas;
     private LayoutInflater mInflater;
-    TextView tarefas_lista_textview_nome;
 
     public TarefasAdapter(Context context, List<Tarefa> usuarios) {
         this.tarefas = usuarios;
@@ -60,7 +59,7 @@ public class TarefasAdapter extends BaseAdapter {
             v = mInflater.inflate(R.layout.tarefa_item_lista, null);
             holder = new TarefasAdapter.ListContent();
 
-            tarefas_lista_textview_nome = (TextView) v.findViewById(R.id.tarefas_lista_textview_nome);
+            holder.tarefas_lista_textview_nome = (TextView) v.findViewById(R.id.tarefas_lista_textview_nome);
             holder.tarefas_item_view = (View) v.findViewById(R.id.tarefas_item_view);
             holder.tarefas_item_delete = (ImageView) v.findViewById(R.id.tarefas_item_delete);
             holder.tarefas_item_lista_progressBar = (ProgressBar) v.findViewById(R.id.tarefas_item_lista_progressBar);
@@ -72,7 +71,9 @@ public class TarefasAdapter extends BaseAdapter {
                     holder.tarefas_item_lista_progressBar.setVisibility(View.VISIBLE);
                     holder.tarefas_item_delete.setVisibility(View.GONE);
 
-                   // tarefa.deletarTarefa();
+                    if (usuarioLogado != null) {
+                        tarefa.deletarTarefa(usuarioLogado.getKey());
+                    }
                 }
             });
 

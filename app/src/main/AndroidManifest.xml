@@ -44,7 +44,7 @@
         <activity
             android:name=".activities.AppActivity"
             android:theme="@style/TemaApp" />
-        <activity android:name=".activities.tarefa.TarefaActivity" />
+        <activity android:name=".activities.tarefa.ListarTarefasActivity" />
         <activity android:name=".activities.usuario.UsuarioDetalheActivity" />
         <activity android:name=".activities.usuario.ListarUsuariosActivity" />
         <activity android:name=".activities.autenticacao.RegisterActivity" />

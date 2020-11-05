@@ -2,11 +2,16 @@ package com.projeto_padrao.models;
 
 import android.content.Context;
 import android.util.Log;
+import android.widget.ListView;
+
+import androidx.annotation.NonNull;
 
 import com.orm.SugarRecord;
+import com.projeto_padrao.activities.tarefa.ListarTarefasActivity;
 import com.projeto_padrao.adapters.TarefasAdapter;
-import com.projeto_padrao.adapters.UsuariosAdapter;
 import com.projeto_padrao.api.retrofit.RetrofitConfig;
+
+import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
@@ -26,23 +31,25 @@ public class Tarefa extends SugarRecord {
         this.context = context;
     }
 
-    public void receberListaDeTarefas(String key){
-        Call<List<Tarefa>> call = new RetrofitConfig(this.getContext()).setTarefaService().listarTarefas("Token "+ key);
+    public static void receberListaDeTarefas(Usuario usuario, ListView tarefas_lista_listview){
+        Call<List<Tarefa>> call = new RetrofitConfig(usuario.getContext()).setTarefaService().listarTarefas("Token "+ usuario.getKey());
         call.enqueue(new Callback<List<Tarefa>>() {
             @Override
-            public void onResponse(Call<List<Tarefa>> call, Response<List<Tarefa>> response) {
+            public void onResponse(@NotNull Call<List<Tarefa>> call, @NotNull Response<List<Tarefa>> response) {
                 if(response.isSuccessful()){
                     List<Tarefa> tarefas = response.body();
                     Log.d("listarUsuarios","listar");
 
 
-                    for(Tarefa tarefa : tarefas){
-                        tarefa.save();
+                    if (tarefas != null) {
+                        for(Tarefa tarefa : tarefas){
+                            tarefa.save();
+                        }
                     }
-/*
-                    TarefasAdapter adaptador = new TarefasAdapter(context, usuarios);
-                    usuarios_lista_listview.setAdapter(adaptador);
-*/
+
+                    TarefasAdapter adaptador = new TarefasAdapter(usuario.getContext(), tarefas);
+                    tarefas_lista_listview.setAdapter(adaptador);
+
                 }
             }
 
@@ -52,6 +59,34 @@ public class Tarefa extends SugarRecord {
 
             }
         });
+    }
+
+    public void deletarTarefa(String key) {
+        Call<Tarefa> call = new RetrofitConfig(this.context).setTarefaService().deletarTarefa("Token "+key,this.getId());
+        call.enqueue(new Callback<Tarefa>() {
+
+            @Override
+            public void onResponse(@NonNull Call<Tarefa> call, @NonNull Response<Tarefa> response) {
+                if (response.isSuccessful()) {
+
+                    if (response.body() != null) {
+                        response.body().delete();
+                        ((ListarTarefasActivity)context).inicializandoComponentes();
+
+                    }
+
+
+                }
+
+            }
+
+            @Override
+            public void onFailure(@NonNull Call<Tarefa> call, @NonNull Throwable t) {
+                Log.e("retrofit", "Erro ao enviar o usuario:" + t.getMessage());
+
+            }
+        });
+
     }
 
     public Context getContext() {

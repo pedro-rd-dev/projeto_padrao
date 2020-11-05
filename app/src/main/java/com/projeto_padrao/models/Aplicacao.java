@@ -7,7 +7,7 @@ import android.os.Bundle;
 import com.projeto_padrao.activities.AppActivity;
 import com.projeto_padrao.activities.autenticacao.LoginActivity;
 import com.projeto_padrao.activities.autenticacao.RegisterActivity;
-import com.projeto_padrao.activities.tarefa.TarefaActivity;
+import com.projeto_padrao.activities.tarefa.ListarTarefasActivity;
 import com.projeto_padrao.activities.usuario.ListarUsuariosActivity;
 import com.projeto_padrao.activities.usuario.UsuarioDetalheActivity;
 
@@ -46,8 +46,8 @@ public class Aplicacao {
         Intent intent = new Intent(context, LoginActivity.class);
         context.startActivity(intent);
     }
-    public static void irParaTarefaActivity(Context context) {
-        Intent intent = new Intent(context, TarefaActivity.class);
+    public static void irParaListarTarefaActivity(Context context) {
+        Intent intent = new Intent(context, ListarTarefasActivity.class);
         context.startActivity(intent);
     }
     public static void irParaUsuarioDetalheActivity(Context context, Long id) {

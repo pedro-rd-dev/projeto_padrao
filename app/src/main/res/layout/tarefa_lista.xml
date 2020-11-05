@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorPrimaryDark"
-    tools:context=".activities.tarefa.TarefaActivity">
+    tools:context=".activities.tarefa.ListarTarefasActivity">
 
     <ListView
         android:id="@+id/tarefas_lista_listview"

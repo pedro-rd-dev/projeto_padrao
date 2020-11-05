@@ -78,7 +78,7 @@ public class AppActivity extends AppCompatActivity {
         aplicacao_view_tarefas.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Aplicacao.irParaTarefaActivity(AppActivity.this);
+                Aplicacao.irParaListarTarefaActivity(AppActivity.this);
             }
         });
         aplicacao_view_usuarios.setOnClickListener(new View.OnClickListener() {
