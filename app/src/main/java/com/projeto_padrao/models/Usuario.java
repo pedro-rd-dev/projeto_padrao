@@ -187,7 +187,8 @@ public class Usuario extends SugarRecord {
             public void onResponse(Call<List<Usuario>> call, Response<List<Usuario>> response) {
                 if(response.isSuccessful()){
                     List<Usuario> usuarios = response.body();
-                    Log.d("listarUsuarios","listar");
+
+                    salvarUsuariosNoBanco(usuarios);
 
                     UsuariosAdapter adaptador = new UsuariosAdapter(usuario.getContext(), usuarios);
                     usuarios_lista_listview.setAdapter(adaptador);
@@ -201,6 +202,19 @@ public class Usuario extends SugarRecord {
             }
         });
 
+    }
+
+    private static void salvarUsuariosNoBanco(List<Usuario> usuarios) {
+
+        Usuario usuarioLogado = Usuario.verificaUsuarioLogado();
+        if (usuarios != null) {
+            for(Usuario usuario1 : usuarios){
+                assert usuarioLogado != null;
+                if(!usuario1.getId().equals(usuarioLogado.getId())){
+                    usuario1.save();
+                }
+            }
+        }
     }
 
     public void deletarUsuario() {
