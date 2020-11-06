@@ -68,13 +68,11 @@ public class Tarefa extends SugarRecord {
             @Override
             public void onResponse(@NonNull Call<Tarefa> call, @NonNull Response<Tarefa> response) {
                 if (response.isSuccessful()) {
+                    Log.e("resposta_tarefa", "sucesso:" +response.body());
 
-                    if (response.body() != null) {
-                        response.body().delete();
-                        ((ListarTarefasActivity)context).inicializandoComponentes();
+                    //TODO falta buscara pelo id e deletar no banco interno
 
-                    }
-
+                    ((ListarTarefasActivity)context).inicializandoComponentes();
 
                 }
 
@@ -82,7 +80,7 @@ public class Tarefa extends SugarRecord {
 
             @Override
             public void onFailure(@NonNull Call<Tarefa> call, @NonNull Throwable t) {
-                Log.e("retrofit", "Erro ao enviar o usuario:" + t.getMessage());
+                Log.e("resposta_tarefa", "Erro ao enviar a tarefa:" + t.getMessage());
 
             }
         });
