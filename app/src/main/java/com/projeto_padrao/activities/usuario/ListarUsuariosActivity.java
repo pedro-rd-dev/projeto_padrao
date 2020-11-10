@@ -24,11 +24,6 @@ public class ListarUsuariosActivity extends AppCompatActivity {
     private UsuariosAdapter adaptador = null;
     private ImageView usuarios_lista_imageview_add;
 
-
-
-
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
