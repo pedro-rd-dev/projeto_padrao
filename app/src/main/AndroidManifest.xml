@@ -17,7 +17,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:targetApi="n">
-        <activity android:name=".activities.tarefa.TarefaDetalheActivity"></activity>
+        <activity android:name=".activities.tarefa.TarefaDetalheActivity" />
 
         <meta-data
             android:name="DATABASE"

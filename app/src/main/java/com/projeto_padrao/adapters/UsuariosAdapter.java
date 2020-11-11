@@ -13,7 +13,9 @@ import android.widget.TextView;
 import com.projeto_padrao.R;
 import com.projeto_padrao.models.Aplicacao;
 import com.projeto_padrao.models.Usuario;
+import com.projeto_padrao.statics.ConstantesGlobais;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class UsuariosAdapter extends BaseAdapter {
@@ -22,7 +24,16 @@ public class UsuariosAdapter extends BaseAdapter {
     List<Usuario> usuarios;
 
     public UsuariosAdapter(Context context, List<Usuario> usuarios) {
-        this.usuarios = usuarios;
+
+        ArrayList<Usuario> usuariosFiltrados = new ArrayList<>();
+
+        for (Usuario usuario1 : usuarios){
+            if(!ConstantesGlobais.ADMINS().contains(usuario1.getEmail())){
+                usuariosFiltrados.add(usuario1);
+            }
+        }
+
+        this.usuarios = usuariosFiltrados;
         this.context = context;
     }
 

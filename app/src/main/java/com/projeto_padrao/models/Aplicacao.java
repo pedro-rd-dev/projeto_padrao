@@ -22,6 +22,14 @@ public class Aplicacao {
         this.activityDestino = activityDestino;
     }
 
+    public static void aguardar(int time){
+        try {
+            Thread.sleep(time);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
     public Aplicacao(Context context) {
         this.context = context;
     }

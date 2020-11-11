@@ -15,7 +15,9 @@ import com.projeto_padrao.activities.tarefa.ListarTarefasActivity;
 import com.projeto_padrao.adapters.UsuariosAdapter;
 import com.projeto_padrao.models.Aplicacao;
 import com.projeto_padrao.models.Usuario;
+import com.projeto_padrao.statics.ConstantesGlobais;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ListarUsuariosActivity extends AppCompatActivity {
@@ -40,6 +42,8 @@ public class ListarUsuariosActivity extends AppCompatActivity {
         usuarios_lista_imageview_add = (ImageView) findViewById(R.id.usuarios_lista_imageview_add);
 
         List<Usuario> usuarios = Usuario.listAll(Usuario.class);
+
+
         UsuariosAdapter adaptador = new UsuariosAdapter(ListarUsuariosActivity.this, usuarios);
         usuarios_lista_listview.setAdapter(adaptador);
 
@@ -56,12 +60,12 @@ public class ListarUsuariosActivity extends AppCompatActivity {
 
         Usuario usuario = Usuario.verificaUsuarioLogado();
         usuario.setContext(ListarUsuariosActivity.this);
-        Usuario.listarUsuariosRemoto(usuario,usuarios_lista_listview);
+        Usuario.listarUsuariosRemoto(usuario, usuarios_lista_listview);
 
     }
 
     @Override
-    protected void onResume(){
+    protected void onResume() {
         super.onResume();
         inicializandoComponentes();
     }

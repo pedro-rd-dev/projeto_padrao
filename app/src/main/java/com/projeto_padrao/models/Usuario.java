@@ -16,11 +16,13 @@ import com.projeto_padrao.activities.usuario.UsuarioDetalheActivity;
 import com.projeto_padrao.adapters.UsuariosAdapter;
 import com.projeto_padrao.models.resposta.UsuarioErro;
 import com.projeto_padrao.api.retrofit.RetrofitConfig;
+import com.projeto_padrao.statics.ConstantesGlobais;
 
 
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -207,9 +209,9 @@ public class Usuario extends SugarRecord {
     private static void salvarUsuariosNoBanco(List<Usuario> usuarios) {
 
         Usuario usuarioLogado = Usuario.verificaUsuarioLogado();
-        if (usuarios != null) {
-            for(Usuario usuario1 : usuarios){
-                assert usuarioLogado != null;
+
+        for (Usuario usuario1 : usuarios){
+            if(!ConstantesGlobais.ADMINS().contains(usuario1.getEmail())){
                 if(!usuario1.getId().equals(usuarioLogado.getId())){
                     usuario1.save();
                 }
