@@ -17,14 +17,14 @@ public class RetrofitConfig {
 
     private Retrofit retrofit;
 
-    public RetrofitConfig(Context context) {
+    public RetrofitConfig() {
 
             HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
             interceptor.level(HttpLoggingInterceptor.Level.BODY);
 
             OkHttpClient client = new OkHttpClient.Builder()
                     .addInterceptor(interceptor)
-                    .addInterceptor(new ConnectivityInterceptor(context))
+                    //.addInterceptor(new ConnectivityInterceptor(context))
                     .build();
 
             this.retrofit = new Retrofit.Builder()

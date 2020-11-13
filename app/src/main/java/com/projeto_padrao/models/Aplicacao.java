@@ -1,8 +1,11 @@
 package com.projeto_padrao.models;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+
+import androidx.appcompat.app.AlertDialog;
 
 import com.projeto_padrao.activities.AppActivity;
 import com.projeto_padrao.activities.autenticacao.LoginActivity;
@@ -22,6 +25,7 @@ public class Aplicacao {
         this.activityDestino = activityDestino;
     }
 
+
     public static void aguardar(int time){
         try {
             Thread.sleep(time);
@@ -29,6 +33,26 @@ public class Aplicacao {
             e.printStackTrace();
         }
     }
+
+    public void apresentarAlertaDeletar(String titulo, String menssagem) {
+        new AlertDialog.Builder(context)
+                .setTitle(titulo)
+                .setMessage(menssagem)
+
+                // Specifying a listener allows you to take an action before dismissing the dialog.
+                // The dialog is automatically dismissed when a dialog button is clicked.
+                .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        // Continue with delete operation
+                    }
+                })
+
+                // A null listener allows the button to dismiss the dialog and take no further action.
+                .setNegativeButton(android.R.string.no, null)
+                .setIcon(android.R.drawable.ic_dialog_alert)
+                .show();
+    }
+
 
     public Aplicacao(Context context) {
         this.context = context;

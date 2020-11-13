@@ -32,7 +32,7 @@ public class Tarefa extends SugarRecord {
     }
 
     public static void receberListaDeTarefas(Usuario usuario, ListView tarefas_lista_listview){
-        Call<List<Tarefa>> call = new RetrofitConfig(usuario.getContext()).setTarefaService().listarTarefas("Token "+ usuario.getKey());
+        Call<List<Tarefa>> call = new RetrofitConfig().setTarefaService().listarTarefas("Token "+ usuario.getKey());
         call.enqueue(new Callback<List<Tarefa>>() {
             @Override
             public void onResponse(@NotNull Call<List<Tarefa>> call, @NotNull Response<List<Tarefa>> response) {
@@ -62,7 +62,7 @@ public class Tarefa extends SugarRecord {
     }
 
     public void deletarTarefa(String key) {
-        Call<Tarefa> call = new RetrofitConfig(this.context).setTarefaService().deletarTarefa("Token "+key,this.getId());
+        Call<Tarefa> call = new RetrofitConfig().setTarefaService().deletarTarefa("Token "+key,this.getId());
         call.enqueue(new Callback<Tarefa>() {
 
             @Override

@@ -101,7 +101,7 @@ public class Evento extends SugarRecord {
     }
 
     public void enviarEvento(Usuario usuario){
-        Call<Evento> call = new RetrofitConfig(this.context).setEventoService().salvarEvento(this,usuario.getKey());
+        Call<Evento> call = new RetrofitConfig().setEventoService().salvarEvento(this,usuario.getKey());
         call.enqueue(new Callback<Evento>() {
 
             @Override

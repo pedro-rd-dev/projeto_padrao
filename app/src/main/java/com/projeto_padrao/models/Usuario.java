@@ -59,6 +59,11 @@ public class Usuario extends SugarRecord {
         this.context = context;
     }
 
+    public Usuario(String email, String senha) {
+        this.email = email;
+        this.password = senha;
+    }
+
     public long salvaUsuarioNoBanco() {
         return this.save();
     }
@@ -101,7 +106,7 @@ public class Usuario extends SugarRecord {
 
     public void registrar() {
 
-        Call<Usuario> call = new RetrofitConfig(this.context).setUserService().registrar(this);
+        Call<Usuario> call = new RetrofitConfig().setUserService().registrar(this);
 
         call.enqueue(new Callback<Usuario>() {
 
@@ -128,7 +133,7 @@ public class Usuario extends SugarRecord {
     }
 
     public void logar() {
-            Call<Usuario> call = new RetrofitConfig(this.context).setUserService().logar(this);
+            Call<Usuario> call = new RetrofitConfig().setUserService().logar(this);
             call.enqueue(new Callback<Usuario>() {
 
                 @Override
@@ -154,7 +159,7 @@ public class Usuario extends SugarRecord {
     }
 
     private void requisitarObjetoUsuario(@NotNull String key) {
-        Call<Usuario> call = new RetrofitConfig(this.context).setUserService().requisitarObjetoUsuario("Token "+key);
+        Call<Usuario> call = new RetrofitConfig().setUserService().requisitarObjetoUsuario("Token "+key);
         call.enqueue(new Callback<Usuario>() {
 
             @Override
@@ -184,7 +189,7 @@ public class Usuario extends SugarRecord {
     }
 
     public static void listarUsuariosRemoto(@NotNull Usuario usuario, ListView usuarios_lista_listview) {
-        Call<List<Usuario>> call = new RetrofitConfig(usuario.getContext()).setUserService().listarUsuariosAdmin("Token "+ usuario.getKey());
+        Call<List<Usuario>> call = new RetrofitConfig().setUserService().listarUsuariosAdmin("Token "+ usuario.getKey());
         call.enqueue(new Callback<List<Usuario>>() {
             @Override
             public void onResponse(Call<List<Usuario>> call, Response<List<Usuario>> response) {
@@ -221,7 +226,7 @@ public class Usuario extends SugarRecord {
     }
 
     public void deletarUsuario() {
-        Call<Usuario> call = new RetrofitConfig(this.context).setUserService().deletarUsuario("Token "+this.getKey(),this.getId());
+        Call<Usuario> call = new RetrofitConfig().setUserService().deletarUsuario("Token "+this.getKey(),this.getId());
         call.enqueue(new Callback<Usuario>() {
 
             @Override
@@ -251,7 +256,7 @@ public class Usuario extends SugarRecord {
     }
 
     public static void buscarUsuarioPeloId(Context context, String key, long id) {
-        Call<Usuario> call = new RetrofitConfig(context).setUserService().usuarioPeloId("Token "+ key,id);
+        Call<Usuario> call = new RetrofitConfig().setUserService().usuarioPeloId("Token "+ key,id);
         call.enqueue(new Callback<Usuario>() {
 
             @Override
@@ -326,7 +331,7 @@ public class Usuario extends SugarRecord {
     }
 
     public void editarUsuario() {
-        Call<Usuario> call = new RetrofitConfig(context).setUserService().editarUsuario("Token "+ this.getKey(),this.getId(),this);
+        Call<Usuario> call = new RetrofitConfig().setUserService().editarUsuario("Token "+ this.getKey(),this.getId(),this);
         call.enqueue(new Callback<Usuario>() {
 
             @Override

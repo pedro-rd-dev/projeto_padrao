@@ -1,8 +1,10 @@
 package com.projeto_padrao.activities;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -30,8 +32,6 @@ public class AppActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.aplicacao);
 
-
-
         usuario = Usuario.verificaUsuarioLogado();
         if (usuario != null) {
             usuario.setContext(AppActivity.this);
@@ -40,6 +40,8 @@ public class AppActivity extends AppCompatActivity {
         identificandoComponentes();
         inicializandoComponentes();
     }
+
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
