@@ -14,6 +14,7 @@ import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 import org.robolectric.Robolectric;
 import org.robolectric.RobolectricGradleTestRunner;
+import org.robolectric.RobolectricTestRunner;
 import org.robolectric.annotation.Config;
 import org.robolectric.util.ActivityController;
 
@@ -26,9 +27,7 @@ import retrofit2.Response;
 
 import static org.junit.Assert.assertTrue;
 
-@Config(constants = BuildConfig.class, sdk = 21,
-        manifest = "app/src/main/AndroidManifest.xml")
-@RunWith(RobolectricGradleTestRunner.class)
+@RunWith(RobolectricTestRunner.class)
 public class RetrofitCallTest {
 
     Usuario usuario = new Usuario("pedroh.mix@gmail.com","123456");
@@ -37,12 +36,6 @@ public class RetrofitCallTest {
     public void login_Success() {
 
         Call<Usuario> call = new RetrofitConfig().setUserService().logar(usuario);
-
-        try {
-            call.execute();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
 
         try {
             //Magic is here at .execute() instead of .enqueue()
