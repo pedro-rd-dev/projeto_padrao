@@ -1,6 +1,8 @@
 package com.projeto_padrao.models;
 
 
+import android.widget.ArrayAdapter;
+
 import com.projeto_padrao.api.retrofit.RetrofitConfig;
 
 import org.junit.FixMethodOrder;
@@ -8,6 +10,7 @@ import org.junit.Test;
 import org.junit.runners.MethodSorters;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
@@ -24,6 +27,7 @@ public class RetrofitCallTest {
 
     @Test
     public void A_testeRegistro() {
+
 
         Call<Usuario> call = new RetrofitConfig().setUserService().registrar(usuarioTeste);
 

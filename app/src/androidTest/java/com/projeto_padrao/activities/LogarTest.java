@@ -3,7 +3,7 @@ package com.projeto_padrao.activities;
 import androidx.test.espresso.ViewInteraction;
 import androidx.test.filters.LargeTest;
 import androidx.test.rule.ActivityTestRule;
-import androidx.test.runner.AndroidJUnit4;
+import androidx.test.ext.junit.runners.AndroidJUnit4;
 import com.projeto_padrao.R;
 import com.projeto_padrao.models.Aplicacao;
 import com.projeto_padrao.models.Usuario;
