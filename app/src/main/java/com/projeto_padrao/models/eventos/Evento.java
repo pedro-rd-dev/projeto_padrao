@@ -3,18 +3,23 @@ package com.projeto_padrao.models.eventos;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.util.Log;
+import android.widget.ListView;
 
 import androidx.annotation.NonNull;
 
 import com.orm.SugarRecord;
 import com.orm.dsl.Ignore;
+import com.projeto_padrao.adapters.EventosAdapter;
 import com.projeto_padrao.models.Usuario;
 import com.projeto_padrao.api.retrofit.RetrofitConfig;
+
+import org.jetbrains.annotations.NotNull;
 
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 import java.util.Objects;
 
@@ -28,51 +33,70 @@ public class Evento extends SugarRecord {
     private String local;
     private double preco;
     private String nomeEvento;
-    @Ignore
+    private String descricao;
     private Context context;
 
-
-    public Evento(){
-
+    public Evento() {
     }
 
-    public Context getContext() {
-        return context;
+    public Evento(Context context) {
+        this.context = context;
+    }
+
+
+
+
+
+    public void receberListaDeEventos(Usuario usuario, ListView evento_lista_listview) {
+        Call<List<Evento>> call = new RetrofitConfig().setEventoService().listarEventos("Token " + usuario.getKey());
+        call.enqueue(new Callback<List<Evento>>() {
+            @Override
+            public void onResponse(@NotNull Call<List<Evento>> call, @NotNull Response<List<Evento>> response) {
+                if (response.isSuccessful()) {
+                    List<Evento> eventos = response.body();
+                    Log.d("listarEventos", "listar");
+
+                    if (eventos != null) {
+                        for(Evento evento1 : eventos){
+                            evento1.save();
+                        }
+
+
+                    }
+
+                    EventosAdapter adaptador = new EventosAdapter(usuario.getContext(), eventos);
+                    evento_lista_listview.setAdapter(adaptador);
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<List<Evento>> call, Throwable t) {
+                Log.d("listarEventos", "listar");
+            }
+
+        });
     }
 
     public void setContext(Context context) {
         this.context = context;
     }
 
-    public Date getData() {
-        @SuppressLint("SimpleDateFormat") SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
-        Date data = null;
-        try {
-            data = new java.sql.Date(Objects.requireNonNull(format.parse(this.data)).getTime());
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-        return data;
+    public Context getContext() {
+        return context;
     }
 
-    public void setData(Date data) {
-        @SuppressLint("SimpleDateFormat") SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-        this.data = sdf.format(data);
-    }
-
-    public Date getHorario() {
-        @SuppressLint("SimpleDateFormat") SimpleDateFormat format = new SimpleDateFormat("HH:mm:ss");
-        Date data = null;
-        try {
-            data = new java.sql.Date(Objects.requireNonNull(format.parse(this.horario)).getTime());
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-        return data;
-    }
 
     public void setHorario(Date Datahorario) {
         String horario = new SimpleDateFormat("HH:mm:ss", Locale.getDefault()).format(Datahorario);
+        this.horario = horario;
+    }
+
+    public void setData(String data) {
+        this.data = data;
+    }
+
+    public void setHorario(String horario) {
         this.horario = horario;
     }
 
@@ -100,33 +124,21 @@ public class Evento extends SugarRecord {
         this.nomeEvento = nomeEvento;
     }
 
-    public void enviarEvento(Usuario usuario){
-        Call<Evento> call = new RetrofitConfig().setEventoService().salvarEvento(this,usuario.getKey());
-        call.enqueue(new Callback<Evento>() {
+    public String getData() {
+        return data;
+    }
 
-            @Override
-            public void onResponse(@NonNull Call<Evento> call, @NonNull Response<Evento> response) {
-                if (response.isSuccessful()) {
-                    if (response.body() != null) {
-                        Evento evento = new Evento();
-                        Log.e("retrofit", "Evento enviado");
+    public void setData(Date data) {
+        @SuppressLint("SimpleDateFormat") SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        this.data = sdf.format(data);
+    }
 
-                    }
-                } else {
-                    //lancarErroDeUsuario(response);
-                    try {
-                        Log.v("Error code 400",response.errorBody().string());
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
+    public String getHorario() {
+        return horario;
+    }
 
-                }
-            }
+    public String getDescricao() {
+        return descricao;
 
-            @Override
-            public void onFailure(@NonNull Call<Evento> call, @NonNull Throwable t) {
-                Log.e("retrofit", "Erro ao enviar o Evento:" + t.getMessage());
-            }
-        });
     }
 }

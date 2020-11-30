@@ -10,6 +10,8 @@ import androidx.appcompat.app.AlertDialog;
 import com.projeto_padrao.activities.AppActivity;
 import com.projeto_padrao.activities.autenticacao.LoginActivity;
 import com.projeto_padrao.activities.autenticacao.RegisterActivity;
+import com.projeto_padrao.activities.eventos.EventosActivity;
+import com.projeto_padrao.activities.eventos.FavoritoActivity;
 import com.projeto_padrao.activities.tarefa.ListarTarefasActivity;
 import com.projeto_padrao.activities.usuario.ListarUsuariosActivity;
 import com.projeto_padrao.activities.usuario.UsuarioDetalheActivity;
@@ -90,6 +92,15 @@ public class Aplicacao {
         context.startActivity(intent);
     }
 
+    public static void irParaFavoritoActivity(Context context) {
+        Intent intent = new Intent(context, FavoritoActivity.class);
+        context.startActivity(intent);
+    }
+
+    public static void irParaEventosActivity(Context context) {
+        Intent intent = new Intent(context, EventosActivity.class);
+        context.startActivity(intent);
+    }
 
     public static void fecharApp(Context context) {
         Intent homeIntent = new Intent(Intent.ACTION_MAIN);
