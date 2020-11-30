@@ -30,7 +30,7 @@
         app:layout_constraintVertical_bias="0.07999998" />
 
     <View
-        android:id="@+id/view3"
+        android:id="@+id/aplicacao_view_evento"
         android:layout_width="125dp"
         android:layout_height="125dp"
         android:layout_marginTop="32dp"
@@ -47,7 +47,7 @@
         android:layout_marginTop="32dp"
         android:background="@drawable/round_button_red"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/view3"
+        app:layout_constraintStart_toEndOf="@+id/aplicacao_view_evento"
         app:layout_constraintTop_toBottomOf="@+id/view5" />
 
     <ImageView
@@ -100,9 +100,9 @@
         android:id="@+id/imageView6"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        app:layout_constraintBottom_toBottomOf="@+id/view3"
-        app:layout_constraintEnd_toEndOf="@+id/view3"
-        app:layout_constraintStart_toStartOf="@+id/view3"
+        app:layout_constraintBottom_toBottomOf="@+id/aplicacao_view_evento"
+        app:layout_constraintEnd_toEndOf="@+id/aplicacao_view_evento"
+        app:layout_constraintStart_toStartOf="@+id/aplicacao_view_evento"
         app:layout_constraintTop_toBottomOf="@+id/textView4"
         app:srcCompat="@drawable/ic_baseline_emoji_emotions_24" />
 
@@ -114,9 +114,9 @@
         android:text="Eventos"
         android:textColor="@color/cardview_light_background"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@+id/view3"
-        app:layout_constraintStart_toStartOf="@+id/view3"
-        app:layout_constraintTop_toTopOf="@+id/view3" />
+        app:layout_constraintEnd_toEndOf="@+id/aplicacao_view_evento"
+        app:layout_constraintStart_toStartOf="@+id/aplicacao_view_evento"
+        app:layout_constraintTop_toTopOf="@+id/aplicacao_view_evento" />
 
     <TextView
         android:id="@+id/textView7"
@@ -149,7 +149,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.199"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/view3" />
+        app:layout_constraintTop_toBottomOf="@+id/aplicacao_view_evento" />
 
     <TextView
         android:id="@+id/textView5"
