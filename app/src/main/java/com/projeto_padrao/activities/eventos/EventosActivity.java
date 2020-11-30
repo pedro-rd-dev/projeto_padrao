@@ -105,12 +105,7 @@ public class EventosActivity extends AppCompatActivity {
 
     }
 
-    @Override
-    public void onBackPressed() {
-        Aplicacao.fecharApp(EventosActivity.this);
 
-        super.onBackPressed();
-    }
 
 }
 

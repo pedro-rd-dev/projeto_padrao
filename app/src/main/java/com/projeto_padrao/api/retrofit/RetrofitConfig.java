@@ -1,6 +1,7 @@
 package com.projeto_padrao.api.retrofit;
 
 import com.projeto_padrao.api.servicos.ChamadoService;
+import com.projeto_padrao.api.servicos.EventoService;
 import com.projeto_padrao.api.servicos.ImpressoraService;
 import com.projeto_padrao.api.servicos.TarefaService;
 import com.projeto_padrao.api.servicos.UserService;
@@ -43,6 +44,11 @@ public class RetrofitConfig {
         return this.retrofit.create(TarefaService.class);
     }
 
+
+
+    public EventoService setEventoService() {
+        return this.retrofit.create(EventoService.class);
+    }
 
 
     public ChamadoService setChamadoService() {

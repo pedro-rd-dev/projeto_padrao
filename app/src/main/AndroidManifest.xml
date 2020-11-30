@@ -52,6 +52,10 @@
         <activity android:name=".activities.usuario.ListarUsuariosActivity" />
         <activity android:name=".activities.autenticacao.RegisterActivity" />
         <activity android:name=".activities.autenticacao.LoginActivity" />
+        <activity android:name=".activities.eventos.FavoritoActivity" />
+        <activity android:name=".activities.eventos.EventosActivity" />
+
+
     </application>
 
 </manifest>
