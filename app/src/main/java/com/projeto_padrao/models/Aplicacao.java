@@ -14,6 +14,9 @@ import com.projeto_padrao.activities.tarefa.ListarTarefasActivity;
 import com.projeto_padrao.activities.usuario.ListarUsuariosActivity;
 import com.projeto_padrao.activities.usuario.UsuarioDetalheActivity;
 
+import com.projeto_padrao.chamados.ChamadoDetalheActivity;
+import com.projeto_padrao.chamados.ChamadosActivity;
+
 
 public class Aplicacao {
 
@@ -58,6 +61,14 @@ public class Aplicacao {
         this.context = context;
     }
 
+    public static void irParaChamadoDetalheActivity(Context context, Long id) {
+        Intent intent = new Intent(context, ChamadoDetalheActivity.class);
+        Bundle b = new Bundle();
+        b.putLong("id", id);
+        intent.putExtras(b);
+        context.startActivity(intent);
+    }
+
     public static void irParaListarUsuariosActivity(Context context) {
         Intent intent = new Intent(context, ListarUsuariosActivity.class);
         context.startActivity(intent);
@@ -65,6 +76,14 @@ public class Aplicacao {
     public static void irParaListarLoginActivity(Context context) {
         Intent intent = new Intent(context, LoginActivity.class);
         context.startActivity(intent);
+    }
+    public static void irParaChamadosActivity(Context context) {
+        Intent intent = new Intent(context, ChamadosActivity.class);
+        context.startActivity(intent);
+
+
+
+
     }
     public static void irParaAppActivity(Context context) {
         Intent intent = new Intent(context, AppActivity.class);

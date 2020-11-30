@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <View
+        android:id="@+id/chamados_item_view"
+        android:layout_width="0dp"
+        android:layout_height="60sp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:background="@drawable/round_item_list_white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/chamados_lista_textview_titulo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="8dp"
+        android:text="Titulo do chamado"
+        android:textColor="@android:color/black"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/chamados_item_view"
+        app:layout_constraintTop_toTopOf="@+id/chamados_item_view" />
+
+    <!--<TextView
+        android:id="@+id/chamados_lista_textview_descricao"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="Descricao"
+        android:text="Descricao"
+        app:layout_constraintBottom_toBottomOf="@+id/chamados_item_view"
+        app:layout_constraintEnd_toEndOf="@+id/chamados_item_view"
+        app:layout_constraintHorizontal_bias="0.049"
+        app:layout_constraintStart_toStartOf="@+id/chamados_item_view"
+        app:layout_constraintTop_toTopOf="@+id/chamados_item_view"
+        app:layout_constraintVertical_bias="0.731" />
+-->
+
+    <TextView
+        android:id="@+id/chamados_lista_textview_dataAbertura"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginLeft="12dp"
+        android:text="data"
+        app:layout_constraintBottom_toBottomOf="@+id/chamados_item_view"
+        app:layout_constraintStart_toEndOf="@+id/chamados_lista_textview_horaAbertura"
+        app:layout_constraintTop_toBottomOf="@+id/chamados_lista_textview_titulo"
+        app:layout_constraintVertical_bias="0.454" />
+
+    <TextView
+        android:id="@+id/chamados_lista_textview_horaAbertura"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:text="hora"
+        app:layout_constraintBottom_toBottomOf="@+id/chamados_item_view"
+        app:layout_constraintStart_toStartOf="@+id/chamados_item_view"
+        app:layout_constraintTop_toBottomOf="@+id/chamados_lista_textview_titulo"
+        app:layout_constraintVertical_bias="0.454" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
