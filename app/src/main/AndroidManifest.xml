@@ -21,7 +21,6 @@
 
         <activity android:name=".activities.tarefa.TarefaDetalheActivity" />
 
-
         <meta-data
             android:name="DATABASE"
             android:value="projeto_padrao_database.db" />
@@ -52,8 +51,10 @@
         <activity android:name=".activities.usuario.ListarUsuariosActivity" />
         <activity android:name=".activities.autenticacao.RegisterActivity" />
         <activity android:name=".activities.autenticacao.LoginActivity" />
-        <activity android:name=".activities.eventos.FavoritoActivity" />
-        <activity android:name=".activities.eventos.EventosActivity" />
+        <activity android:name=".activities.eventos.FavoritoActivity"
+            android:theme="@style/TemaApp"/>
+        <activity android:name=".activities.eventos.EventosActivity"
+            android:theme="@style/TemaApp"/>
 
 
     </application>

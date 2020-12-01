@@ -21,6 +21,7 @@ public class FavoritoActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setTitle("Party Time");
         setContentView(R.layout.favorito_lista);
 
         /*usuario = Usuario.verificaUsuarioLogado();
