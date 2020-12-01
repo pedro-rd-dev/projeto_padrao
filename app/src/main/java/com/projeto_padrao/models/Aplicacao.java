@@ -7,17 +7,17 @@ import android.os.Bundle;
 
 import androidx.appcompat.app.AlertDialog;
 
+import com.projeto_padrao.activities.Agendamento.AgendamentoActivity;
+import com.projeto_padrao.activities.Agendamento.MeusActivity;
 import com.projeto_padrao.activities.AppActivity;
 import com.projeto_padrao.activities.autenticacao.LoginActivity;
 import com.projeto_padrao.activities.autenticacao.RegisterActivity;
-import com.projeto_padrao.activities.eventos.EventosActivity;
-import com.projeto_padrao.activities.eventos.FavoritoActivity;
 import com.projeto_padrao.activities.tarefa.ListarTarefasActivity;
 import com.projeto_padrao.activities.usuario.ListarUsuariosActivity;
 import com.projeto_padrao.activities.usuario.UsuarioDetalheActivity;
 
-import com.projeto_padrao.chamados.ChamadoDetalheActivity;
-import com.projeto_padrao.chamados.ChamadosActivity;
+import static com.projeto_padrao.statics.ConstantesGlobais.ADICIONAR;
+import static com.projeto_padrao.statics.ConstantesGlobais.REMOVER;
 
 
 public class Aplicacao {
@@ -63,14 +63,6 @@ public class Aplicacao {
         this.context = context;
     }
 
-    public static void irParaChamadoDetalheActivity(Context context, Long id) {
-        Intent intent = new Intent(context, ChamadoDetalheActivity.class);
-        Bundle b = new Bundle();
-        b.putLong("id", id);
-        intent.putExtras(b);
-        context.startActivity(intent);
-    }
-
     public static void irParaListarUsuariosActivity(Context context) {
         Intent intent = new Intent(context, ListarUsuariosActivity.class);
         context.startActivity(intent);
@@ -78,14 +70,6 @@ public class Aplicacao {
     public static void irParaListarLoginActivity(Context context) {
         Intent intent = new Intent(context, LoginActivity.class);
         context.startActivity(intent);
-    }
-    public static void irParaChamadosActivity(Context context) {
-        Intent intent = new Intent(context, ChamadosActivity.class);
-        context.startActivity(intent);
-
-
-
-
     }
     public static void irParaAppActivity(Context context) {
         Intent intent = new Intent(context, AppActivity.class);
@@ -110,16 +94,70 @@ public class Aplicacao {
         intent.putExtras(b);
         context.startActivity(intent);
     }
+    public static void irParaAgendamentoActivity(Context context) {
+        Intent intent = new Intent(context, AgendamentoActivity.class);
+        context.startActivity(intent);
 
-    public static void irParaFavoritoActivity(Context context) {
-        Intent intent = new Intent(context, FavoritoActivity.class);
+    }
+    public static void irParaMeusAgends(Context context) {
+        Intent intent = new Intent(context, MeusActivity.class);
         context.startActivity(intent);
     }
+    public static void AlertarpraAdicionar(Context context, Agendamento agendamento){
+        android.app.AlertDialog.Builder builder1 = new android.app.AlertDialog.Builder(context);
+        builder1.setMessage(ADICIONAR);
+        builder1.setCancelable(true);
 
-    public static void irParaEventosActivity(Context context) {
-        Intent intent = new Intent(context, EventosActivity.class);
-        context.startActivity(intent);
+        builder1.setPositiveButton(
+                "Yes",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        Usuario usuario = Usuario.verificaUsuarioLogado();
+                        agendamento.setUsuario(usuario.getId());
+                        agendamento.editarAgendamento(usuario.getKey(),context);
+                    }
+                });
+
+        builder1.setNegativeButton(
+                "No",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.cancel();
+                    }
+                });
+
+        android.app.AlertDialog alert11 = builder1.create();
+        alert11.show();
     }
+
+    public static void AlertarpraRemover(Context context, Agendamento agendamento) {
+        android.app.AlertDialog.Builder builder2 = new android.app.AlertDialog.Builder(context);
+        builder2.setMessage(REMOVER);
+        builder2.setCancelable(true);
+
+        builder2.setPositiveButton(
+                "Yes",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        Usuario usuario = Usuario.verificaUsuarioLogado();
+
+                        agendamento.setUsuario(null);
+                        agendamento.editMeusAgendamento(usuario.getKey(), context);
+
+                    }
+                });
+        builder2.setNegativeButton(
+                "No",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.cancel();
+                    }
+                });
+
+        android.app.AlertDialog alert12 = builder2.create();
+        alert12.show();
+    }
+
 
     public static void fecharApp(Context context) {
         Intent homeIntent = new Intent(Intent.ACTION_MAIN);

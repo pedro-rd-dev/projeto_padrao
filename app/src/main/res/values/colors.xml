@@ -12,6 +12,9 @@
     <color name="grey">#f5f6f6</color>
     <color name="grey_black">#37474f</color>
     <color name="roxo">#6a1b9a</color>
+    <color name="colorAgendPrimary">#90989E</color>
+    <color name="colorAgendDark">#404345</color>
+    <color name="colorAgend1">#090909</color>
 
 
 

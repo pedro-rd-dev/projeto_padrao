@@ -25,7 +25,7 @@ public class AppActivity extends AppCompatActivity {
 
     private Usuario usuario;
     private ListView listaDeGrupos;
-    private View aplicacao_view_tarefas,aplicacao_view_usuarios, aplicacao_view_evento;
+    private View aplicacao_view_tarefas,aplicacao_view_usuarios,view5;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,8 +73,8 @@ public class AppActivity extends AppCompatActivity {
 
     private void identificandoComponentes() {
         aplicacao_view_tarefas = (View) findViewById(R.id.aplicacao_view_tarefas);
-        aplicacao_view_evento = (View) findViewById(R.id.aplicacao_view_evento);
         aplicacao_view_usuarios = (View) findViewById(R.id.aplicacao_view_usuarios);
+        view5 = (View) findViewById(R.id.view5);
 
     }
     private void inicializandoComponentes() {
@@ -90,16 +90,12 @@ public class AppActivity extends AppCompatActivity {
                 Aplicacao.irParaListarUsuariosActivity(AppActivity.this);
             }
         });
-
-        aplicacao_view_evento.setOnClickListener(new View.OnClickListener() {
+        view5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Aplicacao.irParaEventosActivity(AppActivity.this);
+                Aplicacao.irParaAgendamentoActivity(AppActivity.this);
             }
         });
-
-
-
     }
 
 
