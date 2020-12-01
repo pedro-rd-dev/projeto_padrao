@@ -14,7 +14,9 @@ import com.projeto_padrao.models.chamados.Chamado;
 public class ChamadoDetalheActivity extends AppCompatActivity {
 
 
-    private TextView chamado_detalhe_textview_titulo, chamado_detalhe_textview_respostaTecnico, chamado_detalhe_textview_id, chamado_detalhe_textview_descricao, chamado_detalhe_textview_dataAbertura, chamado_detalhe_textview_horaAbertura;
+    private TextView chamado_detalhe_textview_titulo, chamado_detalhe_textview_respostaTecnico,
+            chamado_detalhe_textview_id, chamado_detalhe_textview_descricao, chamado_detalhe_textview_dataAbertura,
+            chamado_detalhe_textview_horaAbertura;
     private Usuario usuarioLogado;
 
 

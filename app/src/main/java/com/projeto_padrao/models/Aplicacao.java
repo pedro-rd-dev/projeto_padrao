@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 
 import androidx.appcompat.app.AlertDialog;
 
@@ -14,12 +15,16 @@ import com.projeto_padrao.activities.autenticacao.LoginActivity;
 import com.projeto_padrao.activities.autenticacao.RegisterActivity;
 import com.projeto_padrao.activities.eventos.EventosActivity;
 import com.projeto_padrao.activities.eventos.FavoritoActivity;
+import com.projeto_padrao.activities.remedio.NaoUsuarioActivity;
+import com.projeto_padrao.activities.remedio.RecomendacaoActivity;
 import com.projeto_padrao.activities.tarefa.ListarTarefasActivity;
 import com.projeto_padrao.activities.usuario.ListarUsuariosActivity;
 import com.projeto_padrao.activities.usuario.UsuarioDetalheActivity;
 import com.projeto_padrao.chamados.ChamadoDetalheActivity;
 import com.projeto_padrao.chamados.ChamadosActivity;
-import com.projeto_padrao.models.eventos.Favorito;
+
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 
 import static com.projeto_padrao.statics.ConstantesGlobais.ADICIONAR;
 import static com.projeto_padrao.statics.ConstantesGlobais.REMOVER;
@@ -80,14 +85,6 @@ public class Aplicacao {
         Intent intent = new Intent(context, AppActivity.class);
         context.startActivity(intent);
     }
-    public static void irParaChamadoDetalheActivity(Context context, Long id) {
-        Intent intent = new Intent(context, ChamadoDetalheActivity.class);
-        Bundle b = new Bundle();
-        b.putLong("id", id);
-        intent.putExtras(b);
-        context.startActivity(intent);
-    }
-
     public static void irParaRegisterActivity(Context context) {
         Intent intent = new Intent(context, RegisterActivity.class);
         context.startActivity(intent);
@@ -107,13 +104,10 @@ public class Aplicacao {
         intent.putExtras(b);
         context.startActivity(intent);
     }
+
+    //Agendamentos
     public static void irParaAgendamentoActivity(Context context) {
         Intent intent = new Intent(context, AgendamentoActivity.class);
-        context.startActivity(intent);
-
-    }
-    public static void irParaChamadosActivity(Context context) {
-        Intent intent = new Intent(context, ChamadosActivity.class);
         context.startActivity(intent);
 
     }
@@ -174,6 +168,22 @@ public class Aplicacao {
         android.app.AlertDialog alert12 = builder2.create();
         alert12.show();
     }
+
+    //Chamados
+    public static void irParaChamadosActivity(Context context) {
+        Intent intent = new Intent(context, ChamadosActivity.class);
+        context.startActivity(intent);
+
+    }
+    public static void irParaChamadoDetalheActivity(Context context, Long id) {
+        Intent intent = new Intent(context, ChamadoDetalheActivity.class);
+        Bundle b = new Bundle();
+        b.putLong("id", id);
+        intent.putExtras(b);
+        context.startActivity(intent);
+    }
+
+    //Eventos
     public static void irParaFavoritoActivity(Context context){
         Intent intent = new Intent(context, FavoritoActivity.class);
         context.startActivity(intent);
@@ -183,7 +193,24 @@ public class Aplicacao {
         context.startActivity(intent);
     }
 
+    //Remedios
+    public static void irParaNaoUsuarioActivity(Context context) {
+        Intent intent = new Intent(context, NaoUsuarioActivity.class);
+        context.startActivity(intent);
+    }
+    public static String veritificarHorario() {
 
+        String date = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(Calendar.getInstance().getTime());
+        Log.d("Testedata", "Data testada");
+
+
+        return date;
+    }
+    public static void irParaRecomendacaoActivity(Context context) {
+        Intent intent = new Intent(context, RecomendacaoActivity.class);
+        context.startActivity(intent);
+    }
+    //FECHAR
     public static void fecharApp(Context context) {
         Intent homeIntent = new Intent(Intent.ACTION_MAIN);
         homeIntent.addCategory( Intent.CATEGORY_HOME );

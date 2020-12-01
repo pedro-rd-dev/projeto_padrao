@@ -6,6 +6,8 @@ import com.projeto_padrao.api.servicos.AgendService;
 import com.projeto_padrao.api.servicos.ChamadoService;
 import com.projeto_padrao.api.servicos.EventoService;
 import com.projeto_padrao.api.servicos.ImpressoraService;
+import com.projeto_padrao.api.servicos.RecomendacaoService;
+import com.projeto_padrao.api.servicos.RemedioService;
 import com.projeto_padrao.api.servicos.TarefaService;
 import com.projeto_padrao.api.servicos.UserService;
 
@@ -42,27 +44,38 @@ public class RetrofitConfig {
     }
 
 
-
+    //Usuario
     public UserService setUserService() {
         return this.retrofit.create(UserService.class);
     }
-
     public TarefaService setTarefaService() {
         return this.retrofit.create(TarefaService.class);
     }
 
+    //Eventos
     public EventoService setEventoService() {
         return (EventoService) this.retrofit.create(EventoService.class);
     }
 
+    //Chamados
     public ChamadoService setChamadoService() {
         return this.retrofit.create(ChamadoService.class);
     }
     public ImpressoraService setImpressoraService(){
         return  this.retrofit.create(ImpressoraService.class);
     }
+
+    //Agendamentos
     public AgendService setAgendService() {
         return (AgendService) this.retrofit.create(AgendService.class);
+    }
+
+    //Remedios
+    public RecomendacaoService setRecomendacaoService() {
+        return this.retrofit.create(RecomendacaoService.class);
+    }
+    public RemedioService setRemedioService() {
+        return this.retrofit.create(RemedioService.class);
     }
 
 }
