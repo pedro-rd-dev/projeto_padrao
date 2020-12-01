@@ -4,13 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.projeto.activities.Agendamento.MeusActivity">
+    tools:context="com.projeto_padrao.activities.Agendamento.MeusActivity">
 
     <ListView
         android:id="@+id/agend_lista_user"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:background="@color/colorDark"
+        android:background="@color/colorAgendDark"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

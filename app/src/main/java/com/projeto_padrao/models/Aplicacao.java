@@ -17,6 +17,7 @@ import com.projeto_padrao.activities.eventos.FavoritoActivity;
 import com.projeto_padrao.activities.tarefa.ListarTarefasActivity;
 import com.projeto_padrao.activities.usuario.ListarUsuariosActivity;
 import com.projeto_padrao.activities.usuario.UsuarioDetalheActivity;
+import com.projeto_padrao.models.eventos.Favorito;
 
 import static com.projeto_padrao.statics.ConstantesGlobais.ADICIONAR;
 import static com.projeto_padrao.statics.ConstantesGlobais.REMOVER;
@@ -140,7 +141,6 @@ public class Aplicacao {
         android.app.AlertDialog alert11 = builder1.create();
         alert11.show();
     }
-
     public static void AlertarpraRemover(Context context, Agendamento agendamento) {
         android.app.AlertDialog.Builder builder2 = new android.app.AlertDialog.Builder(context);
         builder2.setMessage(REMOVER);
@@ -167,6 +167,14 @@ public class Aplicacao {
 
         android.app.AlertDialog alert12 = builder2.create();
         alert12.show();
+    }
+    public static void irParaFavoritoActivity(Context context){
+        Intent intent = new Intent(context, FavoritoActivity.class);
+        context.startActivity(intent);
+    }
+    public static void irParaEventosActivity(Context context){
+        Intent intent = new Intent(context, EventosActivity.class);
+        context.startActivity(intent);
     }
 
 
