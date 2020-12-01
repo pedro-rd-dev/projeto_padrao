@@ -210,6 +210,7 @@ public class Aplicacao {
         Intent intent = new Intent(context, RecomendacaoActivity.class);
         context.startActivity(intent);
     }
+
     //FECHAR
     public static void fecharApp(Context context) {
         Intent homeIntent = new Intent(Intent.ACTION_MAIN);

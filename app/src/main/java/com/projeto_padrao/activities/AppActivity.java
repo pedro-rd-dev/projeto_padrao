@@ -123,7 +123,7 @@ public class AppActivity extends AppCompatActivity {
         view6.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-               // Aplicacao.irParaAgendamentoActivity(AppActivity.this);
+             Aplicacao.irParaRecomendacaoActivity(AppActivity.this);
             }
         });
 
