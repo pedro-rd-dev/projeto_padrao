@@ -25,7 +25,9 @@ public class AppActivity extends AppCompatActivity {
 
     private Usuario usuario;
     private ListView listaDeGrupos;
-    private View aplicacao_view_tarefas,aplicacao_view_usuarios,view5;
+    private View aplicacao_view_tarefas,aplicacao_view_usuarios;
+    private View view2,view5,aplicacao_view_evento,view6;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,6 +77,9 @@ public class AppActivity extends AppCompatActivity {
         aplicacao_view_tarefas = (View) findViewById(R.id.aplicacao_view_tarefas);
         aplicacao_view_usuarios = (View) findViewById(R.id.aplicacao_view_usuarios);
         view5 = (View) findViewById(R.id.view5);
+        view2 = (View) findViewById(R.id.view2);
+        aplicacao_view_evento = (View) findViewById(R.id.aplicacao_view_evento);
+        view6 = (View) findViewById(R.id.view6);
 
     }
     private void inicializandoComponentes() {
@@ -90,10 +95,35 @@ public class AppActivity extends AppCompatActivity {
                 Aplicacao.irParaListarUsuariosActivity(AppActivity.this);
             }
         });
+        //Agendamentos
         view5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Aplicacao.irParaAgendamentoActivity(AppActivity.this);
+            }
+        });
+
+        //Chamados
+        view2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Aplicacao.irParaChamadosActivity(AppActivity.this);
+            }
+        });
+
+        //Eventos
+        aplicacao_view_evento.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Aplicacao.irParaEventosActivity(AppActivity.this);
+            }
+        });
+
+        //Remedios
+        view6.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+               // Aplicacao.irParaAgendamentoActivity(AppActivity.this);
             }
         });
 

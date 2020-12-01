@@ -51,7 +51,7 @@ public class RetrofitCallTest {
     }
 
     @Test
-    public void B_login_Success() {
+    public Usuario B_login_Success() {
 
         Call<Usuario> call = new RetrofitConfig().setUserService().logar(usuarioTeste);
 
@@ -72,7 +72,7 @@ public class RetrofitCallTest {
             fail();
             e.printStackTrace();
         }
-
+        return null;
     }
     @Test
     public void C_verificarUsuarioLogadoTest() {

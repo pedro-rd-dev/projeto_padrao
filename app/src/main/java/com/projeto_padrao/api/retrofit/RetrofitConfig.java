@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.projeto_padrao.api.servicos.AgendService;
 import com.projeto_padrao.api.servicos.ChamadoService;
+import com.projeto_padrao.api.servicos.EventoService;
 import com.projeto_padrao.api.servicos.ImpressoraService;
 import com.projeto_padrao.api.servicos.TarefaService;
 import com.projeto_padrao.api.servicos.UserService;
@@ -50,7 +51,9 @@ public class RetrofitConfig {
         return this.retrofit.create(TarefaService.class);
     }
 
-
+    public EventoService setEventoService() {
+        return (EventoService) this.retrofit.create(EventoService.class);
+    }
 
     public ChamadoService setChamadoService() {
         return this.retrofit.create(ChamadoService.class);

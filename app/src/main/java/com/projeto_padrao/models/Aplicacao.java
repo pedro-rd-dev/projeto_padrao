@@ -17,6 +17,8 @@ import com.projeto_padrao.activities.eventos.FavoritoActivity;
 import com.projeto_padrao.activities.tarefa.ListarTarefasActivity;
 import com.projeto_padrao.activities.usuario.ListarUsuariosActivity;
 import com.projeto_padrao.activities.usuario.UsuarioDetalheActivity;
+import com.projeto_padrao.chamados.ChamadoDetalheActivity;
+import com.projeto_padrao.chamados.ChamadosActivity;
 import com.projeto_padrao.models.eventos.Favorito;
 
 import static com.projeto_padrao.statics.ConstantesGlobais.ADICIONAR;
@@ -78,7 +80,13 @@ public class Aplicacao {
         Intent intent = new Intent(context, AppActivity.class);
         context.startActivity(intent);
     }
-
+    public static void irParaChamadoDetalheActivity(Context context, Long id) {
+        Intent intent = new Intent(context, ChamadoDetalheActivity.class);
+        Bundle b = new Bundle();
+        b.putLong("id", id);
+        intent.putExtras(b);
+        context.startActivity(intent);
+    }
 
     public static void irParaRegisterActivity(Context context) {
         Intent intent = new Intent(context, RegisterActivity.class);
@@ -101,6 +109,11 @@ public class Aplicacao {
     }
     public static void irParaAgendamentoActivity(Context context) {
         Intent intent = new Intent(context, AgendamentoActivity.class);
+        context.startActivity(intent);
+
+    }
+    public static void irParaChamadosActivity(Context context) {
+        Intent intent = new Intent(context, ChamadosActivity.class);
         context.startActivity(intent);
 
     }

@@ -51,6 +51,11 @@ public class Usuario extends SugarRecord {
         this.first_name = first_name;
         this.context = context;
     }
+    public Usuario(String email, String senha, String first_name) {
+        this.first_name = first_name;
+        this.email = email;
+        this.password = senha;
+    }
 
     public Usuario(String first_name, String email, Context context) {
         this.first_name = first_name;
