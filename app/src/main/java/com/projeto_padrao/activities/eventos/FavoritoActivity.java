@@ -9,6 +9,7 @@ import android.widget.ListView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.projeto_padrao.R;
+import com.projeto_padrao.activities.Agendamento.AgendamentoActivity;
 import com.projeto_padrao.models.Aplicacao;
 import com.projeto_padrao.models.Usuario;
 import com.projeto_padrao.models.eventos.Favorito;
@@ -86,6 +87,12 @@ public class FavoritoActivity extends AppCompatActivity {
     protected void onResume(){
         super.onResume();
         inicializandoComponentes();
+    }
+    public void onBackPressed() {
+        Aplicacao.irParaEventosActivity(FavoritoActivity.this);
+        finish();
+
+        super.onBackPressed();
     }
 }
 
