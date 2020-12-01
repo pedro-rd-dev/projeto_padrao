@@ -79,14 +79,7 @@ public class Aplicacao {
         context.startActivity(intent);
     }
 
-    public static void irParaEventosActivity(Context context) {
-        Intent intent = new Intent(context, EventosActivity.class);
-        context.startActivity(intent);
-    }
-    public static void irParaFavoritoActivity(Context context) {
-        Intent intent = new Intent(context, FavoritoActivity.class);
-        context.startActivity(intent);
-    }
+
     public static void irParaRegisterActivity(Context context) {
         Intent intent = new Intent(context, RegisterActivity.class);
         context.startActivity(intent);

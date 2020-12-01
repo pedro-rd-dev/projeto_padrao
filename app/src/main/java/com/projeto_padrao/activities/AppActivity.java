@@ -96,6 +96,9 @@ public class AppActivity extends AppCompatActivity {
                 Aplicacao.irParaAgendamentoActivity(AppActivity.this);
             }
         });
+
+
+
     }
 
 
