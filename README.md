@@ -1,14 +1,12 @@
 
-<hr />
+<hr/>
 <b>Professor:</b> Pedro
-<hr />
+<hr/>
 <h3> Grupo 1<br />
-<br/>
-<hr />
+<hr/>
 <h3> Grupo 2<br />
-<br/>
+<hr/>
 <h3> Grupo 3<br />
-<br/>
 
 
 # Studio_Agendamentos
