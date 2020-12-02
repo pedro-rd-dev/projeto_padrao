@@ -13,24 +13,26 @@ import retrofit2.http.POST;
 import retrofit2.http.PUT;
 import retrofit2.http.Path;
 
+import static com.projeto_padrao.statics.ConstantesGlobais.CHAMADOS;
+
 public interface ChamadoService {
 
 
 
-    @GET("com/projeto_padrao/chamados/{id}/")
+    @GET(CHAMADOS+"{id}/")
     Call<Chamado> chamadoPeloId(@Header("Authorization") String key, @Path("id") Long id);
 
-    @PUT("com/projeto_padrao/chamados/{id}/")
+    @PUT(CHAMADOS+"{id}/")
     Call<Chamado> editarChamado(@Header("Authorization") String key, @Path("id") Long id, @Body Chamado chamado);
 
-    @DELETE("com/projeto_padrao/chamados/{id}/")
+    @DELETE(CHAMADOS+"{id}/")
     Call<Chamado> deletarChamado(@Header("Authorization") String key, @Path("id") Long id);
 
 
-    @POST("com/projeto_padrao/chamados/")
+    @POST(CHAMADOS)
     Call<Chamado> criarChamado(@Header("Authorization") String key, @Body Chamado chamado);
 
-    @GET("com/projeto_padrao/chamados/")
+    @GET(CHAMADOS)
     Call<List<Chamado>> listarChamados(@Header("Authorization") String key);
 
 

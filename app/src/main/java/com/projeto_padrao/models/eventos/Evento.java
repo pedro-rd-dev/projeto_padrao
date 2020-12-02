@@ -44,9 +44,6 @@ public class Evento extends SugarRecord {
     }
 
 
-
-
-
     public void receberListaDeEventos(Usuario usuario, ListView evento_lista_listview) {
         Call<List<Evento>> call = new RetrofitConfig().setEventoService().listarEventos("Token " + usuario.getKey());
         call.enqueue(new Callback<List<Evento>>() {

@@ -10,8 +10,8 @@ import android.widget.TextView;
 
 import com.projeto_padrao.R;
 import com.projeto_padrao.models.Aplicacao;
-import com.projeto_padrao.models.Usuario;
 import com.projeto_padrao.models.chamados.Chamado;
+import com.projeto_padrao.models.Usuario;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package com.projeto_padrao.chamados;
+package com.projeto_padrao.activities.chamados;
 
 import android.os.Bundle;
 import android.util.Log;
