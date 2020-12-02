@@ -1,8 +1,5 @@
 package com.projeto_padrao.activities.autenticacao;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.ContextCompat;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -11,6 +8,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import com.projeto_padrao.R;
 import com.projeto_padrao.models.Aplicacao;
@@ -74,7 +74,7 @@ public class LoginActivity extends AppCompatActivity {
                 String email = login_editText_email.getText().toString();
                 String senha = login_editText_senha.getText().toString();
 
-                Usuario usuarioLogado = new Usuario(email,senha,null,LoginActivity.this);
+                Usuario usuarioLogado = new Usuario(email,senha,null, LoginActivity.this);
                 usuarioLogado.logar();
 
                 Log.d("autenticação","  \nUSUARIO: "+ email + "\nSENHA:"+ senha);
@@ -121,6 +121,7 @@ public class LoginActivity extends AppCompatActivity {
         this.login_textview_erro_senha.setVisibility(View.VISIBLE);
         this.login_textview_erro_senha.setText(aviso);
     }
+
     public void mostrarAvisoCredenciais(String aviso){
         this.login_textview_erro_credenciais.setVisibility(View.VISIBLE);
         this.login_textview_erro_credenciais.setText(aviso);
@@ -131,6 +132,7 @@ public class LoginActivity extends AppCompatActivity {
 
         this.login_button_usuario.setEnabled(true);
     }
+
     public void desabilitarBotao(){
         this.login_button_usuario.setBackground(ContextCompat.getDrawable(this, R.drawable.round_button_blue_light));
         this.login_button_usuario.setEnabled(false);

@@ -168,7 +168,7 @@ public class Chamado extends SugarRecord {
             public void onResponse(Call<Chamado> call, Response<Chamado> response) {
                 if (response.isSuccessful()) {
 
-                    ((ChamadoDetalheActivity)context).inicializandoComponentes(response.body());
+                  ((ChamadoDetalheActivity)context).inicializandoComponentes(response.body());
                     ((ChamadoDetalheActivity)context).emitirAlerta();
 
                     Log.d("deletarChamados", "listar");
@@ -186,29 +186,29 @@ public class Chamado extends SugarRecord {
 
 
     public void criarChamado(@NotNull String key ){
-        Call<Chamado> call = new RetrofitConfig().setChamadoService().criarChamado("Token " + key, this);
-        call.enqueue(new Callback<Chamado>() {
-            @Override
-            public void onResponse(Call<Chamado> call, Response<Chamado> response) {
-                if (response.isSuccessful()) {
+            Call<Chamado> call = new RetrofitConfig().setChamadoService().criarChamado("Token " + key, this);
+            call.enqueue(new Callback<Chamado>() {
+                @Override
+                public void onResponse(Call<Chamado> call, Response<Chamado> response) {
+                    if (response.isSuccessful()) {
 
-                    Log.d("criarChamados", "listar");
+                        Log.d("criarChamados", "listar");
+
+                    }
+                }
+
+                @Override
+                public void onFailure(Call<Chamado> call, Throwable t) {
+                    Log.d("criarChamados", "deletar");
 
                 }
-            }
+            });
 
-            @Override
-            public void onFailure(Call<Chamado> call, Throwable t) {
-                Log.d("criarChamados", "deletar");
 
-            }
-        });
+        }
 
 
     }
-
-
-}
 
 
 

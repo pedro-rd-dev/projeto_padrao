@@ -1,8 +1,5 @@
 package com.projeto_padrao.activities.autenticacao;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.ContextCompat;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -10,6 +7,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import com.projeto_padrao.R;
 import com.projeto_padrao.models.Usuario;
@@ -99,7 +99,7 @@ public class RegisterActivity extends AppCompatActivity {
         String email = register_editText_email.getText().toString();
         String senha = register_editText_senha.getText().toString();
         String nome = register_editText_usuario.getText().toString();
-        Usuario usuario = new Usuario(email,senha,nome,RegisterActivity.this);
+        Usuario usuario = new Usuario(email,senha,nome, RegisterActivity.this);
         return usuario;
     }
 

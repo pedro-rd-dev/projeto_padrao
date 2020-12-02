@@ -13,27 +13,17 @@ import android.widget.TextView;
 import com.projeto_padrao.R;
 import com.projeto_padrao.models.Aplicacao;
 import com.projeto_padrao.models.Usuario;
-import com.projeto_padrao.statics.ConstantesGlobais;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class UsuariosAdapter extends BaseAdapter {
 
     Context context;
     List<Usuario> usuarios;
+    private LayoutInflater mInflater;
 
     public UsuariosAdapter(Context context, List<Usuario> usuarios) {
-
-        ArrayList<Usuario> usuariosFiltrados = new ArrayList<>();
-
-        for (Usuario usuario1 : usuarios){
-            if(!ConstantesGlobais.ADMINS().contains(usuario1.getEmail())){
-                usuariosFiltrados.add(usuario1);
-            }
-        }
-
-        this.usuarios = usuariosFiltrados;
+        this.usuarios = usuarios;
         this.context = context;
     }
 
@@ -54,7 +44,7 @@ public class UsuariosAdapter extends BaseAdapter {
 
     @SuppressLint("InflateParams")
     @Override
-    public View getView(int position, View v, ViewGroup parent) {
+    public View getView(int position, View convertView, ViewGroup parent) {
         final Usuario usuario = usuarios.get(position);
         usuario.setContext(context);
         Usuario usuarioLogado = Usuario.verificaUsuarioLogado();
@@ -63,9 +53,9 @@ public class UsuariosAdapter extends BaseAdapter {
         }
 
         final UsuariosAdapter.ListContent holder;
-
+        View v = convertView;
         if (v == null) {
-            LayoutInflater mInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            mInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             v = mInflater.inflate(R.layout.usuarios_item_lista, null);
             holder = new UsuariosAdapter.ListContent();
             holder.usuarios_lista_textview_email = (TextView) v.findViewById(R.id.usuarios_lista_textview_email);
@@ -73,12 +63,7 @@ public class UsuariosAdapter extends BaseAdapter {
             holder.usuarios_item_view = (View) v.findViewById(R.id.usuarios_item_view);
             holder.usuarios_item_delete = (ImageView) v.findViewById(R.id.usuarios_item_delete);
             holder.usuarios_item_lista_progressBar = (ProgressBar) v.findViewById(R.id.usuarios_item_lista_progressBar);
-            holder.usuarios_item_lista_letra = (TextView) v.findViewById(R.id.usuarios_item_lista_letra);
-
-
             holder.usuarios_item_lista_progressBar.setVisibility(View.GONE);
-
-
 
             holder.usuarios_item_delete.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -108,18 +93,11 @@ public class UsuariosAdapter extends BaseAdapter {
         holder.usuarios_lista_textview_email.setText(usuario.getEmail());
         holder.usuarios_lista_textview_nome.setText(usuario.getNome());
 
-        if(usuario.getNome()!=null && !usuario.getNome().isEmpty()){
-            holder.usuarios_item_lista_letra.setText(usuario.getNome().substring(0,1));
-        }else {
-            holder.usuarios_item_lista_letra.setText("A");
-
-        }
-
         return v;
     }
 
     public static class ListContent {
-        TextView usuarios_lista_textview_email,usuarios_lista_textview_nome,usuarios_item_lista_letra;
+        TextView usuarios_lista_textview_email,usuarios_lista_textview_nome;
         View usuarios_item_view;
         ImageView usuarios_item_delete;
         ProgressBar usuarios_item_lista_progressBar;

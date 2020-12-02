@@ -26,7 +26,7 @@ public class AppActivity extends AppCompatActivity {
     private Usuario usuario;
     private ListView listaDeGrupos;
     private View aplicacao_view_tarefas,aplicacao_view_usuarios;
-    private View aplicacao_view_chamados,view5,aplicacao_view_evento,view6;
+    private View view2,view5,aplicacao_view_evento,view6;
 
 
     @Override
@@ -77,7 +77,7 @@ public class AppActivity extends AppCompatActivity {
         aplicacao_view_tarefas = (View) findViewById(R.id.aplicacao_view_tarefas);
         aplicacao_view_usuarios = (View) findViewById(R.id.aplicacao_view_usuarios);
         view5 = (View) findViewById(R.id.view5);
-        aplicacao_view_chamados = (View) findViewById(R.id.aplicacao_view_chamados);
+        view2 = (View) findViewById(R.id.aplicacao_view_chamados);
         aplicacao_view_evento = (View) findViewById(R.id.aplicacao_view_evento);
         view6 = (View) findViewById(R.id.view6);
 
@@ -104,7 +104,7 @@ public class AppActivity extends AppCompatActivity {
         });
 
         //Chamados
-        aplicacao_view_chamados.setOnClickListener(new View.OnClickListener() {
+        view2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Aplicacao.irParaChamadosActivity(AppActivity.this);

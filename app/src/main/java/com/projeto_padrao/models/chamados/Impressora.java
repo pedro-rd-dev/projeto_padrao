@@ -20,7 +20,7 @@ import retrofit2.Response;
 public class Impressora extends SugarRecord {
     private StatusImpressora statusImpressora;
     private String status_impressora;
-    private Usuario usuario;
+    private Long usuario;
 
 
     public StatusImpressora getStatusImpressora() {
@@ -32,13 +32,14 @@ public class Impressora extends SugarRecord {
     public void setStatus_impressora(String status_impressora) {
         this.status_impressora = status_impressora;
     }
-    public Usuario getUsuario() {
+
+    public Long getUsuario() {
         return usuario;
     }
-    public void setUsuario(Usuario usuario) {
+
+    public void setUsuario(Long usuario) {
         this.usuario = usuario;
     }
-
 
     //Listar Impressoras
 

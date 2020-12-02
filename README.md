@@ -12,9 +12,32 @@
 
 Projeto Integrador da UC16 do Senac, Turma 721 do curso de Tecnico de informática.
 
+----<b>Membros do projeto:</b>
+
+  -Guilherme<br />
+  -Silas<br/>
+  -Douglas<br />
+ 
+  # Foco do Projeto:
+  A nossa ideia no projeto, foi de criar uma aplicação de criação de chamados, em que o usuário recebe uma lista com vários chamados,
+  podendo selecionar vários chamados, do jeito que o programa foi feito, poderíamos utiliza-los em varias áreas diferentes.
+  
+  O App funciona de forma síncrona, pois o usuário deve seguir certos caminhos para obter um melhor aproveitamento do aplicativo (App).
+  
+  <hr />
+  <h3> Grupo 1<br />
+  <br/>
+
+## instalação do projeto:
+
+  -Versão do Android Studio;<br />
+  -Versão do emulador do Android;<br />
+  -Utilização das bibliotecas: Sugar ORM, Retrofit;<br />
+  -API;<br />
 
 
-<b>Membros do projeto:</b>
+
+------<b>Membros do projeto:</b>
 
   -Yuri<br />
   -Marcelo<br/>
@@ -52,4 +75,5 @@ O App funciona de forma síncrona, pois o usuário deve seguir certos caminhos p
 <hr />
 <h3> Grupo 4<br />
 <br/>
+
 
