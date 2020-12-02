@@ -1,4 +1,6 @@
-package com.projeto_padrao.chamados;
+package com.projeto_padrao.activities.chamados;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,13 +10,13 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import com.projeto_padrao.R;
 import com.projeto_padrao.models.Aplicacao;
 import com.projeto_padrao.models.Usuario;
 import com.projeto_padrao.models.chamados.Chamado;
 import com.projeto_padrao.models.chamados.Impressora;
+
+import java.util.List;
 
 public class CriarChamadoActivity extends AppCompatActivity {
 
@@ -56,7 +58,7 @@ public class CriarChamadoActivity extends AppCompatActivity {
     private void inicializandoComponentes() {
         //verificar a lista de impresoras
         Impressora impressora = new Impressora();
-        impressora.listarImpressoras(usuario.getKey(), CriarChamadoActivity.this, criar_chamado_activity_menuImpressora);
+       impressora.listarImpressoras(usuario.getKey(), CriarChamadoActivity.this, criar_chamado_activity_menuImpressora);
 
 
         criar_chamado_activity_button_criarChamado.setOnClickListener(new View.OnClickListener() {
@@ -91,13 +93,14 @@ public class CriarChamadoActivity extends AppCompatActivity {
         criar_chamado_activity_voltar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(CriarChamadoActivity.this, ChamadosActivity.class);
-                startActivity(intent);
+                Aplicacao.irParaChamadosActivity(CriarChamadoActivity.this);
+                finish();
             }
         });
 
     }
 }
+
 
 
 

@@ -26,25 +26,24 @@ public class Impressora extends SugarRecord {
     public StatusImpressora getStatusImpressora() {
         return statusImpressora;
     }
-
     public void setStatusImpressora(StatusImpressora statusImpressora) {
         this.statusImpressora = statusImpressora;
     }
     public void setStatus_impressora(String status_impressora) {
         this.status_impressora = status_impressora;
     }
-
-
     public Usuario getUsuario() {
         return usuario;
     }
-
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
     }
 
-    public void listarImpressoras(@NotNull String key, Context context, Spinner criar_chamado_activity_menuImpressora) {
-        Call<List<Impressora>> call = new RetrofitConfig().setImpressoraService().listarImpressoras("Token " + key);
+
+    //Listar Impressoras
+
+    public void listarImpressoras(@NotNull String key,Context context, Spinner criar_chamado_activity_menuImpressora) {
+        Call<List<Impressora>> call = new RetrofitConfig().setImpressoraService().listarImpressoras("Token "+key);
         call.enqueue(new Callback<List<Impressora>>() {
             @Override
             public void onResponse(Call<List<Impressora>> call, Response<List<Impressora>> response) {
@@ -60,9 +59,6 @@ public class Impressora extends SugarRecord {
 
                         }
                     }
-
-
-
                     criar_chamado_activity_menuImpressora.setAdapter(new ArrayAdapter<String>(context, android.R.layout.simple_spinner_dropdown_item, items));
 
 

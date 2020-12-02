@@ -1,4 +1,6 @@
-package com.projeto_padrao.chamados;
+package com.projeto_padrao.activities.chamados;
+
+import  androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -7,14 +9,11 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.ListView;
-
-import androidx.appcompat.app.AppCompatActivity;
-
 import com.projeto_padrao.R;
 import com.projeto_padrao.adapters.ChamadosAdapter;
 import com.projeto_padrao.models.Aplicacao;
-import com.projeto_padrao.models.Usuario;
 import com.projeto_padrao.models.chamados.Chamado;
+import com.projeto_padrao.models.Usuario;
 
 import java.util.List;
 
@@ -28,6 +27,7 @@ public class ChamadosActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.lista_chamados);
+        setTitle("Chamado_Impressora");
         usuario = Usuario.verificaUsuarioLogado();
         if (usuario != null) {
             usuario.setContext(ChamadosActivity.this);
@@ -40,8 +40,7 @@ public class ChamadosActivity extends AppCompatActivity {
         lista_chamados_imageView_criarChamado.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(ChamadosActivity.this, CriarChamadoActivity.class);
-                startActivity(intent);
+                Aplicacao.irParaCriarChamadoActivity(ChamadosActivity.this);
             }
         });
 
@@ -90,10 +89,12 @@ public class ChamadosActivity extends AppCompatActivity {
         Aplicacao.irParaListarLoginActivity(ChamadosActivity.this);
     }
 
+
     @Override
     public void startActivity(Intent intent) {
         super.startActivity(intent);
     }
+
 
 
 }

@@ -12,6 +12,8 @@ public class ConstantesGlobais {
     public static final String ADICIONAR = "Deseja adicionar esse agendamento?";
     public static final String REMOVER = "Deseja remover esse agendamento?";
     public static final String VAZIO = "Opa, \nVoce não possui agendamentos";
+    public static final String CHAMADOS ="chamados/";
+    public static final String IMPRESSORAS ="impressoras/";
 
     public static ArrayList<String> ADMINS (){
         ArrayList<String> admins = new ArrayList<String>();

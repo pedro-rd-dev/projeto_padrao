@@ -3,6 +3,7 @@ package com.projeto_padrao.models;
 import android.content.Context;
 import android.util.Log;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
@@ -19,9 +20,6 @@ import java.util.List;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-
-import static com.projeto_padrao.models.Agendamento.confirmarAgendNaoEditado;
-import static com.projeto_padrao.statics.ConstantesGlobais.VAZIO;
 
 public class MeusAgendamentos extends SugarRecord {
 
@@ -64,15 +62,18 @@ public class MeusAgendamentos extends SugarRecord {
                     List<Agendamento> agendamentos = response.body();
                     Log.d("listarAgenduser", "listar");
 
-                    MeusAdapter adaptador = new MeusAdapter(usuario.getContext(),agendamentos);
-                    agend_lista_user.setAdapter(adaptador);
+                        MeusAdapter adaptador = new MeusAdapter(usuario.getContext(),agendamentos);
+                        agend_lista_user.setAdapter(adaptador);
+
+
                 }
+
             }
+
 
             @Override
             public void onFailure(Call<List<Agendamento>> call, Throwable t) {
                 Log.d("listarAgend", "listar");
-
             }
         });
     }

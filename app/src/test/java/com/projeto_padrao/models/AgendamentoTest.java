@@ -8,7 +8,6 @@ import org.junit.runners.MethodSorters;
 
 import java.io.IOException;
 import java.util.List;
-
 import retrofit2.Call;
 import retrofit2.Response;
 
@@ -19,7 +18,7 @@ import static org.junit.Assert.fail;
 public class AgendamentoTest {
 
     //private static Usuario usuarioTeste = new Usuario("Yan","YSM@gmail.com","123456");
-    private static Usuario usuarioTeste = new Usuario("pedro","pedroh.mix@gmail.com","123456");
+    private static Usuario usuarioTeste = new Usuario("pedroh.mix@gmail.com","123456");
     //private static Usuario usuarioTeste = new Usuario("Y1","yteste@gmail.com","123456");
     // private static Usuario usuarioTeste = new Usuario("Y2","yteste@gmail.com","123456");
     // private static Usuario usuarioTeste = new Usuario("Y3","yteste@gmail.com","123456");
@@ -37,8 +36,10 @@ public class AgendamentoTest {
     @Test
     public void A_listarAgendTest() {
 
+
         RetrofitCallTest retrofitCallTest = new RetrofitCallTest();
         usuarioTeste = retrofitCallTest.B_login_Success();
+
 
         Call<List<Agendamento>> call = new RetrofitConfig().setAgendService().listarAgendRemoto("Token " +usuarioTeste.getKey());
 
@@ -62,7 +63,6 @@ public class AgendamentoTest {
         }
 
     }
-
 
     @Test
     public void B_editarAgendamento(){

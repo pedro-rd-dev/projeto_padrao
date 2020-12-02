@@ -12,18 +12,20 @@ import retrofit2.http.Header;
 import retrofit2.http.PUT;
 import retrofit2.http.Path;
 
+import static com.projeto_padrao.statics.ConstantesGlobais.IMPRESSORAS;
+
 public interface ImpressoraService {
 
 
 
-    @GET("impressoras/{id}/")
+    @GET(IMPRESSORAS+"{id}/")
     Call<Chamado> chamadoPeloId(@Header("Authorization") String key, @Path("id") Long id);
 
-    @PUT("impressoras/{id}/")
+    @PUT(IMPRESSORAS+"{id}/")
     Call<Chamado> editarImpressoras(@Header("Authorization") String key, @Path("id") Long id, @Body Impressora impressora);
 
 
-    @GET("impressoras/")
+    @GET(IMPRESSORAS)
     Call<List<Impressora>> listarImpressoras(@Header("Authorization") String key);
 
 }

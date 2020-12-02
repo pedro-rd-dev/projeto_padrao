@@ -3,13 +3,17 @@ package com.projeto_padrao.models.chamados;
 import android.content.Context;
 import android.util.Log;
 import android.widget.ListView;
+
 import com.orm.SugarRecord;
+import com.projeto_padrao.activities.chamados.ChamadoDetalheActivity;
 import com.projeto_padrao.adapters.ChamadosAdapter;
 import com.projeto_padrao.api.retrofit.RetrofitConfig;
-import com.projeto_padrao.chamados.ChamadoDetalheActivity;
+
 
 import org.jetbrains.annotations.NotNull;
+
 import java.util.List;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -164,7 +168,7 @@ public class Chamado extends SugarRecord {
             public void onResponse(Call<Chamado> call, Response<Chamado> response) {
                 if (response.isSuccessful()) {
 
-                  ((ChamadoDetalheActivity)context).inicializandoComponentes(response.body());
+                    ((ChamadoDetalheActivity)context).inicializandoComponentes(response.body());
                     ((ChamadoDetalheActivity)context).emitirAlerta();
 
                     Log.d("deletarChamados", "listar");
@@ -182,29 +186,29 @@ public class Chamado extends SugarRecord {
 
 
     public void criarChamado(@NotNull String key ){
-            Call<Chamado> call = new RetrofitConfig().setChamadoService().criarChamado("Token " + key, this);
-            call.enqueue(new Callback<Chamado>() {
-                @Override
-                public void onResponse(Call<Chamado> call, Response<Chamado> response) {
-                    if (response.isSuccessful()) {
+        Call<Chamado> call = new RetrofitConfig().setChamadoService().criarChamado("Token " + key, this);
+        call.enqueue(new Callback<Chamado>() {
+            @Override
+            public void onResponse(Call<Chamado> call, Response<Chamado> response) {
+                if (response.isSuccessful()) {
 
-                        Log.d("criarChamados", "listar");
-
-                    }
-                }
-
-                @Override
-                public void onFailure(Call<Chamado> call, Throwable t) {
-                    Log.d("criarChamados", "deletar");
+                    Log.d("criarChamados", "listar");
 
                 }
-            });
+            }
 
+            @Override
+            public void onFailure(Call<Chamado> call, Throwable t) {
+                Log.d("criarChamados", "deletar");
 
-        }
+            }
+        });
 
 
     }
+
+
+}
 
 
 

@@ -31,7 +31,7 @@ public class LogarTest {
     public ActivityTestRule<StartActivity> mActivityTestRule = new ActivityTestRule<>(StartActivity.class);
 
     @Test
-    public void logarTest() {
+    public static void logarTest() {
 
         Aplicacao.aguardar(2000);
 

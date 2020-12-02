@@ -65,6 +65,7 @@ public class RetrofitConfig {
         return  this.retrofit.create(ImpressoraService.class);
     }
 
+
     //Agendamentos
     public AgendService setAgendService() {
         return (AgendService) this.retrofit.create(AgendService.class);

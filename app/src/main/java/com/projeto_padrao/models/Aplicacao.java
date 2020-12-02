@@ -13,6 +13,7 @@ import com.projeto_padrao.activities.Agendamento.MeusActivity;
 import com.projeto_padrao.activities.AppActivity;
 import com.projeto_padrao.activities.autenticacao.LoginActivity;
 import com.projeto_padrao.activities.autenticacao.RegisterActivity;
+import com.projeto_padrao.activities.chamados.CriarChamadoActivity;
 import com.projeto_padrao.activities.eventos.EventosActivity;
 import com.projeto_padrao.activities.eventos.FavoritoActivity;
 import com.projeto_padrao.activities.remedio.NaoUsuarioActivity;
@@ -20,8 +21,8 @@ import com.projeto_padrao.activities.remedio.RecomendacaoActivity;
 import com.projeto_padrao.activities.tarefa.ListarTarefasActivity;
 import com.projeto_padrao.activities.usuario.ListarUsuariosActivity;
 import com.projeto_padrao.activities.usuario.UsuarioDetalheActivity;
-import com.projeto_padrao.chamados.ChamadoDetalheActivity;
-import com.projeto_padrao.chamados.ChamadosActivity;
+import com.projeto_padrao.activities.chamados.ChamadoDetalheActivity;
+import com.projeto_padrao.activities.chamados.ChamadosActivity;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -48,6 +49,8 @@ public class Aplicacao {
             e.printStackTrace();
         }
     }
+
+
 
     public void apresentarAlertaDeletar(String titulo, String menssagem) {
         new AlertDialog.Builder(context)
@@ -174,6 +177,10 @@ public class Aplicacao {
         Intent intent = new Intent(context, ChamadosActivity.class);
         context.startActivity(intent);
 
+    }
+    public static void irParaCriarChamadoActivity(Context context) {
+        Intent intent = new Intent(context, CriarChamadoActivity.class);
+        context.startActivity(intent);
     }
     public static void irParaChamadoDetalheActivity(Context context, Long id) {
         Intent intent = new Intent(context, ChamadoDetalheActivity.class);
