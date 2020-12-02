@@ -1,15 +1,22 @@
 
-
 <hr />
+<b>Professor:</b> Pedro
+<hr />
+<h3> Grupo 1<br />
+<br/>
+<hr />
+<h3> Grupo 2<br />
+<br/>
 <h3> Grupo 3<br />
 <br/>
+
 
 # Studio_Agendamentos
 
 
 Projeto Integrador da UC16 do Senac, Turma 721 do curso de Tecnico de informática.
 
-<b>Professor:</b> Pedro
+
 
 <b>Membros do projeto:</b>
 
@@ -47,4 +54,6 @@ podendo selecionar vários agendamentos, do jeito que o programa foi feito, pode
 O App funciona de forma síncrona, pois o usuário deve seguir certos caminhos para obter um melhor aproveitamento do aplicativo (App).
 
 <hr />
+<h3> Grupo 4<br />
+<br/>
 
