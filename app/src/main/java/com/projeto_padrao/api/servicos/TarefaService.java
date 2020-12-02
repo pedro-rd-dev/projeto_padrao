@@ -23,6 +23,7 @@ public interface TarefaService {
     @GET("tarefas/")
     Call<List<Tarefa>> listarTarefas(@Header("Authorization") String key);
 
+
     @DELETE("tarefas/{id}/")
     Call<Tarefa> deletarTarefa(@Header("Authorization") String key, @Path("id") Long id);
 }
