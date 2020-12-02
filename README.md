@@ -1,5 +1,3 @@
-
-<hr/>
 <b>Professor:</b> Pedro
 <hr/>
 <h3> Grupo 1<br />
