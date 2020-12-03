@@ -56,9 +56,6 @@ public class EventoTest {
     @Test
     public void B_adicionarFavoritoTest(){
 
-
-        favorito.setUsuario(1L);
-
         Call<Favorito> call = new RetrofitConfig().setEventoService().adicionarFavoritos("Token "+usuarioTeste.getKey(),favorito);
         try {
             Response<Favorito> response = call.execute();
@@ -103,7 +100,8 @@ public class EventoTest {
 
     @Test
     public void D_removerFavoritoTest(){
-        Call<Favorito> call = new RetrofitConfig().setEventoService().deletarFavorito("Token "+usuarioTeste.getKey(), favorito.getId());
+
+        Call<Favorito> call = new RetrofitConfig().setEventoService().deletarFavorito("Token "+usuarioTeste.getKey(),favorito.getId());
 
         try {
             Response<Favorito> response = call.execute();

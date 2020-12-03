@@ -67,8 +67,9 @@
         <activity android:name=".activities.Agendamento.AgendamentoActivity"
             android:theme="@style/TemaApp"/>
 
-        <activity android:name=".activities.remedio.NaoUsuarioActivity"/>
-        <activity android:name=".activities.remedio.RecomendacaoActivity" />
+        <activity android:name=".activities.remedio.NaoUsuarioActivity" />
+        <activity android:name=".activities.remedio.RecomendacaoActivity"
+            android:theme="@style/TemaApp"/>
 
 
     </application>

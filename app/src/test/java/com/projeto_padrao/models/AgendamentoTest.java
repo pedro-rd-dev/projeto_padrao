@@ -18,7 +18,7 @@ import static org.junit.Assert.fail;
 public class AgendamentoTest {
 
     //private static Usuario usuarioTeste = new Usuario("Yan","YSM@gmail.com","123456");
-    private static Usuario usuarioTeste = new Usuario("pedroh.mix@gmail.com","123456");
+    private static Usuario usuarioTeste = new Usuario();
     //private static Usuario usuarioTeste = new Usuario("Y1","yteste@gmail.com","123456");
     // private static Usuario usuarioTeste = new Usuario("Y2","yteste@gmail.com","123456");
     // private static Usuario usuarioTeste = new Usuario("Y3","yteste@gmail.com","123456");
@@ -30,8 +30,6 @@ public class AgendamentoTest {
     LoginActivityTest loginActivityTest = new LoginActivityTest();
         loginActivityTest.loginActivityTest();
      */
-
-
 
     @Test
     public void A_listarAgendTest() {
@@ -68,7 +66,7 @@ public class AgendamentoTest {
     public void B_editarAgendamento(){
 
 
-        agendamento.setUsuario(9L);
+        agendamento.setUsuario(1L);
 
         Call<Agendamento> call = new RetrofitConfig().setAgendService().addUserAgend("Token "+usuarioTeste.getKey(),agendamento.getId(),agendamento);
         try {

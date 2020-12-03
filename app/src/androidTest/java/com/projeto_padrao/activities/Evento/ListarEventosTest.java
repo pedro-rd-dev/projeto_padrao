@@ -1,4 +1,4 @@
-package com.projeto_padrao.activities;
+package com.projeto_padrao.activities.Evento;
 
 
 import androidx.test.espresso.ViewInteraction;
@@ -7,6 +7,8 @@ import androidx.test.rule.ActivityTestRule;
 import androidx.test.runner.AndroidJUnit4;
 
 import com.projeto_padrao.R;
+import com.projeto_padrao.activities.LogarTest;
+import com.projeto_padrao.activities.StartActivity;
 import com.projeto_padrao.models.Aplicacao;
 
 import org.junit.Rule;

@@ -1,4 +1,4 @@
-package com.projeto_padrao.activities;
+package com.projeto_padrao.activities.Remedio;
 
 
 import android.view.View;
@@ -11,6 +11,8 @@ import androidx.test.rule.ActivityTestRule;
 import androidx.test.runner.AndroidJUnit4;
 
 import com.projeto_padrao.R;
+import com.projeto_padrao.activities.LogarTest;
+import com.projeto_padrao.activities.StartActivity;
 import com.projeto_padrao.models.Aplicacao;
 
 import org.hamcrest.Description;
@@ -33,75 +35,26 @@ import static org.hamcrest.Matchers.is;
 
 @LargeTest
 @RunWith(AndroidJUnit4.class)
-public class CriarChamadoTest {
+public class RemediosActivityTest {
 
     @Rule
     public ActivityTestRule<StartActivity> mActivityTestRule = new ActivityTestRule<>(StartActivity.class);
 
     @Test
-    public void criarChamadoTest() {
-
-        LogarTest.logarTest();
+    public void remediosActivityTest() {
+        LogarTest logarTest = new LogarTest();
+        logarTest.logarTest();
 
         ViewInteraction view = onView(
-                allOf(withId(R.id.aplicacao_view_chamados),
-                        childAtPosition(
-                                childAtPosition(
-                                        withId(android.R.id.content),
-                                        0),
-                                1),
-                        isDisplayed()));
-        view.perform(click());
-        Aplicacao.aguardar(2000);
-
-
-        ViewInteraction appCompatImageView = onView(
-                allOf(withId(R.id.lista_chamados_imageView_criarChamado),
-                        childAtPosition(
-                                childAtPosition(
-                                        withId(android.R.id.content),
-                                        0),
-                                0),
-                        isDisplayed()));
-        appCompatImageView.perform(click());
-        Aplicacao.aguardar(2000);
-
-
-        ViewInteraction appCompatEditText3 = onView(
-                allOf(withId(R.id.criar_chamado_activity_titulo),
+                allOf(withId(R.id.view6),
                         childAtPosition(
                                 childAtPosition(
                                         withId(android.R.id.content),
                                         0),
                                 3),
                         isDisplayed()));
-        appCompatEditText3.perform(replaceText("quarta"), closeSoftKeyboard());
-        Aplicacao.aguardar(1000);
-
-
-        ViewInteraction appCompatEditText4 = onView(
-                allOf(withId(R.id.criar_chamado_activity_descricao),
-                        childAtPosition(
-                                childAtPosition(
-                                        withId(android.R.id.content),
-                                        0),
-                                2),
-                        isDisplayed()));
-        appCompatEditText4.perform(replaceText("quarta"), closeSoftKeyboard());
-        Aplicacao.aguardar(1000);
-
-
-        ViewInteraction appCompatButton2 = onView(
-                allOf(withId(R.id.criar_chamado_activity_button_criarChamado), withText("Criar"),
-                        childAtPosition(
-                                childAtPosition(
-                                        withId(android.R.id.content),
-                                        0),
-                                4),
-                        isDisplayed()));
-        appCompatButton2.perform(click());
-        Aplicacao.aguardar(2000);
-
+        view.perform(click());
+        Aplicacao.aguardar(3000);
     }
 
     private static Matcher<View> childAtPosition(

@@ -22,8 +22,8 @@ import static org.junit.Assert.fail;
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class RetrofitCallTest {
 
-    private static Usuario usuarioTeste = new Usuario("binks4@gmail.com","123456");
-
+    //private static Usuario usuarioTeste = new Usuario("binks4@gmail.com","123456");
+    private static Usuario usuarioTeste = new Usuario("pedroh.mix@gmail.com","123456");
 
     @Test
     public void A_testeRegistro() {
@@ -63,6 +63,8 @@ public class RetrofitCallTest {
             if (response.isSuccessful()){
                 assertNotNull(usuario);
                 usuarioTeste.setKey(usuario.getKey());
+
+                return usuarioTeste;
             }else {
                 fail();
             }
