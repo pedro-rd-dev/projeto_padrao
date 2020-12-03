@@ -1,15 +1,6 @@
 <b>Professor:</b> Pedro
 <hr/>
 <h3> Grupo 1<br />
-<hr/>
-<h3> Grupo 2<br />
-<hr/>
-<h3> Grupo 3<br />
-
-
-# Studio_Agendamentos
-
-
 Projeto Integrador da UC16 do Senac, Turma 721 do curso de Tecnico de informática.
 
 ----<b>Membros do projeto:</b>
@@ -17,13 +8,13 @@ Projeto Integrador da UC16 do Senac, Turma 721 do curso de Tecnico de informáti
   -Guilherme<br />
   -Silas<br/>
   -Douglas<br />
- 
+
   # Foco do Projeto:
   A nossa ideia no projeto, foi de criar uma aplicação de criação de chamados, em que o usuário recebe uma lista com vários chamados,
   podendo selecionar vários chamados, do jeito que o programa foi feito, poderíamos utiliza-los em varias áreas diferentes.
-  
+
   O App funciona de forma síncrona, pois o usuário deve seguir certos caminhos para obter um melhor aproveitamento do aplicativo (App).
-  
+
   <hr />
   <h3> Grupo 1<br />
   <br/>
@@ -34,6 +25,16 @@ Projeto Integrador da UC16 do Senac, Turma 721 do curso de Tecnico de informáti
   -Versão do emulador do Android;<br />
   -Utilização das bibliotecas: Sugar ORM, Retrofit;<br />
   -API;<br />
+<hr/>
+<h3> Grupo 2<br />
+<hr/>
+<h3> Grupo 3<br />
+
+
+# Studio_Agendamentos
+
+
+
 
 
 
