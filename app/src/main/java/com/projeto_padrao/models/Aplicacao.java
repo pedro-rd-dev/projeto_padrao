@@ -128,6 +128,7 @@ public class Aplicacao {
                 "Yes",
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
+                        Aplicacao.isNetworkStatusAvialable(context);
                         Usuario usuario = Usuario.verificaUsuarioLogado();
                         agendamento.setUsuario(usuario.getId());
                         agendamento.editarAgendamento(usuario.getKey(),context);
@@ -233,6 +234,7 @@ public class Aplicacao {
                 return netInfos.isConnected();
             }
         }
+        Toast.makeText(context, "Porfavor cheque sua conexão com a Internet", Toast.LENGTH_SHORT).show();
         return false;
     }
 

@@ -81,12 +81,7 @@ public class LoginActivity extends AppCompatActivity {
                 String senha = login_editText_senha.getText().toString();
 
                 Usuario usuarioLogado = new Usuario(email,senha,null, LoginActivity.this);
-                if (Aplicacao.isNetworkStatusAvialable(getApplicationContext())) {
-                    Toast.makeText(getApplicationContext(), "Internet detectada", Toast.LENGTH_SHORT).show();
-                } else {
-                    Toast.makeText(getApplicationContext(), "Porfavor cheque sua conexão com a Internet", Toast.LENGTH_SHORT).show();
-
-                }
+                Aplicacao.isNetworkStatusAvialable(getApplicationContext());
                 usuarioLogado.logar();
 
                 Log.d("autenticação","  \nUSUARIO: "+ email + "\nSENHA:"+ senha);
