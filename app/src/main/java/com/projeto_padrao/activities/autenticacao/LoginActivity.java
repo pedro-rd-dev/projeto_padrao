@@ -8,6 +8,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
@@ -16,6 +17,8 @@ import com.projeto_padrao.R;
 import com.projeto_padrao.models.Aplicacao;
 import com.projeto_padrao.models.Usuario;
 import com.projeto_padrao.observers.ActivityObserver;
+
+import static com.projeto_padrao.models.Aplicacao.isNetworkStatusAvialable;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -35,6 +38,7 @@ public class LoginActivity extends AppCompatActivity {
         if(Usuario.verificaUsuarioLogado()!=null){
             Aplicacao.irParaAppActivity(LoginActivity.this);
         }else {
+
             identificandoComponentes();
             inicializandoComponentes();
         }
@@ -71,10 +75,18 @@ public class LoginActivity extends AppCompatActivity {
                 mostrarProgressBar();
                 desabilitarBotao();
 
+
+
                 String email = login_editText_email.getText().toString();
                 String senha = login_editText_senha.getText().toString();
 
                 Usuario usuarioLogado = new Usuario(email,senha,null, LoginActivity.this);
+                if (Aplicacao.isNetworkStatusAvialable(getApplicationContext())) {
+                    Toast.makeText(getApplicationContext(), "Internet detectada", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(getApplicationContext(), "Porfavor cheque sua conexão com a Internet", Toast.LENGTH_SHORT).show();
+
+                }
                 usuarioLogado.logar();
 
                 Log.d("autenticação","  \nUSUARIO: "+ email + "\nSENHA:"+ senha);

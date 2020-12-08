@@ -21,7 +21,7 @@ public class RecomendacaoActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.recomendacao_lista);
-
+        setTitle("Farma Alert");
         idenfificandoComponentes();
 
         Usuario usuario = Usuario.verificaUsuarioLogado();

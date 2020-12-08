@@ -28,6 +28,7 @@ public class ChamadosActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.lista_chamados);
+        setTitle("Chamados");
         usuario = Usuario.verificaUsuarioLogado();
         if (usuario != null) {
             usuario.setContext(ChamadosActivity.this);

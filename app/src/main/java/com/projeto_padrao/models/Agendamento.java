@@ -16,6 +16,7 @@ import com.projeto_padrao.activities.usuario.UsuarioDetalheActivity;
 import com.projeto_padrao.adapters.AgendAdapter;
 import com.projeto_padrao.adapters.MeusAdapter;
 import com.projeto_padrao.api.retrofit.RetrofitConfig;
+import com.projeto_padrao.models.chamados.Chamado;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -220,6 +221,13 @@ public class Agendamento extends SugarRecord {
                     // apagar a lista de agendamentos do banco interno
                     List<Agendamento> agendamentos = response.body();
                     //salvar a lista no banco interno
+                    Agendamento.deleteAll(Agendamento.class);
+
+                    if (agendamentos != null) {
+                        for (Agendamento agendamento: agendamentos){
+                            agendamento.save();
+                        }
+                    }
 
                     Log.d("listarAgend", "listar");
 

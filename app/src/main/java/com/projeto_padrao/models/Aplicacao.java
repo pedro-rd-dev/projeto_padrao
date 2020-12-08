@@ -3,8 +3,11 @@ package com.projeto_padrao.models;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
 
@@ -220,14 +223,19 @@ public class Aplicacao {
         context.startActivity(homeIntent);
     }
 
-    public boolean isInternetAvailable() {
-        try {
-            InetAddress ipAddr = InetAddress.getByName("google.com");
-            //You can replace it with your name
-            return !ipAddr.equals("");
-
-        } catch (Exception e) {
-            return false;
+    public static boolean isNetworkStatusAvialable (Context context) {
+        ConnectivityManager connectivityManager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+        if (connectivityManager != null)
+        {
+            NetworkInfo netInfos = connectivityManager.getActiveNetworkInfo();
+            if(netInfos != null)
+            {
+                return netInfos.isConnected();
+            }
         }
+        return false;
     }
+
+
+
 }

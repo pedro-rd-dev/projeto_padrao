@@ -60,6 +60,15 @@ public class MeusAgendamentos extends SugarRecord {
             public void onResponse(Call<List<Agendamento>> call, Response<List<Agendamento>> response) {
                 if (response.isSuccessful()) {
                     List<Agendamento> agendamentos = response.body();
+
+                    Agendamento.deleteAll(Agendamento.class);
+
+                    if (agendamentos != null) {
+                        for (Agendamento agendamento: agendamentos){
+                            agendamento.save();
+                        }
+                    }
+
                     Log.d("listarAgenduser", "listar");
 
                         MeusAdapter adaptador = new MeusAdapter(usuario.getContext(),agendamentos);

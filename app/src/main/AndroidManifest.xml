@@ -63,7 +63,8 @@
         <activity android:name=".activities.chamados.CriarChamadoActivity"/>
         <activity android:name=".activities.chamados.ChamadoDetalheActivity"/>
 
-        <activity android:name=".activities.Agendamento.MeusActivity"/>
+        <activity android:name=".activities.Agendamento.MeusActivity"
+            android:theme="@style/TemaApp"/>
         <activity android:name=".activities.Agendamento.AgendamentoActivity"
             android:theme="@style/TemaApp"/>
 
